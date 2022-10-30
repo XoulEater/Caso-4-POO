@@ -27,6 +27,11 @@ public class RobotMainFrame extends JFrame implements KeyListener{
 
 	private JPanel panelg;
 	private JPanel panelb;
+	
+	public RobotMainFrame (RobotController pController)
+	{
+		this.controller = pController;
+	}
 
 	private void crearPanelPersonaje1() {//Crea panel con robot verde
 		JPanel panelg = new JPanel();
@@ -118,32 +123,24 @@ public class RobotMainFrame extends JFrame implements KeyListener{
 		pLabel.setIcon(icon);
         return pLabel;
     }
-
-	private void initComponents() {
-		crearPanelPersonaje(200,200);
-		
-		this.add(panelC);		
-		panelC.repaint();
-	}
-
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
 		if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W' || e.getExtendedKeyCode() == KeyEvent.VK_UP)
 		{
-			panelC.setLocation(panelC.getX(), panelC.getY()-5);
+			panelb.setLocation(panelg.getX(), panelg.getY()-5);
 		}
 		if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A' || e.getExtendedKeyCode() == KeyEvent.VK_LEFT)
 		{
-			panelC.setLocation(panelC.getX()-5, panelC.getY());
+			panelg.setLocation(panelg.getX()-5, panelg.getY());
 		}
 		if (e.getKeyChar() == 'd' || e.getKeyChar() == 'D' || e.getExtendedKeyCode() == KeyEvent.VK_RIGHT)
 		{
-			panelC.setLocation(panelC.getX()+5, panelC.getY());
+			panelg.setLocation(panelg.getX()+5, panelg.getY());
 		}
 		if (e.getKeyChar() == 's' || e.getKeyChar() == 'S' || e.getExtendedKeyCode() == KeyEvent.VK_DOWN)
 		{
-			panelC.setLocation(panelC.getX(), panelC.getY()+5);
+			panelg.setLocation(panelg.getX(), panelg.getY()+5);
 		}
 		this.repaint();
 	}
