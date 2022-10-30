@@ -21,7 +21,8 @@ public class RobotMainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private RobotController controller;
-	private JPanel panelC;
+	private JPanel panelg;
+	private JPanel panelb;
 	private int panel2xMax = IConstants.ARENA_WIDTH, panel2yMax = IConstants.ARENA_HEIGTH;
 	public int direcction = 0;
 		
@@ -41,27 +42,93 @@ public class RobotMainFrame extends JFrame {
 		
 	}
 	
-	private void crearPanelPersonaje() {//Crea panel con planta
-		JPanel panelc = new JPanel();
-		panelc.setBackground(Color.green);
-		panelc.setBounds(10, 10, 1000, 1000);
-		panelc.setMaximumSize(new Dimension (60,50));
+	private void crearPanelPersonaje1() {//Crea panel con robot verde
+		JPanel panelg = new JPanel();
+		panelb.setOpaque(false);
+		panelg.setBounds(300, 57, 190, 135);
+		panelg.setMaximumSize(new Dimension (60,50));
 		
-		JLabel personaje = new JLabel("image");
-		personaje.setBounds(10, 10, 120,120);
+		JLabel MekaGreen  = new JLabel();
+		MekaGreen.setBounds(0, 45, 120,90);
+		
+		JLabel ThunderBlade = new JLabel();
+		ThunderBlade.setBounds(90, 75, 100,30); // Right hand + 72
+		
+		JLabel WarHammer = new JLabel();
+		WarHammer.setBounds(0, 0, 50,100); // Left hand - 70
+		
+		JLabel Hades = new JLabel();
+		Hades.setBounds(90, 64, 90,60); // Left hand - 65
+		
+		JLabel range = new JLabel();
+		range.setBounds(45,35, 50,35);
+		
+		setImage(WarHammer, "/robotwar/images/mel_g1.png");
+		panelg.add(WarHammer);
 	
-		setImage(personaje, "/robotwar/images/sunset.png");
-		panelc.add(personaje);
+		//setImage(range, "/robotwar/images/ran_g2.png");
+		setImage(range, "/robotwar/images/ran_g1.png");
+		panelg.add(range);
+		
+		setImage(MekaGreen, "/robotwar/images/mekg.png");
+		panelg.add(MekaGreen);
+		
+		//setImage(Hades, "/robotwar/images/mel_g3.png");
+		//panelg.add(Hades);
 	
-		panelc.setLayout(null);
-		this.panelC = panelc;
+		
+		setImage(ThunderBlade, "/robotwar/images/mel_g3.png");
+		panelg.add(ThunderBlade);
+	
+		panelg.setLayout(null);
+		this.panelg = panelg;
+	}
+	private void crearPanelPersonaje2() {//Crea panel con robot verde
+		JPanel panelb = new JPanel();
+		panelb.setOpaque(false);
+		panelb.setBounds(30, 30, 190, 162);
+		panelb.setMaximumSize(new Dimension (60,50));
+		
+		JLabel MekaBlue = new JLabel();
+		MekaBlue.setBounds(0, 52, 120,110);
+		
+		JLabel WarAxe = new JLabel();
+		WarAxe.setBounds(14, 0, 40, 100); // Right hand + 77
+		
+		JLabel Reaper = new JLabel();
+		Reaper.setBounds(90, 77, 100, 50); // Left hand -73
+		
+		JLabel Punch = new JLabel();
+		Punch.setBounds(90, 80, 100, 32); // Left hand -70
+		
+		JLabel range = new JLabel();
+		range.setBounds(35, 55, 65, 30);
+
+		setImage(WarAxe, "/robotwar/images/mel_b1.png");
+		panelb.add(WarAxe);
+		
+		//setImage(range, "/robotwar/images/ran_b2.png");
+		setImage(range, "/robotwar/images/ran_b1.png");
+		panelb.add(range);
+		
+		setImage(MekaBlue, "/robotwar/images/mekb.png");
+		panelb.add(MekaBlue);
+		
+		//setImage(Reaper, "/robotwar/images/mel_b2.png");
+		//panelb.add(Reaper);
+		
+		setImage(Punch, "/robotwar/images/mel_b3.png");
+		panelb.add(Punch);
+		
+
+		panelb.setLayout(null);
+		this.panelb = panelb;
 	}
 	
 	public JLabel setImage(JLabel pLabel, String ruta) {
-		ImageIcon image = new ImageIcon(getClass().getResource("/robotwar/images/Mecha_pong_pong.png"));
+		ImageIcon image = new ImageIcon(getClass().getResource(ruta));
 		Icon icon = new ImageIcon(image.getImage().getScaledInstance(pLabel.getWidth(), pLabel.getHeight(), Image.SCALE_DEFAULT));
 		pLabel.setIcon(icon);
-        
         return pLabel;
     }
 	
@@ -69,12 +136,19 @@ public class RobotMainFrame extends JFrame {
 		return dir;	
 	}
 	private void initComponents() {
-		crearPanelPersonaje();
-		
-		this.add(panelC);
+		crearPanelPersonaje2();
+		crearPanelPersonaje1();
+		this.add(panelb);
+		this.add(panelg);
+	}
+	
+	public void moveblue() {
+		panelb.setLocation(panelb.getLocation().x + 15, panelb.getLocation().y);
+		panelb.repaint();
+	}
 		
 		//ImageIcon imagen  = new ImageIcon();
 
    
 }
-}
+

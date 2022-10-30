@@ -15,5 +15,5 @@ public abstract class Weapon extends DamageLevel {
 		}
 	}
 	
-	abstract void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection);
+	protected abstract void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection);
 }

@@ -28,10 +28,9 @@ public class IVariables {
 	public int getNum() {
 		return num;
 	}
-\
 	public void setNum(int num) {
 		this.num = num;
 	}
 	// Igualmente se pueden añadir mas metodos y variables 
 }
-}
+
