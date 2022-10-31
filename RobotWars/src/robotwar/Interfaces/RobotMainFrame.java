@@ -48,8 +48,6 @@ public class RobotMainFrame extends JFrame implements KeyListener{
 		
 		
 	}
-	
-
 
 	private void crearPanelPersonaje1() {//Crea panel con robot verde
 		JPanel panelg = new JPanel();

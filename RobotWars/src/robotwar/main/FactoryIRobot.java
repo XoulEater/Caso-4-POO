@@ -16,7 +16,7 @@ public class FactoryIRobot implements IConstants{
 		weapon2 = null;
 		strike1 = null;
 	}
-
+ 
 	public void setRobot(IRobot Probot) {
 		this.robot = Probot;
 		weapon1 = null;
@@ -27,7 +27,7 @@ public class FactoryIRobot implements IConstants{
 	public void setWeapon1(Weapon Pweapon) {
 		this.weapon1 = Pweapon;
 	}
-
+	
 	public void setWeapon2(Weapon Pweapon) {
 		this.weapon2 = Pweapon;
 	}

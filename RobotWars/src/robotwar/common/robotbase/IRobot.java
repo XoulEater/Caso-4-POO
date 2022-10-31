@@ -7,14 +7,15 @@ import java.time.LocalTime;
 import robotwar.common.IConstants;
 
 public class IRobot implements IConstants {
-	private int energy;
-	private int posX;
-	private int posY;
-	private int strikeIndex;
-	private int weaponIndex;
-	private Weapon weapons[];
-	private Weapon strikes[];
-	private DamageLevel directionsdamage[];
+	protected int energy;
+	protected int posX;
+	protected int posY;
+	protected int speed;
+	protected int strikeIndex;
+	protected int weaponIndex;
+	protected Weapon weapons[];
+	protected Weapon strikes[];
+	protected DamageLevel directionsdamage[];
 	
 	public IRobot(Weapon pdirections, DamageLevel pweapons) {
 		directionsdamage = new DamageLevel[MOVEMENT.values().length];
@@ -53,7 +54,20 @@ public class IRobot implements IConstants {
 	public void damage(int pLevel) {
 		
 	}
+
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
 	
+	public void setSpeed(int pSpeed) {
+		this.speed = pSpeed;
+	}
+
 	public void addStrike(Weapon pStrike) {
 		strikes[strikeIndex] = pStrike;
 		strikeIndex=++strikeIndex%STRIKES_PER_ROBOT;

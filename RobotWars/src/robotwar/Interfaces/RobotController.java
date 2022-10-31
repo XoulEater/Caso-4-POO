@@ -1,16 +1,31 @@
 package robotwar.Interfaces;
 
 import robotwar.Interfaces.*;
+
+
 import robotwar.common.robotbase.*;
+import robotwar.main.*;
+
 
 
 
 public class RobotController {
-	private RobotMainFrame contolledFrame;
-	private IRobot robot;
+	private GameInterface contolledFrame;
+	private Arena currentArena;
+	private FactoryIRobot robot1, robot2;
+	
 	
 	public RobotController()
 	{	
+		FactoryIRobot robot1 = new FactoryIRobot();
+		FactoryIRobot robot2 = new FactoryIRobot();
+		
+	}
+	public void createRobot(int pIndex) {
+		if (pIndex == 1)
+		{
+			
+		}
 	}
 	
 	
@@ -18,7 +33,7 @@ public class RobotController {
 	{
 	}
 
-	public void setWindow(RobotMainFrame pRobotmainFrame) { //Para interfaz
+	public void setWindow(GameInterface pRobotmainFrame) { //Para interfaz
 		contolledFrame = pRobotmainFrame;	
 	}
 	
