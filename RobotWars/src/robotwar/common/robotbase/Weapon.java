@@ -1,8 +1,7 @@
 package robotwar.common.robotbase;
 
 public abstract class Weapon extends DamageLevel {
-	private int posX;
-	private int posY;
+
 	private int speed;
 	
 	public Weapon(int pSpeed) {
