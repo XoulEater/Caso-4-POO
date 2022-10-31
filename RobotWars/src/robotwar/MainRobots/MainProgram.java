@@ -1,19 +1,26 @@
 package robotwar.MainRobots;
 
-import robotwar.Interfaces.*;
+import javax.swing.JFrame;
 
+
+import robotwar.Interfaces.*;
 
 public class MainProgram {
 
-	public static void main(String[] args) throws InterruptedException {
-		RobotController mainController = new RobotController();
-		RobotMainFrame mainFrame = new RobotMainFrame(mainController);
+	public static void main(String[] args)  {
 		
-		int count = 10;
-		while (count != 0) {
-			mainFrame.moveblue();
-			count -= 1;
-			Thread.sleep(1000);
-		}
+		JFrame window =  new JFrame();
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setResizable(false);
+		window.setTitle("RobotWars");
+		
+		GameInterface gamePanel = new GameInterface();
+		window.add(gamePanel);
+		window.pack(); 
+		
+		window.setLocationRelativeTo(null);
+		window.setVisible(true );
+		
+		gamePanel.startGameThread();
 	}
 }
