@@ -17,7 +17,7 @@ public class IRobot implements IConstants {
 	protected Weapon strikes[];
 	protected DamageLevel directionsdamage[];
 	
-	public IRobot(Weapon pdirections, DamageLevel pweapons) {
+	public IRobot() {
 		directionsdamage = new DamageLevel[MOVEMENT.values().length];
 		weapons = new Weapon[WEAPONS_PER_ROBOT];
 		strikes = new Weapon[STRIKES_PER_ROBOT];
@@ -56,16 +56,28 @@ public class IRobot implements IConstants {
 	}
 
 
+	public int getPosX() {
+		return posX;
+	}
+
 	public void setPosX(int posX) {
 		this.posX = posX;
+	}
+
+	public int getPosY() {
+		return posY;
 	}
 
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
-	
-	public void setSpeed(int pSpeed) {
-		this.speed = pSpeed;
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 
 	public void addStrike(Weapon pStrike) {

@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import robotwar.Interfaces.*;
 import robotwar.common.robotbase.GreenRobot;
 
-public class RobotPanel extends JFrame { //Se haria el extends de IROBOT
+public class RobotPanel{ //Se haria el extends de IROBOT
 	GameInterface gp;  
 	KeyBoard keyType;
 	GreenRobot green;
@@ -29,33 +29,32 @@ public class RobotPanel extends JFrame { //Se haria el extends de IROBOT
 	{
 		this.gp = pGp;
 		this.keyType = pBoard;
-	}
-	
-	public void createGreenRobot()
-	{
-		this.green = new GreenRobot(null, null);
+		green = new GreenRobot();
+		setDefaulValues();
+		getPlayerImage();
 	}
 	
 	public void setDefaulValues()
 	{
-		int x = 100;
-		int y = 100;
-		int speed = 4;	
+		green.setPosX(100);
+		green.setPosY(100);
+		green.setSpeed(4);
+		green.setDirection("right");
 	}
 	
 	public void getPlayerImage()
 	{
-		green.up1 = righGreen(1);
-		green.down1 = righGreen(0);
-		green.left1 = righGreen(1);
-		green.right1 = righGreen(0);
+		green.up1 = righGreen(0);
+		green.down1 = righGreen(1);
+		green.left1 = righGreen(3);
+		green.right1 = righGreen(2);
 	}
 	
 	public BufferedImage righGreen(int pIndex) {
 		JPanel panelg = new JPanel();
 		panelg.setOpaque(false);
 		panelg.setBounds(300, 57, 190, 135);
-		panelg.setMaximumSize(new Dimension (60,50));
+
 		
 		JLabel MekaGreen  = new JLabel();
 		MekaGreen.setBounds(0, 45, 120,90);
@@ -76,7 +75,17 @@ public class RobotPanel extends JFrame { //Se haria el extends de IROBOT
 		panelg.add(WarHammer);
 	
 		//setImage(range, "/robotwar/images/ran_g2.png");
-		setImage(range, "/robotwar/images/ran_g1.png");
+		
+		
+		if (pIndex == 0) {
+			setImage(range, "/robotwar/images/ran_g1U.png");
+		} else if (pIndex == 1) {
+			setImage(range, "/robotwar/images/ran_g1D.png");
+		} else if (pIndex == 2) {
+			setImage(range, "/robotwar/images/ran_g1.png");
+		} else {
+			setImage(range, "/robotwar/images/ran_g1I.png");
+		}
 		panelg.add(range);
 		
 		setImage(MekaGreen, "/robotwar/images/mekg.png");
@@ -94,11 +103,11 @@ public class RobotPanel extends JFrame { //Se haria el extends de IROBOT
 	}
 	
 	public BufferedImage createImage(JPanel panel) {
-
 	    int w = panel.getWidth();
 	    int h = panel.getHeight();
-	    BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+	    BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 	    Graphics2D g = bi.createGraphics();
+	    g.setBackground(null);
 	    panel.paint(g);
 	    g.dispose();
 	    return bi;
@@ -114,24 +123,24 @@ public class RobotPanel extends JFrame { //Se haria el extends de IROBOT
 	public void update()
 	{
 		
-		if (keyType.upPressed == true)
+		if (keyType.downPressed)
 		{
-			green.direction = "1";
-			green.setPosX(green.getPosX() - green.getSpeed());
+			green.direction = "down";
+			green.setPosY(green.getPosY() + green.getSpeed());
 		}
-		else if (keyType.downPressed == true)
+		else if (keyType.upPressed)
 		{
-			green.direction = "3";
-			green.setPosX(green.getPosX() - green.getSpeed());
+			green.direction = "up";
+			green.setPosY(green.getPosY() - green.getSpeed());
 		}
-		else if (keyType.leftPressed == true)
+		else if (keyType.rightPressed)
 		{
-			green.direction = "3";
-			 green.setPosX(green.getPosX() - green.getSpeed());
+			green.direction = "right";
+			green.setPosX(green.getPosX() + green.getSpeed());
 		}
-		else if (keyType.rightPressed == true)
+		else if (keyType.leftPressed)
 		{
-			green.direction = "4";
+			green.direction = "left";
 			green.setPosX(green.getPosX() - green.getSpeed());
 		}
 	}
@@ -141,20 +150,21 @@ public class RobotPanel extends JFrame { //Se haria el extends de IROBOT
 		//JPanel panel = new JPanel();
 		switch(green.direction)
 		{
-		case "1":
+		case "up":
 			image = green.up1;
 			break;
-		case "2":
-			image = green.up1;
+		case "down":
+			image = green.down1;
 			break;
-		case "3":
-			image = green.up1;
+		case "right":
+			image = green.right1;
 			break;
-		case "4":
-			image = green.up1;
+		case "left":
+			image = green.left1;
 			break;
 		}
-		pG2.drawImage(image, green.getPosX(), green.getPosX(), gp.tileSize, gp.tileSize, null);
+		pG2.drawImage(image, green.getPosX(), green.getPosY(), gp.tileSize, gp.tileSize, null);
+
 		
 			
 	}
