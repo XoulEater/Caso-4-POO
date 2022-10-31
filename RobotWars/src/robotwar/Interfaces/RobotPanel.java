@@ -174,15 +174,25 @@ public class RobotPanel{ //Se haria el extends de IROBOT
         panelb.setOpaque(false);
         panelb.setBounds(30, 30, 190, 162);
 
+        // meka 
         JLabel MekaBlue  = new JLabel();
+        
+        // slot melee 1
         JLabel WarAxe = new JLabel();
-        JLabel Reaper = new JLabel();
+        
+        // slot melee 2
         JLabel Punch = new JLabel();
+        //JLabel Reaper = new JLabel();
+        
+        // slot head
         JLabel range = new JLabel();
 
+        //bounds = meka.getbouds
         MekaBlue.setBounds(0, 52, 120,110);
+        
+        //bounds meka.getweapons()[0].getbouds
         WarAxe.setBounds(14, 0, 40, 100); // Right hand + 72
-        Reaper.setBounds(90, 77, 100, 50); // Left hand - 70
+        //Reaper.setBounds(90, 77, 100, 50); // Left hand - 70
         Punch.setBounds(90, 80, 100, 32); // Left hand - 65
 
         switch(sight) {

@@ -2,6 +2,7 @@ package robotwar.common.robotbase;
 
 import java.util.*;
 
+// Posicion dentro del panel
 public class Placement {
 	int posY, posX, lenght, width;
 	
