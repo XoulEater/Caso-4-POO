@@ -12,7 +12,7 @@ public class GreenRobot extends IRobot{
 
 	}
 
-	public BufferedImage left1, up1, right1, down1;
+	public BufferedImage leftL, upL, downL, rightL, leftR, upR, downR, rightR;
 	
 	public String direction;
 
