@@ -7,27 +7,20 @@ import javax.swing.JPanel;
 public class GreenRobot extends IRobot{
 
 	
-	public GreenRobot(Weapon pdirections, DamageLevel pweapons) {
-		super(pdirections, pweapons);
+	public GreenRobot() {
+		super();
 
-	}
-	
-	public int getPosX()
-	{
-		return posX;
-	}
-	
-	public int getPosY()
-	{
-		return posY;
-	}
-	
-	public int getSpeed()
-	{
-		return speed;
 	}
 
 	public BufferedImage left1, up1, right1, down1;
 	
 	public String direction;
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
 }
