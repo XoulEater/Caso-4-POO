@@ -1,8 +1,7 @@
 package robotwar.common.robotbase;
 
 import java.awt.Graphics;
-
-
+import java.awt.image.BufferedImage;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,9 @@ public abstract class IRobot implements IConstants {
 	protected DamageLevel directionsdamage[];
 	protected String lastDir;
 	protected List<Integer> lastBounds;
+	
+	protected String direction;
+	public BufferedImage leftL, upL, downL, rightL, leftR, upR, downR, rightR;
 
 	public IRobot() {
 		directionsdamage = new DamageLevel[MOVEMENT.values().length];
@@ -45,7 +47,13 @@ public abstract class IRobot implements IConstants {
 		this.mekaBound = mekaBound;
 	}
 	
-
+	public String getDirection() {
+		return direction;
+	}
+	
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
 
 	/*
 	 * el move es la dirección que el jugador está presionando, con eso y la hora del accion
@@ -124,6 +132,7 @@ public abstract class IRobot implements IConstants {
 	}
 	
 	public void addWeapon(Weapon pStrike) {
+		pStrike.setSlot(weaponIndex);
 		weapons[weaponIndex] = pStrike;
 		weaponIndex=++weaponIndex%WEAPONS_PER_ROBOT;
 	}

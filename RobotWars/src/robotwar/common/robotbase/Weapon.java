@@ -8,6 +8,7 @@ public abstract class Weapon extends DamageLevel {
 	protected Placement position;
 	protected String lastDir ;
 	protected List<Integer> lastPlace;
+	protected int slot;
 	
 	public Weapon(int pSpeed) {
 		this.speed = pSpeed;
@@ -19,6 +20,10 @@ public abstract class Weapon extends DamageLevel {
 		if (this.isEnabled()) {
 			triggerWeapon(pPosX, pPosY, pDirection);
 		}
+	}
+	
+	public void setSlot(int slot) {
+		this.slot = slot;
 	}
 	
 	public void setPlacement (int a, int b, int c, int d)

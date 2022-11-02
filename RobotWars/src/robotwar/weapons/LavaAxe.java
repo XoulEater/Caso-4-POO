@@ -34,12 +34,21 @@ public class LavaAxe extends Weapon{
 			
 			lastPlace = new ArrayList<>();
 			Collections.addAll(lastPlace, 14, 0, 40, 100);
+			if (slot == 1) {
+				lastPlace.set(0, lastPlace.get(0) + 77);
+			}
 			break;
 		case "left":
 			lastPlace = new ArrayList<>();
 			Collections.addAll(lastPlace, 60, 0, 40, 100);
+			if (slot == 1) {
+				lastPlace.set(0, lastPlace.get(0) + 77);
+			}
 			break;
 		}
+
+		
+		
 		return lastPlace;
 	}
 	

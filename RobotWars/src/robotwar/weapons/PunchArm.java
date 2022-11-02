@@ -33,13 +33,21 @@ public class PunchArm extends Weapon{
 		case "right":
 			
 			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace, 90, 60, 100, 32);
+			Collections.addAll(lastPlace, 90, 80, 100, 32);
+			if (slot == 0) {
+				lastPlace.set(0, lastPlace.get(0) - 70);
+			}
 			break;
 		case "left":
 			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace, 70, 60, 100, 32);
+			Collections.addAll(lastPlace, 70, 80, 100, 32);
+			if (slot == 0) {
+				lastPlace.set(0, lastPlace.get(0) - 70);
+			}
 			break;
 		}
+
+		
 		return lastPlace;
 	}
 	
