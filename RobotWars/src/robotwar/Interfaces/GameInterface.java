@@ -9,29 +9,32 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import robotwar.common.*;
+import robotwar.common.robotbase.GreenRobot;
+import robotwar.common.robotbase.IRobot;
+import robotwar.weapons.*;
 
 
 public class GameInterface extends JPanel implements Runnable{
 
+	private static final long serialVersionUID = 1L;
+	
 	final int originalSize = 25; //Defalt size of each panel 25x25
 	final int scale = 4;
-	
 	public final int tileSize = originalSize * scale; //Decides all ths screen sizes. 100x100
 	final int maxScreenCol = 16; //
 	final int maxSceenRow = 12;
 	final int screenWidghht = tileSize * maxScreenCol; //1600 pixels
 	final int screeenHeight = tileSize * maxSceenRow; //1200 pixels
 	
-	int FPS = 60;
+	
+	int FPS = 30;
 	
 	BackGround fondo = new BackGround(this);
 	KeyBoard keyType = new KeyBoard();
 	Thread gameThread;
 	
-	RobotPanel player = new RobotPanel(this, keyType);
-	
-	
-	
+	IRobot meka;
+	RobotPanel player;
 	
 	public GameInterface ()
 	{
@@ -40,6 +43,21 @@ public class GameInterface extends JPanel implements Runnable{
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyType);//Se le agrega las keys al frame 
 		this.setFocusable(true);
+		
+		meka = new GreenRobot();
+		
+		GreenScope head1 = new GreenScope(0);
+		GreenLaser head2 = new GreenLaser(0);
+		
+		Warhammer hammer = new Warhammer(0);
+		ThunderBlade blade = new ThunderBlade(0);
+		Hades hades = new Hades(0);
+
+		meka.addWeapon(blade);
+		meka.addWeapon(hades);
+		meka.addStrike(head1);
+		
+		player = new RobotPanel(this, keyType, meka);
 		
 	}
 	
@@ -85,6 +103,7 @@ public class GameInterface extends JPanel implements Runnable{
 	public void update()
 	{
 		player.update();
+		// Trampas
 	}
 	
 	public void paintComponent(Graphics g) //Aca se pueden crear los robots. 

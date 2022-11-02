@@ -38,21 +38,11 @@ public class BlueRocket extends Weapon{
 		switch(dir) {
 		case "right":
 			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,60, 30, 65, 30);
+			Collections.addAll(lastPlace,45,40, 50,35);
 			break;
 		case "left":
 			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,60, 30, 65, 30);
-			break;
-			
-		case "up":
-			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,60, 13, 30, 65);
-			break;
-			
-		case "down":
-			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,60, 13, 30, 65);
+			Collections.addAll(lastPlace,95,40, 50,35);
 			break;
 		}
 		return lastPlace;

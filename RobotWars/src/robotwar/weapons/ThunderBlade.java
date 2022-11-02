@@ -35,13 +35,18 @@ public class ThunderBlade extends Weapon{
 		case "right":
 			lastPlace = new ArrayList<>();
 			Collections.addAll(lastPlace, 90, 75, 100,30);
+			if (slot == 0) {
+				lastPlace.set(0, lastPlace.get(0) - 70);
+			}
 			break;
 		case "left":
 			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace, 71, 75, 100,30);
+			Collections.addAll(lastPlace, 70, 75, 100,30);
+			if (slot == 0) {
+				lastPlace.set(0, lastPlace.get(0) - 70);
+			}
 			break;
 		}
-		
 		return lastPlace;
 	}
 

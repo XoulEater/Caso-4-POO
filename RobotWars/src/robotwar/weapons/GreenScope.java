@@ -42,16 +42,6 @@ public class GreenScope extends Weapon{
 			break;
 		case "left":
 			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,45,35, 50,35);
-			break;
-			
-		case "up":
-			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,95,35, 50,35);
-			break;
-			
-		case "down":
-			lastPlace = new ArrayList<>();
 			Collections.addAll(lastPlace,95,35, 50,35);
 			break;
 		}

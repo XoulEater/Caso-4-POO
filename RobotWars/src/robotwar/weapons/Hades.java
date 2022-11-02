@@ -33,13 +33,22 @@ public class Hades extends Weapon{
 		case "right":
 			
 			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,63, 95, 90, 60);
+			Collections.addAll(lastPlace,92, 63, 90, 60);
+			
+			if (slot == 0) {
+				lastPlace.set(0, lastPlace.get(0) - 72);
+			}
 			break;
 		case "left":
 			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,63, 80, 90, 60);
+			Collections.addAll(lastPlace,79, 63, 90, 60);
+			
+			if (slot == 0) {
+				lastPlace.set(0, lastPlace.get(0) - 72);
+			}
 			break;
 		}
+
 		
 		return lastPlace;
 	}

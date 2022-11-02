@@ -34,7 +34,7 @@ public class BackGround {
 	}
 	public void draw(Graphics2D g2)
 	{
-		g2.drawImage(tile[1].image, 0,0 ,200,200, null);
+		g2.drawImage(tile[1].image, 0,0 ,1200,800, null);
 		
 	}
 	

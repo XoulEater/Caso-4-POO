@@ -34,10 +34,16 @@ public class Reaper extends Weapon{
 			
 			lastPlace = new ArrayList<>();
 			Collections.addAll(lastPlace,90, 77, 100, 50);
+			if (slot == 0) {
+				lastPlace.set(0, lastPlace.get(0) - 72);
+			}
 			break;
 		case "left":
 			lastPlace = new ArrayList<>();
 			Collections.addAll(lastPlace,73, 77, 100, 50);
+			if (slot == 0) {
+				lastPlace.set(0, lastPlace.get(0) - 72);
+			}
 			break;
 		}
 		

@@ -15,16 +15,7 @@ public class Warhammer extends Weapon{
 	}
 	
 	public String getImage(String dir) {
-		switch(dir) {
-		case "right":
-			lastDir = "/robotwar/images/mel_g1.png";
-			break;
-		case "left":
-			lastDir = "/robotwar/images/mel_g1.png";
-			break;
-		}
-
-		return lastDir;
+		return "/robotwar/images/mel_g1.png";
 		
 	}
 	
@@ -35,13 +26,20 @@ public class Warhammer extends Weapon{
 			
 			lastPlace = new ArrayList<>();
 			Collections.addAll(lastPlace, 0, 0, 50,100);
+			if (slot == 1) {
+				lastPlace.set(0, lastPlace.get(0) + 72);
+			}
 			break;
 		case "left":
 			lastPlace = new ArrayList<>();
 			Collections.addAll(lastPlace, 68, 0, 50,100);
+			if (slot == 1) {
+				lastPlace.set(0, lastPlace.get(0) + 72);
+			}
 			break;
 		}
-		
+
+			
 		return lastPlace;
 	}
 	
