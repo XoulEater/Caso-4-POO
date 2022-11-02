@@ -13,27 +13,30 @@ import robotwar.common.*;
 
 public class GameInterface extends JPanel implements Runnable{
 
-	final int originalSize = 25; //Defalt size of each panel 20x20
+	final int originalSize = 25; //Defalt size of each panel 25x25
 	final int scale = 4;
 	
-	public final int tileSize = originalSize * scale; //Decides all ths screen sizes. 60x60
+	public final int tileSize = originalSize * scale; //Decides all ths screen sizes. 100x100
 	final int maxScreenCol = 16; //
 	final int maxSceenRow = 12;
-	final int screenWidghht = tileSize * maxScreenCol; //960 pixels
-	final int screeenHeight = tileSize * maxSceenRow; //720 pixels
+	final int screenWidghht = tileSize * maxScreenCol; //1600 pixels
+	final int screeenHeight = tileSize * maxSceenRow; //1200 pixels
 	
+	int FPS = 60;
+	
+	BackGround fondo = new BackGround(this);
 	KeyBoard keyType = new KeyBoard();
 	Thread gameThread;
 	
 	RobotPanel player = new RobotPanel(this, keyType);
 	
-	int FPS = 60;
+	
 	
 	
 	public GameInterface ()
 	{
 		this.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH,IConstants.ARENA_HEIGTH));
-		this.setBackground(Color.BLUE);
+		this.setBackground(Color.white);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyType);//Se le agrega las keys al frame 
 		this.setFocusable(true);
@@ -89,6 +92,8 @@ public class GameInterface extends JPanel implements Runnable{
 		super.paintComponent(g);//The parent is the frame 
 		
 		Graphics2D g2 = (Graphics2D)g;
+		
+		fondo.draw(g2);
 		
 		player.draw(g2);
 		

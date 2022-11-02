@@ -1,12 +1,16 @@
 package robotwar.Interfaces;
 
+import robotwar.weapons.*;
 import java.awt.Color;
+
+
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -16,12 +20,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import robotwar.Interfaces.*;
+import robotwar.common.robotbase.BlueRobot;
 import robotwar.common.robotbase.GreenRobot;
+import robotwar.common.robotbase.Placement;
+import robotwar.common.robotbase.Weapon;
 
 public class RobotPanel{ //Se haria el extends de IROBOT
 	GameInterface gp;  
 	KeyBoard keyType;
 	GreenRobot green;
+	BlueRobot blue;
+
 	int dir = 0;
 	
 	public RobotPanel(GameInterface pGp, KeyBoard pBoard)
@@ -29,130 +38,165 @@ public class RobotPanel{ //Se haria el extends de IROBOT
 		this.gp = pGp;
 		this.keyType = pBoard;
 		green = new GreenRobot();
+		blue = new BlueRobot();
+		
+//		Warhammer hammer = new Warhammer(0);
+//		ThunderBlade blade = new ThunderBlade(0);
+//		GreenScope head = new GreenScope(0);
+		
+		LavaAxe axe = new LavaAxe(0);
+		Reaper arm = new Reaper(0);
+		BlueShooter rocket = new BlueShooter(0);
+		
+		blue.addWeapon(axe);
+		blue.addWeapon(arm);
+		blue.addStrike(rocket);
+		
 		setDefaulValues();
 		getPlayerImage();
 	}
 	
 	public void setDefaulValues()
 	{
-		green.setPosX(100);
-		green.setPosY(100);
-		green.setSpeed(4);
-		green.setDirection("right");
+//		green.setPosX(100);
+//		green.setPosY(100);
+//		green.setSpeed(4);
+//		green.setDirection("right");
+		
+		blue.setPosX(100);
+		blue.setPosY(100);
+		blue.setSpeed(4);
+		blue.setDirection("right");
 		dir = 0;
 	}
-	
+
 	public void getPlayerImage()
 	{
-		green.rightR = setRBlue("right");
-		green.upR = setRBlue("up");
-		green.downR = setRBlue("down");
-		green.leftR = setRBlue("left");
-		green.rightL = setLBlue("right");
-		green.upL = setLBlue("up");
-		green.downL = setLBlue("down");
-		green.leftL = setLBlue("left");
+//		green.rightR = setGreen("right");
+//		green.upR = setGreen("up");
+//		green.downR = setGreen("down");
+//		green.leftR = setGreen("left");
+//		green.rightL = setGreen("right");
+//		green.upL = setGreen("up");
+//		green.downL = setGreen("down");
+//		green.leftL = setGreen("left");
+		
+		blue.rightR = setBlue("right");
+		blue.upR = setBlue("up");
+		blue.downR = setBlue("down");
+		blue.leftR = setBlue("left");
+		blue.rightL = setBlue("right");
+		blue.upL = setBlue("up");
+		blue.downL = setBlue("down");
+		blue.leftL = setBlue("left");
 	}
-	
-	public BufferedImage setRGreen(String sight) {
+	public BufferedImage setGreen(String sight) {
 		JPanel panelg = new JPanel();
 		panelg.setOpaque(false);
-		panelg.setBounds(300, 57, 190, 135);
+		
+		int[] bounds = green.getBounds(); // 300, 57, 190, 135
+		
+		panelg.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
 
-		JLabel MekaGreen  = new JLabel();
-		JLabel ThunderBlade = new JLabel();
-		JLabel WarHammer = new JLabel();
-		JLabel Hades = new JLabel();
+		
+		Weapon weapon1 = green.getWeapons()[0];
+		Weapon weapon2 = green.getWeapons()[1];
+		Weapon head = green.getStrikes()[0];
+		
+		JLabel Meka  = new JLabel();
+		JLabel Mele1 = new JLabel();
+		JLabel Mele2 = new JLabel();
 		JLabel range = new JLabel();
 		
-		MekaGreen.setBounds(0, 45, 120,90);
-		ThunderBlade.setBounds(90, 75, 100,30); // Right hand + 72
-		WarHammer.setBounds(0, 0, 50,100); // Left hand - 70
-		Hades.setBounds(90, 64, 90,60); // Left hand - 65
-		range.setBounds(45,35, 50,35);
+		List<Integer> robot = green.getLocation(sight);
+		List<Integer> posWeapon1 = weapon1.getLocation(sight);
+		List<Integer> posWeapon2 = weapon2.getLocation(sight);
+		List<Integer> rangeWeapon = head.getLocation(sight);
+		
+		Meka.setBounds(robot.get(0),robot.get(1),robot.get(2),robot.get(3));
+		Mele1.setBounds(posWeapon1.get(0),posWeapon1.get(1),posWeapon1.get(2),posWeapon1.get(3)); // Right hand + 72
+		Mele2.setBounds(posWeapon2.get(0),posWeapon2.get(1),posWeapon2.get(2),posWeapon2.get(3)); // Left hand - 70
+		range.setBounds(rangeWeapon.get(0),rangeWeapon.get(1),rangeWeapon.get(2),rangeWeapon.get(3));
 			
 		
-		switch(sight) {
-		case "right":
-			setImage(range, "/robotwar/images/ran_g1.png");
-			break;
-		case "left":
-			setImage(range, "/robotwar/images/ran_g1I.png");
-			break;
-		case "down":
-			setImage(range, "/robotwar/images/ran_g1D.png");
-			break;
-		case "up":
-			setImage(range, "/robotwar/images/ran_g1U.png");
-			break;
-		}
+		setImage(range, head.getImage(sight));
+		
 		panelg.add(range);
 		
 		// Melee Slot 1
-		setImage(WarHammer, "/robotwar/images/mel_g1.png");
-		panelg.add(WarHammer);
+		setImage(Mele1, weapon1.getImage(sight));
 		
-		setImage(MekaGreen, "/robotwar/images/mekg.png");
-		panelg.add(MekaGreen);
+		setImage(Mele2, weapon2.getImage(sight));
 		
-		//setImage(Hades, "/robotwar/images/mel_g3.png");
-		//panelg.add(Hades);
-
-		// Melee Slot 2
-		setImage(ThunderBlade, "/robotwar/images/mel_g3.png");
-		panelg.add(ThunderBlade);
+		setImage(Meka, green.getImage(sight));
+		
+		if (dir == 0)
+		{
+			panelg.add(Mele1);
+			panelg.add(Meka);
+			panelg.add(Mele2);
+		}
+		else 
+		{
+		panelg.add(Mele2);
+		panelg.add(Meka);
+		panelg.add(Mele1);
+		}
 		
 		panelg.setLayout(null);
 		return createImage(panelg);
 	}
 	
-	public BufferedImage setLGreen(String sight) {
+	public BufferedImage setBlue(String sight) {
 		JPanel panelg = new JPanel();
 		panelg.setOpaque(false);
-		panelg.setBounds(300, 57, 190, 135);
+		
+		int[] bounds = blue.getBounds(); // 300, 57, 190, 135
+		
+		panelg.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
 
-		JLabel MekaGreen  = new JLabel();
-		JLabel ThunderBlade = new JLabel();
-		JLabel WarHammer = new JLabel();
-		JLabel Hades = new JLabel();
+		Weapon weapon1 = blue.getWeapons()[0];
+		Weapon weapon2 = blue.getWeapons()[1];
+		Weapon head = blue.getStrikes()[0];
+		
+		JLabel Meka  = new JLabel();
+		JLabel Mele1 = new JLabel();
+		JLabel Mele2 = new JLabel();
 		JLabel range = new JLabel();
 		
-		MekaGreen.setBounds(66, 45, 120,90);
-		ThunderBlade.setBounds(71, 75, 100,30); // Right hand + 72
-		WarHammer.setBounds(68, 0, 50,100); // Left hand - 70
-		Hades.setBounds(78, 64, 90,60); // Left hand - 65
-		range.setBounds(95,35, 50,35);
-			
+		List<Integer> robot = blue.getLocation(sight);
+		List<Integer> posWeapon1 = weapon1.getLocation(sight);
+		List<Integer> posWeapon2 = weapon2.getLocation(sight);
+		List<Integer> rangeWeapon = head.getLocation(sight);
 		
-		switch(sight) {
-		case "right":
-			setImage(range, "/robotwar/images/ran_g1.png");
-			break;
-		case "left":
-			setImage(range, "/robotwar/images/ran_g1I.png");
-			break;
-		case "down":
-			setImage(range, "/robotwar/images/ran_g1D.png");
-			break;
-		case "up":
-			setImage(range, "/robotwar/images/ran_g1U.png");
-			break;
-		}
+		Meka.setBounds(robot.get(0),robot.get(1),robot.get(2),robot.get(3));
+		Mele1.setBounds(posWeapon1.get(0),posWeapon1.get(1),posWeapon1.get(2),posWeapon1.get(3)); // Right hand + 72
+		Mele2.setBounds(posWeapon2.get(0),posWeapon2.get(1),posWeapon2.get(2),posWeapon2.get(3)); // Left hand - 70
+		range.setBounds(rangeWeapon.get(0),rangeWeapon.get(1),rangeWeapon.get(2),rangeWeapon.get(3));
+			
+		setImage(range, head.getImage(sight));
+		
 		panelg.add(range);
 		
-		// Melee Slot 2
-		setImage(ThunderBlade, "/robotwar/images/mel_g3I.png");
-		panelg.add(ThunderBlade);
-		
-		setImage(MekaGreen, "/robotwar/images/gmegI.png");
-		panelg.add(MekaGreen);
-		
 		// Melee Slot 1
-		setImage(WarHammer, "/robotwar/images/mel_g1.png");
-		panelg.add(WarHammer);
-		//setImage(Hades, "/robotwar/images/mel_g3.png");
-		//panelg.add(Hades);
-
+		setImage(Mele1, weapon1.getImage(sight));
+		
+		setImage(Mele2, weapon2.getImage(sight));
+		
+		setImage(Meka, blue.getImage(sight));
+		
+		if (dir == 0)
+		{
+			panelg.add(Mele1);
+			panelg.add(Meka);
+			panelg.add(Mele2);
+		}
+		else 
+		{
+			panelg.add(Mele2);
+			panelg.add(Meka);
+			panelg.add(Mele1);
+		}
 		
 		panelg.setLayout(null);
 		return createImage(panelg);
@@ -169,123 +213,6 @@ public class RobotPanel{ //Se haria el extends de IROBOT
 	    return bi;
 	}
 	
-	public BufferedImage setRBlue(String sight) {
-        JPanel panelb = new JPanel();
-        panelb.setOpaque(false);
-        panelb.setBounds(30, 30, 190, 162);
-
-        // meka 
-        JLabel MekaBlue  = new JLabel();
-        
-        // slot melee 1
-        JLabel WarAxe = new JLabel();
-        
-        // slot melee 2
-        JLabel Punch = new JLabel();
-        //JLabel Reaper = new JLabel();
-        
-        // slot head
-        JLabel range = new JLabel();
-
-        //bounds = meka.getbouds
-        MekaBlue.setBounds(0, 52, 120,110);
-        
-        //bounds meka.getweapons()[0].getbouds
-        WarAxe.setBounds(14, 0, 40, 100); // Right hand + 72
-        //Reaper.setBounds(90, 77, 100, 50); // Left hand - 70
-        Punch.setBounds(90, 80, 100, 32); // Left hand - 65
-
-        switch(sight) {
-        case "right":
-        	range.setBounds(35, 55, 65, 30);
-            setImage(range, "/robotwar/images/ran_b1.png");
-            break;
-        case "left":
-        	range.setBounds(35, 55, 65, 30);
-            setImage(range, "/robotwar/images/ran_b1I.png");
-            break;
-        case "down":
-        	range.setBounds(49, 33, 30, 65);
-            setImage(range, "/robotwar/images/ran_b1D.png");
-            break;
-        case "up":
-        	range.setBounds(49, 33,30,65);
-            setImage(range, "/robotwar/images/ran_b1U.png");
-            break;
-        }
-        panelb.add(range);
-
-        setImage(WarAxe, "/robotwar/images/mel_b1.png");
-        panelb.add(WarAxe);
-
-        setImage(MekaBlue, "/robotwar/images/mekb.png");
-        panelb.add(MekaBlue);
-
-        //setImage(Hades, "/robotwar/images/mel_b2.png");
-        //panelg.add(Hades);
-
-        setImage(Punch, "/robotwar/images/mel_b3.png");
-        panelb.add(Punch);
-
-        panelb.setLayout(null);
-        return createImage(panelb);
-    }
-	
-
-	public BufferedImage setLBlue(String sight) {
-		JPanel panelg = new JPanel();
-		panelg.setOpaque(false);
-		panelg.setBounds(30, 30, 190, 162);
-
-		JLabel MekaBlue  = new JLabel();
-        JLabel WarAxe = new JLabel();
-        JLabel Reaper = new JLabel();
-        JLabel Punch = new JLabel();
-        JLabel range = new JLabel();
-		
-		MekaBlue.setBounds(70, 52, 120, 110);
-	    WarAxe.setBounds(60, 0, 40, 100); // Right hand + 72
-	    Reaper.setBounds(70, 77, 100, 50); // Left hand - 70
-	    Punch.setBounds(70, 80, 100, 32); // Left hand - 65
-		
-		switch(sight) {
-		case "right":
-			range.setBounds(80, 50, 65, 30);
-			setImage(range, "/robotwar/images/ran_b1.png");
-			break;
-		case "left":
-			range.setBounds(80, 50, 65, 30);
-			setImage(range, "/robotwar/images/ran_b1I.png");
-			break;
-		case "down":
-			range.setBounds(100, 33, 30, 65);
-			setImage(range, "/robotwar/images/ran_b1D.png");
-			break;
-		case "up":
-			range.setBounds(100, 33, 30, 65);
-			setImage(range, "/robotwar/images/ran_b1U.png");
-			break;
-		}
-		panelg.add(range);
-		
-		// Melee Slot 1
-		setImage(Punch, "/robotwar/images/mel_b3I.png");
-		panelg.add(Punch);
-		
-		setImage(MekaBlue, "/robotwar/images/mekbI.png");
-		panelg.add(MekaBlue);
-		
-		//setImage(Hades, "/robotwar/images/mel_b3.png");
-		//panelg.add(Hades);
-		
-		// Melee Slot 2
-		setImage(WarAxe, "/robotwar/images/mel_b1I.png");
-		panelg.add(WarAxe);
-
-		panelg.setLayout(null);
-		return createImage(panelg);
-	}
-	
 	public JLabel setImage(JLabel pLabel, String ruta) {
 		ImageIcon image = new ImageIcon(getClass().getResource(ruta));
 		Icon icon = new ImageIcon(image.getImage().getScaledInstance(pLabel.getWidth(), pLabel.getHeight(), Image.SCALE_DEFAULT));
@@ -298,72 +225,68 @@ public class RobotPanel{ //Se haria el extends de IROBOT
 		
 		if (keyType.downPressed)
 		{
-			green.setPosY(green.getPosY() + green.getSpeed());
+			blue.setPosY(blue.getPosY() + blue.getSpeed());
 		}
 		else if (keyType.upPressed)
 		{
 			
-			green.setPosY(green.getPosY() - green.getSpeed());
+			blue.setPosY(blue.getPosY() - blue.getSpeed());
 		}
 		else if (keyType.rightPressed)
 		{
-			green.setPosX(green.getPosX() + green.getSpeed());
+			blue.setPosX(blue.getPosX() + blue.getSpeed());
 		}
 		else if (keyType.leftPressed)
 		{
-			green.setPosX(green.getPosX() - green.getSpeed());
+			blue.setPosX(blue.getPosX() - blue.getSpeed());
 		} 
 		else if (keyType.downSight) 
 		{
-			green.direction = "down";
+			blue.direction = "down";
 		} 
 		else if (keyType.upSight) 
 		{
-			green.direction = "up";
+			blue.direction = "up";
 		} 
 		else if (keyType.rightSight) 
 		{
 			dir = 0;
-			green.direction = "right";
+			blue.direction = "right";
 		} 
 		else if (keyType.leftSight) 
 		{
 			dir = 1;
-			green.direction = "left";
+			blue.direction = "left";
 		}
-		
 		
 	}
 	public void draw(Graphics2D pG2)
 	{
 		BufferedImage image = null;
-		//JPanel panel = new JPanel();
-		switch(green.direction)
+		switch(blue.direction)
 		{
 		case "up":
-			image = green.upL;
+			image = blue.upL;
 			if (dir == 0)
-				image = green.upR;
+				image = blue.upR;
 			break;
 		case "down":
-			image = green.downL;
+			image = blue.downL;
 			if (dir == 0)
-				image = green.downR;
+				image = blue.downR;
 			break;
 		case "right":
-			image = green.rightL;
+			image = blue.rightL;
 			if (dir == 0)
-				image = green.rightR;
+				image = blue.rightR;
 			break;
 		case "left":
-			image = green.leftL;
+			image = blue.leftL;
 			if (dir == 0)
-				image = green.leftR;
+				image = blue.leftR;
 			break;
 		}
-		pG2.drawImage(image, green.getPosX(), green.getPosY(), gp.tileSize, gp.tileSize, null);
-
-		
+		pG2.drawImage(image, blue.getPosX(), blue.getPosY(), gp.tileSize, gp.tileSize, null);
 			
 	}
 	
