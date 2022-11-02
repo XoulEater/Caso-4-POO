@@ -2,29 +2,51 @@ package robotwar.common.robotbase;
 
 import java.awt.Graphics;
 
-import java.time.LocalTime;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import robotwar.weapons.*;
 import robotwar.common.IConstants;
 
-public class IRobot implements IConstants {
+
+public abstract class IRobot implements IConstants {
 	protected int energy;
 	protected int posX;
 	protected int posY;
 	protected int speed;
 	protected int strikeIndex;
 	protected int weaponIndex;
+	protected int bounds[];
+	protected int mekaBound[];
 	protected Weapon weapons[];
 	protected Weapon strikes[];
 	protected DamageLevel directionsdamage[];
-	
+	protected String lastDir;
+	protected List<Integer> lastBounds;
+
 	public IRobot() {
 		directionsdamage = new DamageLevel[MOVEMENT.values().length];
 		weapons = new Weapon[WEAPONS_PER_ROBOT];
 		strikes = new Weapon[STRIKES_PER_ROBOT];
+		bounds = new int[4];
+		mekaBound = new int[4];
 		strikeIndex = 0;
 		weaponIndex = 0;
+		
 	}
 	
+	public int[] getMekaBound() {
+		return mekaBound;
+	}
+
+	public void setMekaBound(int[] mekaBound) {
+		this.mekaBound = mekaBound;
+	}
+	
+
+
 	/*
 	 * el move es la dirección que el jugador está presionando, con eso y la hora del accion
 	 * versus la hora actual se sabe cuanto tiempo ha transcurrido por ende
@@ -55,9 +77,16 @@ public class IRobot implements IConstants {
 		
 	}
 
-
 	public int getPosX() {
 		return posX;
+	}
+
+	public Weapon[] getWeapons() {
+		return weapons;
+	}
+
+	public Weapon[] getStrikes() {
+		return strikes;
 	}
 
 	public void setPosX(int posX) {
@@ -75,6 +104,15 @@ public class IRobot implements IConstants {
 	public int getSpeed() {
 		return speed;
 	}
+	
+
+	public int[] getBounds() {
+		return bounds;
+	}
+
+	public void setBounds(int[] bounds) {
+		this.bounds = bounds;
+	}
 
 	public void setSpeed(int speed) {
 		this.speed = speed;
@@ -90,4 +128,7 @@ public class IRobot implements IConstants {
 		weaponIndex=++weaponIndex%WEAPONS_PER_ROBOT;
 	}
 	
+	public abstract List<Integer> getLocation(String dir);
+	
+	public abstract String getImage(String dir);
 }
