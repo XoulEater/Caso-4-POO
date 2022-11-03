@@ -10,6 +10,7 @@ public class BlueRobot extends IRobot{
 		super();
 		int[] listX  = {300, 57, 190, 162};
 		this.setBounds(listX);
+		this.speed = 4;
 	}
 
 

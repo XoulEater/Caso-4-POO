@@ -11,6 +11,7 @@ public class GreenRobot extends IRobot{
 		super();
 		int[] listX  = {0, 0, 190, 135};
 		this.setBounds(listX);
+		this.speed = 2;
 	}
 
 	public List<Integer> getLocation(String pDirection)
