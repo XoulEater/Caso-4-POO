@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import robotwar.common.robotbase.ORIENTATION;
-import robotwar.common.robotbase.Placement;
 import robotwar.common.robotbase.Weapon;
 
 public class Warhammer extends Weapon{
@@ -19,32 +18,46 @@ public class Warhammer extends Weapon{
 		
 	}
 	
-	public List<Integer> getLocation(String dir)
-	{
-		switch(dir) {
-		case "right":
-			
-			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace, 0, 0, 50,100);
-			if (slot == 1) {
-				lastPlace.set(0, lastPlace.get(0) + 72);
-			}
-			break;
-		case "left":
-			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace, 68, 0, 50,100);
-			if (slot == 1) {
-				lastPlace.set(0, lastPlace.get(0) + 72);
-			}
-			break;
-		}
-
-			
-		return lastPlace;
-	}
-	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
 		
 	}
+
+	@Override
+	public String getImage() {
+		return image;
+	}
+
+	@Override
+	public List<Integer> getLocation() {
+		return weaponBound;
+	}
+
+	@Override
+	public void UpdateImage(ORIENTATION pDirection) {
+		image = "/robotwar/images/mel_g1.png";
+		switch(pDirection) {
+		case EAST:
+			weaponBound = new ArrayList<>();
+			Collections.addAll(weaponBound, 0, 0, 50,100);
+			if (slot == 1) {
+				weaponBound.set(0, weaponBound.get(0) + 72);
+			}
+			break;
+		case WEST:
+			
+			weaponBound = new ArrayList<>();
+			Collections.addAll(weaponBound, 68, 0, 50,100);
+			if (slot == 1) {
+				weaponBound.set(0, weaponBound.get(0) + 72);
+			}
+			break;
+		case SOUTH:
+			break;
+		case NORTH:
+			break;
+		}
+		
+	}
+	
 }

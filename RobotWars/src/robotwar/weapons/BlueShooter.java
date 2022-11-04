@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import robotwar.common.robotbase.ORIENTATION;
-import robotwar.common.robotbase.Placement;
 import robotwar.common.robotbase.Weapon;
 
 public class BlueShooter extends Weapon{
@@ -14,43 +13,42 @@ public class BlueShooter extends Weapon{
 		super(pSpeed);
 	}
 	
-	public String getImage(String dir) {
-		switch(dir) {
-		case "right":
-			lastDir = "/robotwar/images/ran_b2.png";
-			break;
-		case "left":
-			lastDir = "/robotwar/images/ran_b2I.png";
-			break;
-		case "up":
-			lastDir = "/robotwar/images/ran_b2U.png";
-			break;
-		case "down":
-			lastDir = "/robotwar/images/ran_b2D.png";
-			break;
-		}
 
-		return lastDir;
-	}
-	
-	public List<Integer> getLocation(String dir)
-	{
-		switch(dir) {
-		case "right":
-			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,45,40, 50,35);
-			break;
-		case "left":
-			lastPlace = new ArrayList<>();
-			Collections.addAll(lastPlace,95,40, 50,35);
-			break;
-		}
-		return lastPlace;
-	}
-
-
-	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
 		
 	}
+
+	@Override
+	public String getImage() {
+		return image;
+	}
+
+	@Override
+	public List<Integer> getLocation() {
+		return weaponBound;
+	}
+
+	@Override
+	public void UpdateImage(ORIENTATION pDirection) {
+		switch(pDirection) {
+		case EAST:
+			image = "/robotwar/images/ran_b2.png";
+			weaponBound = new ArrayList<>();
+			Collections.addAll(weaponBound, 45,40, 50,35);
+			break;
+		case WEST:
+			image = "/robotwar/images/ran_b2I.png";
+			weaponBound = new ArrayList<>();
+			Collections.addAll(weaponBound, 95,40, 50,35);
+			break;
+		case SOUTH:
+			image = "/robotwar/images/ran_b2D.png";
+			break;
+		case NORTH:
+			image = "/robotwar/images/ran_b2U.png";
+			break;
+		}
+		
+	}
+	
 }
