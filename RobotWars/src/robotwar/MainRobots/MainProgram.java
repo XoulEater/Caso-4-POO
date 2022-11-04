@@ -60,14 +60,12 @@ public class MainProgram {
 		
 		meka2.getPlayerImage();
 		
-		GameInterface gamePanel = new GameInterface(meka, meka2);
+		GameInterface gamePanel = new GameInterface();
 		window.add(gamePanel);
 		window.pack(); 
 
-		
 		window.setLocationRelativeTo(null);
 		window.setVisible(true );
-		
-		gamePanel.startGameThread();
+	
 	}
 }

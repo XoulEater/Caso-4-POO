@@ -3,6 +3,8 @@ package robotwar.common.robotbase;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -123,46 +125,7 @@ public abstract class IRobotito extends IRobot {
         return pLabel;
     }
 	
-	public void update()
-	{
-		if (keyType.downPressed && (posY < 700))
-		{
-			posY += speed;
-		}
-		else if (keyType.upPressed && (posY > -28)) 
-		{ 
-			posY -= speed;
-		}
-		if (keyType.rightPressed && (posX < 1105))
-		{
-			posX += speed;
-		}
-		else if (keyType.leftPressed && (posX > 0))
-		{
-			posX-= speed;
-		} 
-		if (keyType.downSight) 
-		{
-			currentOrientation = ORIENTATION.SOUTH;
-		} 
-		else if (keyType.upSight) 
-		{
-			currentOrientation = ORIENTATION.NORTH;
-		} 
-		if (keyType.rightSight) 
-		{
-			currentOrientation = ORIENTATION.WEST;
-			dir = 0;
-		} 
-		else if (keyType.leftSight) 
-		{
-			currentOrientation = ORIENTATION.EAST;
-			dir = 1;
-		}
-	}
-	
-	public void move(Graphics g) 
-	{
+	public BufferedImage setImage() {
 		BufferedImage newimage = null;
 		switch(currentOrientation)
 		{
@@ -183,9 +146,9 @@ public abstract class IRobotito extends IRobot {
 			newimage = leftL;
 			break;
 		}
-		g.drawImage(newimage, posX, posY, 100, 100, null);
+		return newimage;
 	}
-	
+
 	
 	public abstract void UpdateImage();
 }
