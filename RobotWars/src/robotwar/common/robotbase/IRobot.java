@@ -16,6 +16,7 @@ public abstract class IRobot implements IConstants {
 	protected Weapon strikes[];
 	protected DamageLevel directionsdamage[];
 	protected ORIENTATION currentOrientation;
+	protected int speed;
 	
 
 	
@@ -42,10 +43,48 @@ public abstract class IRobot implements IConstants {
 	 * reduzco la energía
 	 * refresco la pantalla con el graphics
 	 */
-	public void move(MOVEMENT pMove, LocalTime pActionTime, Graphics g) {
+	public void move(MOVEMENT pMove, LocalTime pActionTime, Graphics g) 
+	{
+		long time1 =  pActionTime.getNano();
+		long time2 = System.nanoTime();
 		
+		time1 -= time2;
+		time1 *= 1000000;
+		
+		long movement = time1 * speed;
+		long movX = 0;
+		long movY = 0;
+		
+		switch(pMove) {
+		case DOWN:
+			if (posY < 700)
+				movY = movement;
+			break;
+		case LEFT:
+			if (posX > 0) {
+				movX *= -1 * movement;
+			}
+			break;
+		case RIGHT:
+			if (posX < 1100)
+				movX = movement;
+			break;
+		case UP:
+			if (posY > 0) {
+				movY = -1 * movement;
+			}
+		case NONE:
+			break;
+		}
+		posY += movY;
+		posX += movX;
+		
+		BufferedImage newimage = setImage();
+		g.drawImage(newimage, posX, posY, 100, 100, null);
 	}
 	
+	protected abstract BufferedImage setImage();
+
 	public void hit(int pStrikeId, LocalTime pActionTime, Graphics g ) {
 		
 	}

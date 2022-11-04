@@ -3,6 +3,9 @@ package robotwar.Interfaces;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import robotwar.common.robotbase.MOVEMENT;
+import robotwar.common.robotbase.ORIENTATION;
+
 public class KeyBoard extends Key{
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -13,86 +16,44 @@ public class KeyBoard extends Key{
 		int code = e.getKeyCode();
 		if (code == KeyEvent.VK_W)
 		{
-			upPressed = true;
+			this.currentMovement = MOVEMENT.UP;
 		}
-		
-		if (code == KeyEvent.VK_S)
+		else if (code == KeyEvent.VK_S)
 		{
-			downPressed = true;
+			this.currentMovement = MOVEMENT.DOWN;
 		}
-		
-		if (code == KeyEvent.VK_D)
+		else if (code == KeyEvent.VK_D)
 		{
-			rightPressed = true;
+			this.currentMovement = MOVEMENT.RIGHT;
 		}
-		
-		if (code == KeyEvent.VK_A)
+		else if (code == KeyEvent.VK_A)
 		{
-			leftPressed = true;
+			this.currentMovement = MOVEMENT.LEFT;
 		}
 		if (code == KeyEvent.VK_UP)
 		{
-			upSight = true;
+			this.currentOrientation= ORIENTATION.NORTH;
 		}
-		
-		if (code == KeyEvent.VK_DOWN)
+		else if (code == KeyEvent.VK_DOWN)
 		{
-			downSight = true;
+			this.currentOrientation= ORIENTATION.SOUTH;
 		}
-		
-		if (code == KeyEvent.VK_RIGHT)
+		else if (code == KeyEvent.VK_RIGHT)
 		{
-			rightSight = true;
+			this.currentOrientation= ORIENTATION.WEST;
 		}
-		
-		if (code == KeyEvent.VK_LEFT)
+		else if (code == KeyEvent.VK_LEFT)
 		{
-			leftSight = true;
+			this.currentOrientation= ORIENTATION.EAST;
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		int code = e.getKeyCode();
-		if (code == KeyEvent.VK_W)
+		if ((code == KeyEvent.VK_W) || (code == KeyEvent.VK_S) || (code == KeyEvent.VK_D) || (code == KeyEvent.VK_A))
 		{
-			upPressed = false;
+			this.currentMovement = MOVEMENT.NONE;
 		}
-		
-		if (code == KeyEvent.VK_S)
-		{
-			downPressed = false;
-		}
-		
-		if (code == KeyEvent.VK_D)
-		{
-			rightPressed = false;
-		}
-		
-		if (code == KeyEvent.VK_A)
-		{
-			leftPressed = false;
-		}
-		if (code == KeyEvent.VK_UP)
-		{
-			upSight = false;
-		}
-		
-		if (code == KeyEvent.VK_DOWN)
-		{
-			downSight = false;
-		}
-		
-		if (code == KeyEvent.VK_RIGHT)
-		{
-			rightSight = false;
-		}
-		
-		if (code == KeyEvent.VK_LEFT)
-		{
-			leftSight = false;
-		}
-		
 	}
-
 }

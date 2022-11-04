@@ -16,82 +16,23 @@ import robotwar.common.robotbase.IRobotito;
 import robotwar.weapons.*;
 
 
-public class GameInterface extends JPanel implements Runnable{
+public class GameInterface extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private static final int originalSize = 25; //Defalt size of each panel 25x25
 	private static final int scale = 4;
 	public static final int tileSize = originalSize * scale; //Decides all ths screen sizes. 100x100
-
-	private double FPS = 30;
 	private BackGround fondo = new BackGround(this);
-	private Key keyType2 = new KeyBoard2();
-	private Key keyType = new KeyBoard();
-	private Thread gameThread;
-	private IRobotito player;
-	private IRobotito player2;
-	
-	
+	private RobotController controller;
 
-	public GameInterface (IRobotito meka,  IRobotito meka2)
+	public GameInterface (RobotController controller)
 	{
 		this.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH,IConstants.ARENA_HEIGTH));
 		this.setBackground(Color.white);
 		this.setDoubleBuffered(true);
-		this.addKeyListener(keyType);//Se le agrega las keys al frame 
-		this.addKeyListener(keyType2);//Se le agrega las keys al frame 
 		this.setFocusable(true);
-
-		player = meka;
-		player.setControls(keyType);
-		player2 = meka2;
-		player2.setControls(keyType2);
-		
-	}
-	
-	public void startGameThread()
-	{
-		gameThread = new Thread(this);
-		gameThread.start();
-	}
-
-
-	@Override
-	public void run() { //Se nesesita saber cuanto tiempo paso para hacer los frames
-		
-		double drawInterval = 1000000000/FPS;
-		double nextDrawTime = System.nanoTime() + drawInterval;
-		
-		while (gameThread != null)
-		{
-			update();
-			
-			repaint();
-			
-			try
-			{
-				double remainingTime = nextDrawTime - System.nanoTime();
-				remainingTime = remainingTime/1000000;//Se divide el tiempo pq el tread es en milis
-				
-				if (remainingTime < 0)
-				{
-					remainingTime = 0;
-				}
-				Thread.sleep((long)remainingTime); //Pausa el loop hasta que remainingTime termine
-				
-				nextDrawTime += drawInterval;
-			}catch (InterruptedException e)
-			{
-				e.printStackTrace();
-			}
-		}
-      }
-	
-	public void update()
-	{
-		player.update();
-		player2.update();
-		// Trampas
+		this.controller = controller;
+		this.controller.setWindow(this);
 	}
 	
 	@Override
@@ -102,13 +43,8 @@ public class GameInterface extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g;
 		
 		fondo.draw(g2);
-		
-		player.move(g2);
-		
-		player2.move(g2);
-		
+	
 		g2.dispose();
 	}
-	
-	}
 
+}
