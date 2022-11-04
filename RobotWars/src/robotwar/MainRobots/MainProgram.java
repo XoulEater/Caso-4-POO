@@ -34,7 +34,6 @@ public class MainProgram {
 		
 		GreenScope head1 = new GreenScope(0);
 		GreenLaser head2 = new GreenLaser(0);
-		
 		Warhammer hammer = new Warhammer(0);
 		ThunderBlade blade = new ThunderBlade(0);
 		Hades hades = new Hades(0);
