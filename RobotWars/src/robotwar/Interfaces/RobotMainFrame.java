@@ -45,8 +45,6 @@ public class RobotMainFrame extends JFrame implements KeyListener{
 		
 		
 		this.setVisible(true);	
-		
-		
 	}
 
 	private void crearPanelPersonaje1() {//Crea panel con robot verde

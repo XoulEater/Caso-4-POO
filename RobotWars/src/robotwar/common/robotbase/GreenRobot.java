@@ -12,6 +12,7 @@ public class GreenRobot extends IRobotito{
 		Collections.addAll(panelBounds, 0, 0, 190, 135);
 		this.speed = 4;
 	}
+	
 
 	@Override
 	public void UpdateImage() 

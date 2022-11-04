@@ -2,6 +2,7 @@ package robotwar.Interfaces;
 
 import java.awt.Color;
 
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,11 +10,13 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import robotwar.common.*;
+import robotwar.Interfaces.*;
 import robotwar.common.robotbase.BlueRobot;
 import robotwar.common.robotbase.GreenRobot;
 import robotwar.common.robotbase.IRobot;
 import robotwar.common.robotbase.IRobotito;
 import robotwar.weapons.*;
+
 
 
 public class GameInterface extends JPanel {
@@ -24,6 +27,7 @@ public class GameInterface extends JPanel {
 	public static final int tileSize = originalSize * scale; //Decides all ths screen sizes. 100x100
 	private BackGround fondo = new BackGround(this);
 	private RobotController controller;
+	
 
 	public GameInterface (RobotController controller)
 	{
@@ -32,13 +36,13 @@ public class GameInterface extends JPanel {
 		this.setDoubleBuffered(true);
 		this.setFocusable(true);
 		this.controller = controller;
-		this.controller.setWindow(this);
+		this.controller.setWindow(this); // Se le asigna al controller GamInterface
 	}
 	
 	@Override
-	public void paintComponent(Graphics g) //Aca se pueden crear los robots. 
-	{
-		super.paintComponent(g);//The parent is the frame 
+	public void paintComponent(Graphics g){ 
+	
+		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D)g;
 		

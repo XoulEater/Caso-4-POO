@@ -148,7 +148,6 @@ public abstract class IRobotito extends IRobot {
 		}
 		return newimage;
 	}
-
 	
 	public abstract void UpdateImage();
 }
