@@ -6,8 +6,8 @@ public abstract class Weapon extends DamageLevel {
 
 	protected int speed;
 	protected Placement position;
-	protected String lastDir ;
-	protected List<Integer> lastPlace;
+	protected String image;
+	protected List<Integer> weaponBound;
 	protected int slot;
 	
 	public Weapon(int pSpeed) {
@@ -39,10 +39,11 @@ public abstract class Weapon extends DamageLevel {
 		
 	}
 	
-	public abstract String getImage(String dir);
+	public abstract String getImage();
 	
-	public abstract List<Integer> getLocation(String dir);
+	public abstract List<Integer> getLocation();
 
-		
+	public abstract void UpdateImage(ORIENTATION pDirection);
+	
 	protected abstract void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection);
 }

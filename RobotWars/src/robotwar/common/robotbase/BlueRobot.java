@@ -2,43 +2,33 @@ package robotwar.common.robotbase;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
-public class BlueRobot extends IRobot{
-
+public class BlueRobot extends IRobotito{
+	
 	public BlueRobot() { //
-		super();
-		int[] listX  = {300, 57, 190, 162};
-		this.setBounds(listX);
+		super(ORIENTATION.EAST);
+		Collections.addAll(panelBounds, 300, 57, 190, 162);
 		this.speed = 4;
 	}
 
-
-	public List<Integer> getLocation(String pDirection)
+	public void UpdateImage()
 	{
-		switch(pDirection) {
-		case "right":
-			lastBounds = new ArrayList<>();
-			Collections.addAll(lastBounds, 0, 52, 120,110);
+		switch(currentOrientation) {
+		case EAST:
+			image = "/robotwar/images/mekb.png";
+			mekaBound = new ArrayList<>();
+			Collections.addAll(mekaBound, 0, 52, 120,110);
 			break;
-		case "left":
-			lastBounds = new ArrayList<>();
-			Collections.addAll(lastBounds,70, 52, 120, 110);
+		case WEST:
+			image = "/robotwar/images/mekbI.png";
+			mekaBound = new ArrayList<>();
+			Collections.addAll(mekaBound,70, 52, 120, 110);
 			break;
-		}
-		return lastBounds;
-	}
-	
-	public String getImage(String dir) {
-		switch(dir) {
-		case "right":
-			lastDir = "/robotwar/images/mekb.png";
+		case SOUTH:
 			break;
-		case "left":
-			lastDir = "/robotwar/images/mekbI.png";
+		case NORTH:
 			break;
 		}
-		return lastDir;
 	}
 }
 

@@ -38,12 +38,13 @@ public class MainProgram {
 		Warhammer hammer = new Warhammer(0);
 		ThunderBlade blade = new ThunderBlade(0);
 		Hades hades = new Hades(0);
-
+		
 		meka.addWeapon(blade);
 		meka.addWeapon(hades);
 		meka.addStrike(head1);
 		
-		
+		meka.getPlayerImage();
+	
 		BlueRobot meka2 = new BlueRobot();
 		
 		BlueRocket head3 = new BlueRocket(0);
@@ -57,6 +58,7 @@ public class MainProgram {
 		meka2.addWeapon(axe);
 		meka2.addStrike(head3);
 		
+		meka2.getPlayerImage();
 		
 		GameInterface gamePanel = new GameInterface(meka, meka2);
 		window.add(gamePanel);

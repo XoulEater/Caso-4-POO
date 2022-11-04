@@ -1,44 +1,37 @@
 package robotwar.common.robotbase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class GreenRobot extends IRobot{
-
-
-	public GreenRobot() { //
-		super();
-		int[] listX  = {0, 0, 190, 135};
-		this.setBounds(listX);
-		this.speed = 2;
-	}
-
-	public List<Integer> getLocation(String pDirection)
-	{
-		switch(pDirection) {
-		case "right":
-			lastBounds = new ArrayList<>();
-			Collections.addAll(lastBounds, 0, 45, 120,90);
-			break;
-		case "left":
-			lastBounds = new ArrayList<>();
-			Collections.addAll(lastBounds, 66, 45, 120,90);
-			break;
-		}
-		return lastBounds;
-	}
+public class GreenRobot extends IRobotito{
 	
-	public String getImage(String dir) {
-		switch(dir) {
-		case "right":
-			lastDir = "/robotwar/images/gmeg.png";
+	public GreenRobot() { //
+		super(ORIENTATION.EAST);
+		Collections.addAll(panelBounds, 0, 0, 190, 135);
+		this.speed = 4;
+	}
+
+	@Override
+	public void UpdateImage() 
+	{
+		switch(currentOrientation) {
+		case EAST:
+			image = "/robotwar/images/gmeg.png";
+			mekaBound = new ArrayList<>();
+			Collections.addAll(mekaBound, 0, 45, 120,90);
 			break;
-		case "left":
-			lastDir = "/robotwar/images/gmegI.png";
+		case WEST:
+			image = "/robotwar/images/gmegI.png";
+			mekaBound = new ArrayList<>();
+			Collections.addAll(mekaBound, 66, 45, 120,90);
+			break;
+		case SOUTH:
+			break;
+		case NORTH:
 			break;
 		}
-		return lastDir;
 	}
 }
 

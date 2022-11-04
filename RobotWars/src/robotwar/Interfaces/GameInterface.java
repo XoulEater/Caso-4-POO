@@ -12,6 +12,7 @@ import robotwar.common.*;
 import robotwar.common.robotbase.BlueRobot;
 import robotwar.common.robotbase.GreenRobot;
 import robotwar.common.robotbase.IRobot;
+import robotwar.common.robotbase.IRobotito;
 import robotwar.weapons.*;
 
 
@@ -27,12 +28,12 @@ public class GameInterface extends JPanel implements Runnable{
 	private Key keyType2 = new KeyBoard2();
 	private Key keyType = new KeyBoard();
 	private Thread gameThread;
-	private RobotPanel player;
-	private RobotPanel player2;
+	private IRobotito player;
+	private IRobotito player2;
 	
 	
 
-	public GameInterface (IRobot meka, IRobot meka2)
+	public GameInterface (IRobotito meka,  IRobotito meka2)
 	{
 		this.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH,IConstants.ARENA_HEIGTH));
 		this.setBackground(Color.white);
@@ -40,9 +41,11 @@ public class GameInterface extends JPanel implements Runnable{
 		this.addKeyListener(keyType);//Se le agrega las keys al frame 
 		this.addKeyListener(keyType2);//Se le agrega las keys al frame 
 		this.setFocusable(true);
-		
-		player = new RobotPanel(this, keyType, meka);
-		player2 = new RobotPanel(this, keyType2, meka2);
+
+		player = meka;
+		player.setControls(keyType);
+		player2 = meka2;
+		player2.setControls(keyType2);
 		
 	}
 	
@@ -100,9 +103,9 @@ public class GameInterface extends JPanel implements Runnable{
 		
 		fondo.draw(g2);
 		
-		player.draw(g2);
+		player.move(g2);
 		
-		player2.draw(g2);
+		player2.move(g2);
 		
 		g2.dispose();
 	}
