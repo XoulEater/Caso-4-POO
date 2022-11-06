@@ -11,6 +11,7 @@ public class Hades extends Weapon{
 	
 	public Hades(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/mel_b2.png";
 	}
 	
 	@Override

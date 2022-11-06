@@ -11,6 +11,7 @@ public class GreenRobot extends IRobotito{
 		super(ORIENTATION.EAST);
 		Collections.addAll(panelBounds, 0, 0, 190, 135);
 		this.speed = 4;
+		this.type = "Green";
 	}
 	
 

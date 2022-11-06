@@ -36,18 +36,18 @@ public class GameInterface extends JPanel {
 	public static final int tileSize = originalSize * scale; // Decides all ths screen sizes. 100x100
 	private BackGround fondo = new BackGround("/robotwar/images/floor1.jpg");
 	private List<Trap> arrayTraps;
+	public IRobotito robot1;
 
 	private RobotController controller;
 	private JLabel animacion;
-	public IRobotito robot1;
 
 	public GameInterface(RobotController controller) {
 		this.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH, IConstants.ARENA_HEIGTH));
 		this.setBackground(Color.white);
 		this.setDoubleBuffered(true);
 		this.setFocusable(true);
-		this.arrayTraps = new ArrayList<Trap>();
 		
+		this.arrayTraps = new ArrayList<Trap>();
 		Key control = new KeyBoard();
 		this.addKeyListener(control);
 		this.setFocusable(true);
@@ -55,9 +55,8 @@ public class GameInterface extends JPanel {
 		this.controller.setWindow(this); // Se le asigna al controller GamInterface
 		this.controller.setControl(control);
 	}
-	
-	public void addTrap(Trap pTrap)
-	{
+
+	public void addTrap(Trap pTrap) {
 		arrayTraps.add(pTrap);
 	}
 
@@ -71,9 +70,9 @@ public class GameInterface extends JPanel {
 		fondo.draw(g2);
 
 		arrayTraps.stream().forEach((k) -> {
-			  k.draw(g2);
+			k.draw(g2);
 		});
-	
+
 		robot1.move(null, this.controller.time, g2);
 
 		g2.dispose();
