@@ -3,6 +3,8 @@ package robotwar.common.robotbase;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+
 import robotwar.common.IConstants;
 
 
@@ -16,7 +18,10 @@ public abstract class IRobot implements IConstants {
 	protected Weapon strikes[];
 	protected DamageLevel directionsdamage[];
 	protected ORIENTATION currentOrientation;
-	protected int speed;
+	protected MOVEMENT currentMovement;
+	
+	
+	protected int speed = 4;
 	
 
 	
@@ -45,24 +50,28 @@ public abstract class IRobot implements IConstants {
 	 */
 	public void move(MOVEMENT pMove, LocalTime pActionTime, Graphics g) 
 	{
-		long time1 =  pActionTime.getNano();
-		long time2 = System.nanoTime();
+
+		LocalTime time2 = LocalTime.now();
 		
-		time1 -= time2;
-		time1 *= 1000000;
+		double lapso = pActionTime.until(time2, ChronoUnit.NANOS);
+	
+		lapso /= 100000000.0;
 		
-		long movement = time1 * speed;
-		long movX = 0;
-		long movY = 0;
 		
-		switch(pMove) {
+		double movement = speed;
+		
+		
+		double movX = 0;
+		double movY = 0;
+		
+		switch(currentMovement) {
 		case DOWN:
 			if (posY < 700)
 				movY = movement;
 			break;
 		case LEFT:
 			if (posX > 0) {
-				movX *= -1 * movement;
+				movX = -1.0 * movement;
 			}
 			break;
 		case RIGHT:
@@ -71,11 +80,14 @@ public abstract class IRobot implements IConstants {
 			break;
 		case UP:
 			if (posY > 0) {
-				movY = -1 * movement;
+				movY = -1.0 * movement;
 			}
 		case NONE:
 			break;
 		}
+		System.out.print(movX + " ");
+		System.out.println(movY);
+		
 		posY += movY;
 		posX += movX;
 		
@@ -86,7 +98,7 @@ public abstract class IRobot implements IConstants {
 	protected abstract BufferedImage setImage();
 
 	public void hit(int pStrikeId, LocalTime pActionTime, Graphics g ) {
-		
+		this.weapons[pStrikeId].fire(this.posX, this.posY, this.currentOrientation);
 	}
 	
 	public void fire(int pWeaponId, LocalTime pActionTime, Graphics g) {
@@ -113,6 +125,14 @@ public abstract class IRobot implements IConstants {
 		weapons[weaponIndex] = pStrike;
 		weaponIndex=++weaponIndex%WEAPONS_PER_ROBOT;
 	}
-	
+
+	public void setCurrentOrientation(ORIENTATION pcurrentOrientation) {
+		this.currentOrientation = pcurrentOrientation;
+	}
+
+	public void setCurrentMovement(MOVEMENT currentMovement) {
+		this.currentMovement = currentMovement;
+	}
+		
 
 }

@@ -36,7 +36,7 @@ public class LavaAxe extends Weapon{
 			image = "/robotwar/images/mel_b1.png";
 			weaponBound = new ArrayList<>();
 			Collections.addAll(weaponBound, 14, 0, 40, 100);
-			if (slot == 0) {
+			if (slot == 1) {
 				weaponBound.set(0, weaponBound.get(0) + 77);
 			}
 			break;
@@ -44,7 +44,7 @@ public class LavaAxe extends Weapon{
 			image = "/robotwar/images/mel_b1I.png";
 			weaponBound = new ArrayList<>();
 			Collections.addAll(weaponBound, 60, 0, 40, 100);
-			if (slot == 0) {
+			if (slot == 1) {
 				weaponBound.set(0, weaponBound.get(0) + 77);
 			}
 			break;

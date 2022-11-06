@@ -1,4 +1,0 @@
-0) MekaBlue
-- widht = 120, 	lenght = 110
-- place	[posx = 0, 	posy = 52]
-

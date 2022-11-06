@@ -8,26 +8,26 @@ import robotwar.common.robotbase.*;
 import robotwar.common.robotbase.*;
 import robotwar.main.*;
 
-public class RobotController {
+public class RobotController implements Runnable {
 	private GameInterface contolledFrame;
-	private IRobot robotFather;
 	private Arena currentArena;
-	private FactoryIRobot robot1, robot2;
-	private MOVEMENT sight;
+	private IRobotito robot1;
+	public Key control;
+	public LocalTime time;
+	private MOVEMENT mov;
+	private Thread gameThread;
 	
-	
-	public RobotController()
+	public RobotController(IRobotito robot)
 	{	
-		FactoryIRobot robot1 = new FactoryIRobot();
-		FactoryIRobot robot2 = new FactoryIRobot();
+		robot1 = robot;
 		
 	}
 	
 	public void createRobot(int pIndex) {
-		if (pIndex == 1)
-		{
-			
-		}
+	}
+	
+	public void setControl(Key pControl) {
+		this.control = pControl;
 	}
 	
 	
@@ -39,29 +39,46 @@ public class RobotController {
 		contolledFrame = pRobotmainFrame;	
 	}
 	
-	public void execute ()
-	{
-		int cont = 0;
+	public void startGameThread()
+    {
+        gameThread = new Thread(this);
+        gameThread.start();
+    }
 
-		while (0 != 10)
+	@Override
+	public void run() 
 		{
-			//No se como llamar el keyboard
+		double drawInterval = 1000000000/30;
+		double nextDrawTime = System.nanoTime() + drawInterval;
+		
+			while (gameThread != null)
+			{
+				robot1.setCurrentOrientation(control.currentOrientation);
+				robot1.setCurrentMovement(control.currentMovement);
+				robot1.setSide(control.side);
+				
+				
+				
+				
+				time = control.pulsation;
+				contolledFrame.repaint();
+				try
+				{
+					double remainingTime = nextDrawTime - System.nanoTime();
+					remainingTime = remainingTime/1000000;//Se divide el tiempo pq el tread es en milis
+					
+					if (remainingTime < 0)
+					{
+						remainingTime = 0;
+					}
+					Thread.sleep((long)remainingTime); //Pausa el loop hasta que remainingTime termine
+					
+					nextDrawTime += drawInterval;
+				}catch (InterruptedException e)
+				{
+					e.printStackTrace();
+				}
 			
-			int numero = (cont % 3);
-			this.sight = MOVEMENT.values()[numero];
-			LocalTime tiempo = LocalTime.now();
-			
-			
-			
-			robotFather.move(sight, tiempo, );
-			
-			
-			
-			//contolledFrame.paintComponent(null);
-
-			cont +=1;
+			}
 		}
-	}
-	
-	
 }

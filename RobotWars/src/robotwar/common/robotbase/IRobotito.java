@@ -17,11 +17,10 @@ import javax.swing.JPanel;
 import robotwar.Interfaces.Key;
 
 public abstract class IRobotito extends IRobot {
-	Key keyType;
 	protected List<Integer> panelBounds;
 	protected List<Integer> mekaBound;
 	protected int speed;
-	protected int dir;
+	protected ORIENTATION side;
 	protected String image;
 	protected String direction;
 	public BufferedImage leftL, upL, downL, upR, downR, rightR;
@@ -35,23 +34,22 @@ public abstract class IRobotito extends IRobot {
 		posY = 100;
 	}
 	
-	public void setControls(Key pBoard) {
-		keyType = pBoard;
-	}
+
 	
 	public void getPlayerImage()
 	{	
-		dir = 0;
-		rightR = setMeka(ORIENTATION.EAST);
-		upR = setMeka(ORIENTATION.NORTH);
-		downR = setMeka(ORIENTATION.SOUTH);
-		
-		dir = 1;
+		side = ORIENTATION.WEST;
 		leftL = setMeka(ORIENTATION.WEST);
 		upL = setMeka(ORIENTATION.NORTH);
 		downL = setMeka(ORIENTATION.SOUTH);
 		
-		currentOrientation = ORIENTATION.WEST;
+		side = ORIENTATION.EAST;
+		rightR = setMeka(ORIENTATION.EAST);
+		upR = setMeka(ORIENTATION.NORTH);
+		downR = setMeka(ORIENTATION.SOUTH);
+		
+		
+
 	}
 	
 	public BufferedImage setMeka(ORIENTATION sight) {
@@ -92,7 +90,7 @@ public abstract class IRobotito extends IRobot {
 		setImage(lmeka, image);
 		panelg.add(lrange);
 		
-		if (dir == 0)
+		if (side == ORIENTATION.EAST)
 		{
 			panelg.add(lmele1);
 			panelg.add(lmeka);
@@ -131,25 +129,30 @@ public abstract class IRobotito extends IRobot {
 		{
 		case NORTH:
 			newimage = upL;
-			if (dir == 0)
+			if (side == ORIENTATION.EAST)
 				newimage = upR;
 			break;
 		case SOUTH:
 			newimage = downL;
-			if (dir == 0)
+			if (side == ORIENTATION.EAST)
 				newimage = downR;
 			break;
 		case WEST:
-			newimage = rightR;
+			newimage = leftL;
 			break;
 		case EAST:
-			newimage = leftL;
+			newimage = rightR;
 			break;
 		}
 		return newimage;
 	}
 	
 	public abstract void UpdateImage();
+	
+	public void setSide(ORIENTATION side) {
+		this.side = side;
+	}
+	
 }
 
 
