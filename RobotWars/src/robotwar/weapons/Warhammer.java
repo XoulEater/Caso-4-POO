@@ -11,10 +11,11 @@ public class Warhammer extends Weapon{
 	
 	public Warhammer(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/mel_g1.png";
 	}
 	
 	public String getImage(String dir) {
-		return "/robotwar/images/mel_g1.png";
+		return image;
 		
 	}
 	
@@ -35,7 +36,6 @@ public class Warhammer extends Weapon{
 
 	@Override
 	public void UpdateImage(ORIENTATION pDirection) {
-		image = "/robotwar/images/mel_g1.png";
 		switch(pDirection) {
 		case EAST:
 			weaponBound = new ArrayList<>();

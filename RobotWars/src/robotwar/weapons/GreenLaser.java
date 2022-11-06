@@ -11,6 +11,7 @@ public class GreenLaser extends Weapon{
 	
 	public GreenLaser(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/ran_g2.png";
 	}
 	
 	

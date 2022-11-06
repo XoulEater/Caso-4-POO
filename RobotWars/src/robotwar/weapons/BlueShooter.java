@@ -11,6 +11,7 @@ public class BlueShooter extends Weapon{
 	
 	public BlueShooter(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/ran_b2.png";
 	}
 	
 

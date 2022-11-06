@@ -11,6 +11,7 @@ import robotwar.common.robotbase.Weapon;
 public class ThunderBlade extends Weapon{
 	public ThunderBlade(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/mel_g3.png";
 	}
 	
 	@Override

@@ -11,6 +11,7 @@ public class Reaper extends Weapon{
 	
 	public Reaper(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/mel_b2.png";
 	}
 	
 	@Override

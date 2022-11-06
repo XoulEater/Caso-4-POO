@@ -9,6 +9,7 @@ public class BlueRobot extends IRobotito{
 		super(ORIENTATION.EAST);
 		Collections.addAll(panelBounds, 300, 57, 190, 162);
 		this.speed = 4;
+		this.type = "Blue";
 	}
 	
 	@Override
