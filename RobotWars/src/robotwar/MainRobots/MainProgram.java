@@ -2,13 +2,15 @@ package robotwar.MainRobots;
 
 import java.awt.Dimension;
 
+
 import javax.swing.JFrame;
 
-
 import robotwar.Interfaces.*;
+import robotwar.Traps.*;
 import robotwar.common.IConstants;
 import robotwar.common.robotbase.BlueRobot;
 import robotwar.common.robotbase.GreenRobot;
+import robotwar.common.robotbase.Trap;
 import robotwar.weapons.BlueRocket;
 import robotwar.weapons.BlueShooter;
 import robotwar.weapons.GreenLaser;
@@ -22,16 +24,16 @@ import robotwar.weapons.Warhammer;
 
 public class MainProgram {
 
-	public static void main(String[] args)  {
-		
-		JFrame window =  new JFrame();
+	public static void main(String[] args) {
+
+		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
 		window.setTitle("RobotWars");
-		window.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH,IConstants.ARENA_HEIGTH));
-		
+		window.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH, IConstants.ARENA_HEIGTH));
+
 		GreenRobot meka = new GreenRobot();
-		
+
 		GreenScope head1 = new GreenScope(0);
 		GreenLaser head2 = new GreenLaser(0);
 		Warhammer hammer = new Warhammer(0);
@@ -41,12 +43,12 @@ public class MainProgram {
 		meka.addWeapon(hades);
 		meka.addStrike(head1);
 		meka.getPlayerImage();
-	
+
 		BlueRobot meka2 = new BlueRobot();
-		
+
 		BlueRocket head3 = new BlueRocket(0);
 		BlueShooter head4 = new BlueShooter(0);
-		
+
 		PunchArm arm = new PunchArm(0);
 		LavaAxe axe = new LavaAxe(0);
 		Reaper reaper = new Reaper(0);
@@ -55,18 +57,29 @@ public class MainProgram {
 		meka2.addWeapon(arm);
 		meka2.addStrike(head3);
 		meka2.getPlayerImage();
-		
+
 		RobotController MainGame = new RobotController(meka);
 		GameInterface interfaz = new GameInterface(MainGame);
 		interfaz.robot1 = meka;
+
+		Trap trap1 = new Spike(500, 0);
+		Trap trap2 = new Fire(200, 0);
+		Trap trap3 = new Acid(300, 300);
+		Trap trap4 = new Saw(700, 0);
+		
+		interfaz.addTrap(trap1);
+		interfaz.addTrap(trap2);
+		interfaz.addTrap(trap3);
+		interfaz.addTrap(trap4);
+
 		
 		window.add(interfaz);
-		window.pack(); 
+		window.pack();
 
 		window.setLocationRelativeTo(null);
-		window.setVisible(true );
-		
+		window.setVisible(true);
+
 		MainGame.startGameThread();
-	
+
 	}
 }

@@ -42,8 +42,6 @@ public class RobotMainFrame extends JFrame implements KeyListener{
 		
 		initComponents();
 		this.addKeyListener(this);
-		
-		
 		this.setVisible(true);	
 	}
 
@@ -171,8 +169,6 @@ public class RobotMainFrame extends JFrame implements KeyListener{
 		}
 	}
 	
-
-
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W' || e.getExtendedKeyCode() == KeyEvent.VK_UP)
 		{
