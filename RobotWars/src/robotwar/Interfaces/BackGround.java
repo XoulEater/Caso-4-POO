@@ -24,7 +24,7 @@ public class BackGround {
 		try {
 			
 			tile[1] = new Tile();
-			tile[1].image = ImageIO.read(getClass().getResource("/robotwar/images/metalBg_1.png"));
+			tile[1].image = ImageIO.read(getClass().getResource("/robotwar/images/floor1.jpg"));
 			
 			
 		}catch(IOException e)

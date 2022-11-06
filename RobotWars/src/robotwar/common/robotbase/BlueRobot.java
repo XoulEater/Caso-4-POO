@@ -10,7 +10,8 @@ public class BlueRobot extends IRobotito{
 		Collections.addAll(panelBounds, 300, 57, 190, 162);
 		this.speed = 4;
 	}
-
+	
+	@Override
 	public void UpdateImage()
 	{
 		switch(currentOrientation) {

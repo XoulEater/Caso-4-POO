@@ -37,11 +37,9 @@ public class MainProgram {
 		Warhammer hammer = new Warhammer(0);
 		ThunderBlade blade = new ThunderBlade(0);
 		Hades hades = new Hades(0);
-		
 		meka.addWeapon(blade);
 		meka.addWeapon(hades);
 		meka.addStrike(head1);
-		
 		meka.getPlayerImage();
 	
 		BlueRobot meka2 = new BlueRobot();
@@ -53,18 +51,22 @@ public class MainProgram {
 		LavaAxe axe = new LavaAxe(0);
 		Reaper reaper = new Reaper(0);
 
-		meka2.addWeapon(arm);
 		meka2.addWeapon(axe);
+		meka2.addWeapon(arm);
 		meka2.addStrike(head3);
-		
 		meka2.getPlayerImage();
 		
-		GameInterface gamePanel = new GameInterface();
-		window.add(gamePanel);
+		RobotController MainGame = new RobotController(meka);
+		GameInterface interfaz = new GameInterface(MainGame);
+		interfaz.robot1 = meka;
+		
+		window.add(interfaz);
 		window.pack(); 
 
 		window.setLocationRelativeTo(null);
 		window.setVisible(true );
+		
+		MainGame.startGameThread();
 	
 	}
 }

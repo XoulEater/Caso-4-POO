@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.time.LocalTime;
 
 import javax.swing.JPanel;
 
@@ -27,6 +28,7 @@ public class GameInterface extends JPanel {
 	public static final int tileSize = originalSize * scale; //Decides all ths screen sizes. 100x100
 	private BackGround fondo = new BackGround(this);
 	private RobotController controller;
+	public IRobotito robot1;
 	
 
 	public GameInterface (RobotController controller)
@@ -35,8 +37,12 @@ public class GameInterface extends JPanel {
 		this.setBackground(Color.white);
 		this.setDoubleBuffered(true);
 		this.setFocusable(true);
+		Key control = new KeyBoard();
+		this.addKeyListener(control);
+		this.setFocusable(true);
 		this.controller = controller;
 		this.controller.setWindow(this); // Se le asigna al controller GamInterface
+		this.controller.setControl(control);
 	}
 	
 	@Override
@@ -47,7 +53,9 @@ public class GameInterface extends JPanel {
 		Graphics2D g2 = (Graphics2D)g;
 		
 		fondo.draw(g2);
-	
+		
+		robot1.move(null, this.controller.time, g2);
+		
 		g2.dispose();
 	}
 
