@@ -11,6 +11,7 @@ public class LavaAxe extends Weapon{
 	
 	public LavaAxe(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/mel_b1.png";
 	}
 
 	

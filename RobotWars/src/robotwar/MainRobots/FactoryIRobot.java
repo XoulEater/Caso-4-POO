@@ -1,4 +1,4 @@
-package robotwar.main;
+package robotwar.MainRobots;
 
 import robotwar.common.robotbase.IRobot;
 import robotwar.common.robotbase.Weapon;

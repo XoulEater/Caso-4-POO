@@ -11,6 +11,7 @@ public class GreenScope extends Weapon{
 	
 	public GreenScope(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/ran_g1.png";
 	}
 	
 	@Override

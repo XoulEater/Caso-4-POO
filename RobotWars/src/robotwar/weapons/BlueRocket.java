@@ -11,6 +11,7 @@ public class BlueRocket extends Weapon{
 	
 	public BlueRocket(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/ran_b1.png";
 	}
 	
 	@Override
@@ -47,8 +48,6 @@ public class BlueRocket extends Weapon{
 		case NORTH:
 			image = "/robotwar/images/ran_b1U.png";
 			break;
-		}
-		
+		}	
 	}
-	
 }

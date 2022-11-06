@@ -11,6 +11,7 @@ public class PunchArm extends Weapon{
 	
 	public PunchArm(int pSpeed) {
 		super(pSpeed);
+		image = "/robotwar/images/mel_b3.png";
 	}
 	
 	@Override

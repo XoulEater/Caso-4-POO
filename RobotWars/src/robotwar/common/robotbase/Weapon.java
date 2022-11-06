@@ -9,14 +9,12 @@ public abstract class Weapon extends DamageLevel {
 	private int level;
 	protected int speed;
 	
-	protected Placement position;
 	protected String image;
 	protected List<Integer> weaponBound;
 	protected int slot;
 	
 	public Weapon(int pSpeed) {
 		this.speed = pSpeed;
-		position = new Placement();
 //		position.setPos(5, 12);
 //		position.setSize(2, 4);	
 	}
@@ -63,20 +61,6 @@ public abstract class Weapon extends DamageLevel {
 	public void setSlot(int slot) {
 		this.slot = slot;
 	}
-	
-	public void setPlacement (int a, int b, int c, int d)
-	{
-		position.setPos(a, b);
-		position.setSize(c, d);
-	}
-	
-	
-	public List<Integer> getPosition()
-	{
-		return position.getPlacements();
-		
-	}
-	
 	public abstract String getImage();
 	
 	public abstract List<Integer> getLocation();
