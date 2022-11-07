@@ -1,16 +1,13 @@
 package robotwar.MainRobots;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,6 +30,7 @@ public class SelectInterface extends JPanel {
 	public JLabel arma1;
 	public JLabel arma2;
 	public JLabel head;
+	
 	private JButton confirmButton;
 
 	public SelectInterface(FactoryController mainFactory) {
@@ -191,14 +189,29 @@ public class SelectInterface extends JPanel {
 		bWeapon3.setContentAreaFilled(false);
 		bWeapon3.setBorderPainted(false);
 		this.add(bWeapon3);
-
+		
+		JLabel insertName = new JLabel("Insertar Nombre");
+		insertName.setFont(insertName.getFont().deriveFont(Font.BOLD,30F));
+		insertName.setBounds(195, 35, 286, 53);
+		insertName.setForeground(Color.WHITE);
+		this.add(insertName);
+		
 		JTextField playerName = new JTextField();
+		playerName.setBounds(172, 88, 286, 53);
+		playerName.setFont(playerName.getFont().deriveFont(Font.BOLD,30F));
+		playerName.setBackground(Color.DARK_GRAY);
+		playerName.setForeground(Color.WHITE);
+		this.add(playerName);
+		
+		
 
 		confirmButton = new JButton("Confirmar");
 		confirmButton.setBounds(800, 560, 235, 110);
+		confirmButton.setFont(playerName.getFont().deriveFont(Font.BOLD,30F));
 		confirmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.confirm();
+				String name = playerName.getText();
+				controller.confirm(name);
 			}
 		});
 		this.add(confirmButton);

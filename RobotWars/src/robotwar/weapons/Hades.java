@@ -9,9 +9,9 @@ import robotwar.common.robotbase.Weapon;
 
 public class Hades extends Weapon{
 	
-	public Hades(int pSpeed) {
-		super(pSpeed);
-		image = "/robotwar/images/mel_b2.png";
+	public Hades() {
+		super(25, 8, 20);
+		image = "/robotwar/images/mel_g2.png";
 	}
 	
 	@Override

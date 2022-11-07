@@ -9,8 +9,8 @@ import robotwar.common.robotbase.Weapon;
 
 public class Warhammer extends Weapon{
 	
-	public Warhammer(int pSpeed) {
-		super(pSpeed);
+	public Warhammer() {
+		super(25, 6, 15);
 		image = "/robotwar/images/mel_g1.png";
 	}
 	
