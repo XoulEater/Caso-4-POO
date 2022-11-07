@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.proyectiles.BulletLaser;
+import robotwar.proyectiles.BulletRocket;
 
 public class BlueRocket extends Weapon{
 	
@@ -16,7 +19,8 @@ public class BlueRocket extends Weapon{
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
-		
+		IVariables varS = IVariables.getInstance();
+		varS.addProyectile(new BulletRocket(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
 	}
 
 	@Override

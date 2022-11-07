@@ -27,7 +27,7 @@ public abstract class IRobotito extends IRobot {
 	protected String direction;
 	protected String name;
 	public BufferedImage leftL, upL, downL, upR, downR, rightR;
-	protected boolean shot;
+	protected boolean shot, mele1, mele2;
 
 	public IRobotito(ORIENTATION pOrientation) {
 		super(pOrientation);
@@ -172,8 +172,10 @@ public abstract class IRobotito extends IRobot {
 		this.name = pname;
 	}
 	
-	public void setIfShot(boolean pShot) {
+	public void setIfShot(boolean pShot,boolean pMele1,boolean pMele2) {
 		this.shot = pShot;
+		this.mele1 = pMele1;
+		this.mele2 = pMele2;
 	}
 	
 	public void draw(MOVEMENT pMove, LocalTime pActionTime, Graphics g) {
@@ -183,6 +185,14 @@ public abstract class IRobotito extends IRobot {
 			
 			this.hit(0, pActionTime, g);
 		}
+		if (mele1) {
+			
+			this.fire(0, pActionTime, g);
+		}
+//		if (mele2) {
+//			
+//			this.fire(1, pActionTime, g);
+//		}
 	}
 
 }

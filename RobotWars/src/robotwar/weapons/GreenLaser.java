@@ -1,27 +1,26 @@
 package robotwar.weapons;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 
 import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
-import robotwar.proyectiles.BulletFire;
+import robotwar.proyectiles.*;
 
 public class GreenLaser extends Weapon{
 	
 	public GreenLaser() {
-		super(25, 1, 200);
+		super(15, 1, 200);
 		image = "/robotwar/images/ran_g2.png";
 	}
 	
-	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
-		System.out.println("Disparando");
 		IVariables varS = IVariables.getInstance();
-		varS.addProyectile(new BulletFire(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+		varS.addProyectile(new BulletLaser(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
 	}
 
 	@Override

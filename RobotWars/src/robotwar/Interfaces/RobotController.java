@@ -48,8 +48,10 @@ public class RobotController implements Runnable {
 			robot1.setCurrentOrientation(control.currentOrientation);
 			robot1.setCurrentMovement(control.currentMovement);
 			robot1.setSide(control.side);
-			robot1.setIfShot(control.shot);
+			robot1.setIfShot(control.shot,control.mele1,control.mele2);
 			control.shot = false;
+			control.mele1 = false;
+			control.mele2 = false;
 
 			time = control.pulsation;
 			contolledFrame.repaint();

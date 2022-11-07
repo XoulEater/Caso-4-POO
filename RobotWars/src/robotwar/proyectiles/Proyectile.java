@@ -10,10 +10,9 @@ public abstract class Proyectile {
 	protected int PosX, PosY;
 	protected int speed;
 	protected int index;
-	protected BufferedImage image;
 	protected boolean outOfRange;
 	protected ORIENTATION sight;
-
+	
 	protected Proyectile(int pX, int pY, ORIENTATION pSight, int pSpeed) {
 
 		this.PosX = pX;
@@ -59,14 +58,14 @@ public abstract class Proyectile {
 			}
 			break;
 		}
-		pGp.drawImage(image, PosX, PosY, 20, 20, null);
+		setDraw(pGp);
 	}
-
+	
+public abstract void setDraw(Graphics2D pGp);
 
 	public boolean isOutOfRange() {
 		return outOfRange;
 	}
-	
 }
 
 

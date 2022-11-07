@@ -30,7 +30,6 @@ public class DamageLevel {
 			this.enabled = false;
 		}
 	}
-
 	public boolean isEnabled() {
 		return enabled;
 	}

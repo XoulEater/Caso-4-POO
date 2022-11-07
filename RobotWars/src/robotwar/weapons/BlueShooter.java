@@ -1,11 +1,15 @@
 package robotwar.weapons;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 
+import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.proyectiles.BulletFire;
+import robotwar.proyectiles.SolarLaser;
 
 public class BlueShooter extends Weapon{
 	
@@ -16,7 +20,8 @@ public class BlueShooter extends Weapon{
 	
 
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
-		
+		IVariables varS = IVariables.getInstance();
+		varS.addProyectile(new SolarLaser(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
 	}
 
 	@Override
