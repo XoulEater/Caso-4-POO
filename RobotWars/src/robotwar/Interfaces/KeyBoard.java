@@ -56,6 +56,12 @@ public class KeyBoard extends Key{
 		if (code == KeyEvent.VK_SPACE) {
 			this.shot = true;
 		}
+		if (code == KeyEvent.VK_E) {
+			this.mele1 = true;
+		}
+		if (code == KeyEvent.VK_R) {
+			this.mele2= true;
+		}
 	}
 
 	@Override

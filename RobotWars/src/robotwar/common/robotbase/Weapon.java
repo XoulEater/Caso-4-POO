@@ -8,7 +8,6 @@ public abstract class Weapon extends DamageLevel {
 	protected int speed;
 	protected int level;
 	protected int attackDistance;
-
 	protected String image;
 	protected List<Integer> weaponBound;
 	protected int slot;

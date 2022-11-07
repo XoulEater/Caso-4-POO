@@ -3,6 +3,7 @@ package robotwar.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import robotwar.MeleSlam.Slam;
 import robotwar.common.robotbase.Trap;
 import robotwar.proyectiles.Proyectile;
 
@@ -13,16 +14,19 @@ public class IVariables {
     // Aca podemos definir datos globales
     private List<Trap> arrayTraps;
 	private List<Proyectile> arrayProyectiles;
+	private List<Slam> arrayMeleSlams;
 	private List<Integer> posPlayer1;
 	private List<Integer> posPlayer2;
-	private int index;
+	private int index, index2;
     
     // Contructor privado, asi no se podra llamar desde fuera
     private IVariables()
     {
     	this.setArrayTraps(new ArrayList<>());
 		this.arrayProyectiles = new ArrayList<>();
+		this.arrayMeleSlams = new ArrayList<>();
 		this.index = 0;
+		this.index2 = 0;
     }
     
     // "Constructor publico"
@@ -48,6 +52,16 @@ public class IVariables {
 	public List<Proyectile> getArrayProyectiles() {
 		return arrayProyectiles;
 	}
+	
+	public void arrayMeleSlams(Slam pSlams) {
+		pSlams.setIndex(index2);
+		index2++;
+    	arrayMeleSlams.add(pSlams);
+	}
+
+	public List<Slam> getArrayMele() {
+		return arrayMeleSlams;
+	}
 
 	public void setArrayProyectiles(List<Proyectile> arrayProyectiles) {
 		this.arrayProyectiles = arrayProyectiles;
@@ -61,8 +75,6 @@ public class IVariables {
 		this.arrayTraps = arrayTraps;
 	}
 	
-	
-
 
 	// Igualmente se pueden añadir mas metodos y variables 
 }
