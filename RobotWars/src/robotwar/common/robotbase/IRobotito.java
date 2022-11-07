@@ -1,8 +1,12 @@
 package robotwar.common.robotbase;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +25,9 @@ public abstract class IRobotito extends IRobot {
 	protected ORIENTATION side;
 	protected String image;
 	protected String direction;
+	protected String name;
 	public BufferedImage leftL, upL, downL, upR, downR, rightR;
+	protected boolean shot;
 
 	public IRobotito(ORIENTATION pOrientation) {
 		super(pOrientation);
@@ -50,10 +56,17 @@ public abstract class IRobotito extends IRobot {
 
 		panelg.setBounds(panelBounds.get(0), panelBounds.get(1), panelBounds.get(2), panelBounds.get(3));
 
+	
 		Weapon weapon1 = weapons[0];
 		Weapon weapon2 = weapons[1];
 		Weapon head = strikes[0];
 
+		JLabel lname = new JLabel(name);
+		lname.setBounds(52, 18, 79, 16);
+		lname.setFont(lname.getFont().deriveFont(Font.BOLD, 20F));
+		lname.setForeground(Color.white);
+		panelg.add(lname);
+		
 		JLabel lmeka = new JLabel();
 		JLabel lmele1 = new JLabel();
 		JLabel lmele2 = new JLabel();
@@ -153,6 +166,23 @@ public abstract class IRobotito extends IRobot {
 	public String getImage() {
 		UpdateImage();
 		return image;
+	}
+	
+	public void setName(String pname) {
+		this.name = pname;
+	}
+	
+	public void setIfShot(boolean pShot) {
+		this.shot = pShot;
+	}
+	
+	public void draw(MOVEMENT pMove, LocalTime pActionTime, Graphics g) {
+
+		this.move(pMove, pActionTime,  g);
+		if (shot) {
+			
+			this.hit(0, pActionTime, g);
+		}
 	}
 
 }

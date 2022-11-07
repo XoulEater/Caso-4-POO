@@ -9,8 +9,8 @@ import robotwar.common.robotbase.Weapon;
 
 public class PunchArm extends Weapon{
 	
-	public PunchArm(int pSpeed) {
-		super(pSpeed);
+	public PunchArm() {
+		super(25, 8, 35);
 		image = "/robotwar/images/mel_b3.png";
 	}
 	

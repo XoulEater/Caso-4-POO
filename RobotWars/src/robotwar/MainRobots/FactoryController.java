@@ -1,21 +1,35 @@
 package robotwar.MainRobots;
 
+import java.awt.Dimension;
 import java.awt.Image;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
+import javax.swing.JFrame;
+import robotwar.Interfaces.GameInterface;
+import robotwar.Interfaces.RobotController;
+import robotwar.Traps.Acid;
+import robotwar.Traps.Fire;
+import robotwar.Traps.Saw;
+import robotwar.Traps.Spike;
+import robotwar.common.IConstants;
+import robotwar.common.IVariables;
 import robotwar.common.robotbase.*;
 import robotwar.weapons.*;
 
 public class FactoryController {
 	SelectInterface window;
+	JFrame mainWindow;
 	IRobotito nRobot = new GreenRobot();
 	String playerName;
-
+	
+	FactoryController (JFrame pmain){
+		this.mainWindow = pmain;
+	}
+					
 	public void setWindow(SelectInterface selectInterface) {
 		this.window = selectInterface;
 
@@ -24,12 +38,10 @@ public class FactoryController {
 	public void setRobot(String type) {
 		switch (type) {
 		case "Green":
-			System.out.println("Creando robot verde");
 			nRobot = new GreenRobot();
 			updateData();
 			break;
 		case "Blue":
-			System.out.println("Creando robot azul");
 			nRobot = new BlueRobot();
 			updateData();
 			break;
@@ -41,26 +53,22 @@ public class FactoryController {
 		if ("Green".equals(type) && "Green".equals(nRobot.getType())) {
 			switch (id) {
 			case 1:
-				System.out.println("Creando GreenScope");
-				nRobot.addStrike(new GreenScope(0));
+				nRobot.addStrike(new GreenScope());
 				updateData();
 				break;
 			case 2:
-				System.out.println("Creando GreenLaser");
-				nRobot.addStrike(new GreenLaser(0));
+				nRobot.addStrike(new GreenLaser());
 				updateData();
 				break;
 			}
 		} else if ("Blue".equals(type) && "Blue".equals(nRobot.getType())) {
 			switch (id) {
 			case 1:
-				System.out.println("Creando BlueShooter");
-				nRobot.addStrike(new BlueShooter(0));
+				nRobot.addStrike(new BlueShooter());
 				updateData();
 				break;
 			case 2:
-				System.out.println("Creando BlueRocket");
-				nRobot.addStrike(new BlueRocket(0));
+				nRobot.addStrike(new BlueRocket());
 				updateData();
 				break;
 			}
@@ -72,60 +80,68 @@ public class FactoryController {
 		if ("Green".equals(type) && "Green".equals(nRobot.getType())) {
 			switch (id) {
 			case 1:
-				System.out.println("Creando Warhammer");
-				nRobot.addWeapon(new Warhammer(0));
+				nRobot.addWeapon(new Warhammer());
 				updateData();
 				break;
 			case 2:
-				System.out.println("Creando ThunderBlade");
-				nRobot.addWeapon(new ThunderBlade(0));
+				nRobot.addWeapon(new ThunderBlade());
 				updateData();
 				break;
 			case 3:
-				System.out.println("Creando Hades");
-				nRobot.addWeapon(new Hades(0));
+				nRobot.addWeapon(new Hades());
 				updateData();
 				break;
 			}
 		} else if ("Blue".equals(type) && "Blue".equals(nRobot.getType())) {
 			switch (id) {
 			case 1:
-				System.out.println("Creando LavaAxe");
-				nRobot.addWeapon(new LavaAxe(0));
+				nRobot.addWeapon(new LavaAxe());
 				updateData();
 				break;
 			case 2:
-				System.out.println("Creando Reaper");
-				nRobot.addWeapon(new Reaper(0));
+				nRobot.addWeapon(new Reaper());
 				updateData();
 				break;
 			case 3:
-				System.out.println("Creando PunchArm");
-				nRobot.addWeapon(new PunchArm(0));
+				nRobot.addWeapon(new PunchArm());
 				updateData();
 				break;
 			}
 		}
 	}
 
-	public boolean confirm() {
+	public boolean confirm(String name) {
 		boolean resul = false;
-		if (nRobot != null) {
+		System.out.println(name);
+		if (nRobot != null && !"".equals(name)) {
 			Stream<Weapon> armas = nRobot.getWeapons();
+			nRobot.setName(name);
+			if (armas.noneMatch((Objects::isNull))) {
+				this.mainWindow.dispose();
+				JFrame window2 = new JFrame();
+				window2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				window2.setResizable(false);
+				window2.setTitle("RobotWars");
+				window2.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH, IConstants.ARENA_HEIGTH));
 
-			if (armas.noneMatch((x -> x == null))) {
-				System.out.println("Rodrigo valida este robot");
-				this.window.setVisible(false);
-				resul = true;
+				RobotController MainGame = new RobotController(nRobot);
+				nRobot.getPlayerImage();
+				GameInterface interfaz2 = new GameInterface(MainGame);
+				interfaz2.robot1 = nRobot;
+				
+
+				
+				window2.add(interfaz2);
+				window2.pack();
+				
+				window2.setLocationRelativeTo(null);
+				window2.setVisible(true);
+				MainGame.startGameThread();
 			
 			}
 
 		}
 		return resul;
-	}
-
-	public IRobotito getRobot() {
-		return confirm() ? nRobot : null;
 	}
 
 

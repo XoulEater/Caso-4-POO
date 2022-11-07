@@ -9,8 +9,8 @@ import robotwar.common.robotbase.Weapon;
 
 public class BlueRocket extends Weapon{
 	
-	public BlueRocket(int pSpeed) {
-		super(pSpeed);
+	public BlueRocket() {
+		super(10, 3, 150);
 		image = "/robotwar/images/ran_b1.png";
 	}
 	

@@ -13,4 +13,5 @@ public abstract class Key implements KeyListener{
 	public MOVEMENT currentMovement = MOVEMENT.NONE;
 	public ORIENTATION side = ORIENTATION.EAST;
 	public LocalTime pulsation = LocalTime.now();
+	public boolean shot = false;
 }

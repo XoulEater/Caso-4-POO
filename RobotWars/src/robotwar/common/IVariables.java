@@ -1,16 +1,28 @@
 package robotwar.common;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import robotwar.common.robotbase.Trap;
+import robotwar.proyectiles.Proyectile;
+
 public class IVariables {
 	// Instancia del IVariables, aqui guardaremos su unica instancia 
     private static IVariables instance = null;
     
     // Aca podemos definir datos globales
-    private int num;
+    private List<Trap> arrayTraps;
+	private List<Proyectile> arrayProyectiles;
+	private List<Integer> posPlayer1;
+	private List<Integer> posPlayer2;
+	private int index;
     
     // Contructor privado, asi no se podra llamar desde fuera
     private IVariables()
     {
-    	setNum(0);
+    	this.setArrayTraps(new ArrayList<>());
+		this.arrayProyectiles = new ArrayList<>();
+		this.index = 0;
     }
     
     // "Constructor publico"
@@ -23,15 +35,35 @@ public class IVariables {
   
         return instance;
     }
-
-    // Getters and setter de los datos
-	public int getNum() {
-		return num;
+    
+    public void addTrap(Trap pTrap) {
+		getArrayTraps().add(pTrap);
+	}
+    public void addProyectile(Proyectile pProyectile) {
+    	pProyectile.setIndex(index);
+    	index++;
+    	arrayProyectiles.add(pProyectile);
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public List<Proyectile> getArrayProyectiles() {
+		return arrayProyectiles;
 	}
+
+	public void setArrayProyectiles(List<Proyectile> arrayProyectiles) {
+		this.arrayProyectiles = arrayProyectiles;
+	}
+
+	public  List<Trap> getArrayTraps() {
+		return arrayTraps;
+	}
+
+	public void setArrayTraps(List<Trap> arrayTraps) {
+		this.arrayTraps = arrayTraps;
+	}
+	
+	
+
+
 	// Igualmente se pueden añadir mas metodos y variables 
 }
 

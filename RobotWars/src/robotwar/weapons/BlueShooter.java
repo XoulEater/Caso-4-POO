@@ -9,8 +9,8 @@ import robotwar.common.robotbase.Weapon;
 
 public class BlueShooter extends Weapon{
 	
-	public BlueShooter(int pSpeed) {
-		super(pSpeed);
+	public BlueShooter() {
+		super(15, 7, 100);
 		image = "/robotwar/images/ran_b2.png";
 	}
 	

@@ -53,6 +53,9 @@ public class KeyBoard extends Key{
 			this.currentOrientation= ORIENTATION.WEST;
 			this.side = ORIENTATION.WEST;
 		}
+		if (code == KeyEvent.VK_SPACE) {
+			this.shot = true;
+		}
 	}
 
 	@Override

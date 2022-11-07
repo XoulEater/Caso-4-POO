@@ -9,8 +9,8 @@ import robotwar.common.robotbase.Weapon;
 
 public class LavaAxe extends Weapon{
 	
-	public LavaAxe(int pSpeed) {
-		super(pSpeed);
+	public LavaAxe() {
+		super(25, 6, 15);
 		image = "/robotwar/images/mel_b1.png";
 	}
 

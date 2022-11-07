@@ -9,8 +9,8 @@ import robotwar.common.robotbase.Weapon;
 
 public class Reaper extends Weapon{
 	
-	public Reaper(int pSpeed) {
-		super(pSpeed);
+	public Reaper() {
+		super(25, 5, 20);
 		image = "/robotwar/images/mel_b2.png";
 	}
 	

@@ -3,28 +3,30 @@ package robotwar.common.robotbase;
 import java.util.List;
 
 public abstract class Weapon extends DamageLevel {
-
-	private int posX;
-	private int posY;
-	private int level;
+	protected int posX;
+	protected int posY;
 	protected int speed;
-	
+	protected int level;
+	protected int attackDistance;
+
 	protected String image;
 	protected List<Integer> weaponBound;
 	protected int slot;
-	
-	public Weapon(int pSpeed) {
+
+	public Weapon(int pSpeed, int pLevel, int pAttackDistance) {
 		this.speed = pSpeed;
-//		position.setPos(5, 12);
-//		position.setSize(2, 4);	
+		this.level = pLevel;
+		this.attackDistance = pAttackDistance;
 	}
+
 	public void fire(int pPosX, int pPosY, ORIENTATION pDirection) {
 		if (this.isEnabled()) {
-			triggerWeapon(pPosX, pPosY, pDirection);
+			this.triggerWeapon(pPosX, pPosY, pDirection);
 		}
 	}
+
 	protected abstract void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection);
-	
+
 	public int getPosX() {
 		return posX;
 	}
@@ -57,14 +59,14 @@ public abstract class Weapon extends DamageLevel {
 		this.level = level;
 	}
 
-	
 	public void setSlot(int slot) {
 		this.slot = slot;
 	}
+
 	public abstract String getImage();
-	
+
 	public abstract List<Integer> getLocation();
 
 	public abstract void UpdateImage(ORIENTATION pDirection);
-	
+
 }

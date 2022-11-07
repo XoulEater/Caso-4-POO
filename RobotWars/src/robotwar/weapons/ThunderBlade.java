@@ -9,8 +9,8 @@ import robotwar.common.robotbase.Weapon;
 
 
 public class ThunderBlade extends Weapon{
-	public ThunderBlade(int pSpeed) {
-		super(pSpeed);
+	public ThunderBlade() {
+		super(25, 10, 13);
 		image = "/robotwar/images/mel_g3.png";
 	}
 	

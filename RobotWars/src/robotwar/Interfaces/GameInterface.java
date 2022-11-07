@@ -1,32 +1,18 @@
 package robotwar.Interfaces;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.io.IOException;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import robotwar.common.*;
-import robotwar.Interfaces.*;
-import robotwar.Traps.*;
-import robotwar.weapons.*;
-import robotwar.common.robotbase.BlueRobot;
-import robotwar.common.robotbase.GreenRobot;
-import robotwar.common.robotbase.IRobot;
+import robotwar.common.IConstants;
+import robotwar.common.IVariables;
 import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.Trap;
+import robotwar.proyectiles.Proyectile;
 
 public class GameInterface extends JPanel {
 
@@ -35,19 +21,18 @@ public class GameInterface extends JPanel {
 	private static final int scale = 4;
 	public static final int tileSize = originalSize * scale; // Decides all ths screen sizes. 100x100
 	private BackGround fondo = new BackGround("/robotwar/images/floor1.jpg");
-	private List<Trap> arrayTraps;
+	
 	public IRobotito robot1;
 
 	private RobotController controller;
-	private JLabel animacion;
 
 	public GameInterface(RobotController controller) {
 		this.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH, IConstants.ARENA_HEIGTH));
 		this.setBackground(Color.white);
 		this.setDoubleBuffered(true);
 		this.setFocusable(true);
+
 		
-		this.arrayTraps = new ArrayList<Trap>();
 		Key control = new KeyBoard();
 		this.addKeyListener(control);
 		this.setFocusable(true);
@@ -56,9 +41,7 @@ public class GameInterface extends JPanel {
 		this.controller.setControl(control);
 	}
 
-	public void addTrap(Trap pTrap) {
-		arrayTraps.add(pTrap);
-	}
+	
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -68,12 +51,15 @@ public class GameInterface extends JPanel {
 		Graphics2D g2 = (Graphics2D) g;
 
 		fondo.draw(g2);
+		IVariables varS = IVariables.getInstance();
+		List<Trap> arrayTraps = varS.getArrayTraps();
+		List<Proyectile> arrayProy = varS.getArrayProyectiles();
+				
+		arrayTraps.stream().forEach(k -> k.draw(g2));
+		arrayProy.stream().forEach(k -> k.draw(g2));
+		//arrayProy.stream().filter(Proyectile::isOutOfRange).forEach(k -> arrayProy.remove(k.getIndex()));
 
-		arrayTraps.stream().forEach((k) -> {
-			k.draw(g2);
-		});
-
-		robot1.move(null, this.controller.time, g2);
+		robot1.draw(null, this.controller.time, g2);
 
 		g2.dispose();
 	}
