@@ -188,11 +188,11 @@ public abstract class IRobotito extends IRobot {
 			
 			this.hit(0, pActionTime, g);
 		}
-		if (melee1) {
+		if (melee1 && weapons[0].cooldown < 0) {
 			
 			this.fire(0, pActionTime, g);
 		}
-		if (melee2) {
+		if (melee2 && weapons[1].cooldown < 0) {
 			
 			this.fire(1, pActionTime, g);
 		}

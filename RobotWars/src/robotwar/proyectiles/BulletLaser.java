@@ -41,7 +41,7 @@ public class BulletLaser extends Proyectile {
 
 	@Override
 	public void setDraw(Graphics2D pGp) {
-		pGp.drawImage(image, PosX-40, PosY-10, 20, 20, null);
+		pGp.drawImage(image, PosX, PosY, 20, 20, null);
 		
 	}
 }
