@@ -8,12 +8,11 @@ import javax.imageio.ImageIO;
 
 import robotwar.common.robotbase.ORIENTATION;
 
-public class BigSlam extends Proyectile{
+public class SplitSlam extends Proyectile{
 	private BufferedImage image;
-	private int counter = 10; 
 	
 	
-	public BigSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
+	public SplitSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
 		super(pX, pY, sight, pSpeed);
 
 		String url = null;
@@ -40,12 +39,8 @@ public class BigSlam extends Proyectile{
 	}	
 
 	@Override
-		if (counter != 0) {
-			pGp.drawImage(image, PosX, PosY, 70, 70, null);
-			--counter; 
-		} else {
-			outOfRange = true;
-		}
+	public void setDraw(Graphics2D pGp) {
+		pGp.drawImage(image, PosX, PosY, 60, 60, null);
 	}
 	
 }

@@ -47,7 +47,6 @@ public class Hades extends Weapon{
 			}
 		}
 		cooldown = 20;
-		
 	}
 
 	@Override

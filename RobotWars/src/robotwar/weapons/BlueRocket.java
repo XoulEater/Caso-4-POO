@@ -19,11 +19,9 @@ public class BlueRocket extends Weapon{
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
-
 		IVariables varS = IVariables.getInstance();
 		varS.addProyectile(new BulletRocket(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
 		cooldown = 40;
-
 	}
 
 	@Override

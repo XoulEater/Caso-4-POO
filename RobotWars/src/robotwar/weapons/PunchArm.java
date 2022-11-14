@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.proyectiles.BigSlam;
+import robotwar.proyectiles.RoundSlam;
 
 public class PunchArm extends Weapon{
 	
@@ -16,7 +19,22 @@ public class PunchArm extends Weapon{
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
-		
+		UpdateImage(pDirection);
+		cooldown = 40;
+		IVariables varS = IVariables.getInstance();
+		if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
+			pDirection = lastDir;
+		}
+		switch (pDirection) {
+		case EAST:
+			varS.addProyectile(new RoundSlam(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+			lastDir = ORIENTATION.EAST;
+			break;
+		case WEST:
+			varS.addProyectile(new RoundSlam(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+			lastDir = ORIENTATION.WEST;
+			break;
+		}
 	}
 
 	@Override
