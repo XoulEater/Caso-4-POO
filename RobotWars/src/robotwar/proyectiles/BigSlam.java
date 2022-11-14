@@ -10,6 +10,7 @@ import robotwar.common.robotbase.ORIENTATION;
 
 public class BigSlam extends Proyectile{
 	private BufferedImage image;
+	private int counter = 10; 
 	
 	
 	public BigSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
@@ -39,8 +40,12 @@ public class BigSlam extends Proyectile{
 	}	
 
 	@Override
-	public void setDraw(Graphics2D pGp) {
-		pGp.drawImage(image, PosX, PosY, 60, 60, null);
+		if (counter != 0) {
+			pGp.drawImage(image, PosX, PosY, 70, 70, null);
+			--counter; 
+		} else {
+			outOfRange = true;
+		}
 	}
 	
 }

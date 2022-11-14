@@ -19,20 +19,32 @@ public class Hades extends Weapon{
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
-		UpdateImage(pDirection);
 		IVariables varS = IVariables.getInstance();
 		if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
 			pDirection = lastDir;
 		}
-		switch (pDirection) {
-		case EAST:
-			varS.addProyectile(new BigSlam(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
-			lastDir = ORIENTATION.EAST;
-			break;
-		case WEST:
-			varS.addProyectile(new BigSlam(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
-			lastDir = ORIENTATION.WEST;
-			break;
+		if (slot == 1) {
+			switch (pDirection) {
+			case EAST:
+				varS.addProyectile(new BigSlam(pPosX + 90, pPosY + 37, pDirection, this.speed));
+				lastDir = ORIENTATION.EAST;
+				break;
+			case WEST:
+				varS.addProyectile(new BigSlam(pPosX - 20, pPosY + 37, pDirection, this.speed));
+				lastDir = ORIENTATION.WEST;
+				break;
+			}
+		} else {
+			switch (pDirection) {
+			case EAST:
+				varS.addProyectile(new BigSlam(pPosX + 50, pPosY + 37, pDirection, this.speed));
+				lastDir = ORIENTATION.EAST;
+				break;
+			case WEST:
+				varS.addProyectile(new BigSlam(pPosX - 60, pPosY + 37, pDirection, this.speed));
+				lastDir = ORIENTATION.WEST;
+				break;
+			}
 		}
 		cooldown = 20;
 	}
