@@ -59,7 +59,7 @@ public class KeyBoard extends Key{
 		if (code == KeyEvent.VK_E) {
 			this.mele1 = true;
 		}
-		if (code == KeyEvent.VK_R) {
+		if (code == KeyEvent.VK_Q) {
 			this.mele2= true;
 		}
 	}

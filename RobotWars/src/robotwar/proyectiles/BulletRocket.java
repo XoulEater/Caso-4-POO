@@ -35,7 +35,7 @@ public class BulletRocket extends Proyectile {
 	}
 	@Override
 	public void setDraw(Graphics2D pGp) {
-		pGp.drawImage(imageGif.getImage(), PosX, PosY, 20, 20, null);
+		pGp.drawImage(imageGif.getImage(), PosX, PosY - 10, 30, 20, null);
 		
 	}
 }

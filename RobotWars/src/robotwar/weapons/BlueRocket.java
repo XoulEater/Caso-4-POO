@@ -13,14 +13,17 @@ import robotwar.proyectiles.BulletRocket;
 public class BlueRocket extends Weapon{
 	
 	public BlueRocket() {
-		super(10, 3, 150);
+		super(30, 3, 150);
 		image = "/robotwar/images/ran_b1.png";
 	}
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
+
 		IVariables varS = IVariables.getInstance();
 		varS.addProyectile(new BulletRocket(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+		cooldown = 40;
+
 	}
 
 	@Override
