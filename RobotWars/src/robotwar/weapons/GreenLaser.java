@@ -20,7 +20,19 @@ public class GreenLaser extends Weapon{
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
 		IVariables varS = IVariables.getInstance();
-		varS.addProyectile(new BulletLaser(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+		if (pDirection == ORIENTATION.EAST || pDirection == ORIENTATION.WEST) {
+			lastDir = pDirection;
+		}
+		switch (lastDir) {
+		case EAST:
+			varS.addProyectile(new BulletLaser(pPosX + 30, pPosY + 28, pDirection, this.speed));
+			lastDir = ORIENTATION.EAST;
+			break;
+		case WEST:
+			varS.addProyectile(new BulletLaser(pPosX + 45, pPosY + 28, pDirection, this.speed));
+			lastDir = ORIENTATION.WEST;
+			break;
+		}
 	}
 
 	@Override

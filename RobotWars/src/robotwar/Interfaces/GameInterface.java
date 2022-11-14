@@ -55,13 +55,13 @@ public class GameInterface extends JPanel {
 		List<Trap> arrayTraps = varS.getArrayTraps();
 		List<Proyectile> arrayProy = varS.getArrayProyectiles();
 				
+		robot1.draw(null, this.controller.time, g2);
 		arrayTraps.stream().forEach(k -> k.draw(g2));
 		arrayProy.stream().filter(k -> !k.isOutOfRange()).forEach(k -> k.draw(g2));
 
 		
 		System.out.println(" ");
 
-		robot1.draw(null, this.controller.time, g2);
 
 		g2.dispose();
 	}
