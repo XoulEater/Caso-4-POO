@@ -11,6 +11,8 @@ public abstract class Weapon extends DamageLevel {
 	protected String image;
 	protected List<Integer> weaponBound;
 	protected int slot;
+	protected int cooldown;
+	protected ORIENTATION lastDir = ORIENTATION.WEST;
 
 	public Weapon(int pSpeed, int pLevel, int pAttackDistance) {
 		this.speed = pSpeed;
@@ -68,4 +70,8 @@ public abstract class Weapon extends DamageLevel {
 
 	public abstract void UpdateImage(ORIENTATION pDirection);
 
+	public void decCooldown() {
+		this.cooldown -= 1;
+	}
 }
+

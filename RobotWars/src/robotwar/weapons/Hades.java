@@ -4,23 +4,37 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import robotwar.MeleSlam.BigSlam;
 import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.proyectiles.BigSlam;
 import robotwar.proyectiles.BulletRocket;
 
 public class Hades extends Weapon{
 	
 	public Hades() {
-		super(25, 8, 20);
+		super(0, 8, 20);
 		image = "/robotwar/images/mel_g2.png";
 	}
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
+		UpdateImage(pDirection);
 		IVariables varS = IVariables.getInstance();
-		varS.arrayMeleSlams(new BigSlam(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+		if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
+			pDirection = lastDir;
+		}
+		switch (pDirection) {
+		case EAST:
+			varS.addProyectile(new BigSlam(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+			lastDir = ORIENTATION.EAST;
+			break;
+		case WEST:
+			varS.addProyectile(new BigSlam(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+			lastDir = ORIENTATION.WEST;
+			break;
+		}
+		
 	}
 
 	@Override

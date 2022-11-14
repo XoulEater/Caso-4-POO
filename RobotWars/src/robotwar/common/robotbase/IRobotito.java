@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.Array;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +28,7 @@ public abstract class IRobotito extends IRobot {
 	protected String direction;
 	protected String name;
 	public BufferedImage leftL, upL, downL, upR, downR, rightR;
-	protected boolean shot, mele1, mele2;
+	protected boolean shot, melee1, melee2;
 
 	public IRobotito(ORIENTATION pOrientation) {
 		super(pOrientation);
@@ -172,27 +173,29 @@ public abstract class IRobotito extends IRobot {
 		this.name = pname;
 	}
 	
-	public void setIfShot(boolean pShot,boolean pMele1,boolean pMele2) {
+	public void setIfShot(boolean pShot,boolean pMelee1,boolean pMelee2) {
 		this.shot = pShot;
-		this.mele1 = pMele1;
-		this.mele2 = pMele2;
+		this.melee1 = pMelee1;
+		this.melee2 = pMelee2;
 	}
 	
 	public void draw(MOVEMENT pMove, LocalTime pActionTime, Graphics g) {
-
+		 Stream<Weapon> streamW = Stream.concat(Arrays.stream(weapons), Arrays.stream(strikes));
+		 streamW.forEach(k -> k.decCooldown());
+		
 		this.move(pMove, pActionTime,  g);
-		if (shot) {
+		if (shot && strikes[0].cooldown < 0) {
 			
 			this.hit(0, pActionTime, g);
 		}
-		if (mele1) {
+		if (melee1) {
 			
 			this.fire(0, pActionTime, g);
 		}
-//		if (mele2) {
-//			
-//			this.fire(1, pActionTime, g);
-//		}
+		if (melee2) {
+			
+			this.fire(1, pActionTime, g);
+		}
 	}
 
 }
