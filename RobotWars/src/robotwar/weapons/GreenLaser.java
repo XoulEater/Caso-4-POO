@@ -49,13 +49,9 @@ public class GreenLaser extends Weapon{
 			break;
 		case SOUTH:
 			image = "/robotwar/images/ran_g2D.png";
-			weaponBound = new ArrayList<>();
-			Collections.addAll(weaponBound, 95,35, 50,35);
 			break;
 		case NORTH:
 			image = "/robotwar/images/ran_g2U.png";
-			weaponBound = new ArrayList<>();
-			Collections.addAll(weaponBound, 95,35, 50,35);
 			break;
 		}
 		
