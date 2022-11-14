@@ -8,27 +8,27 @@ import javax.imageio.ImageIO;
 
 import robotwar.common.robotbase.ORIENTATION;
 
-public class BigSlam extends Proyectile{
+public class RoundSlam extends Proyectile{
 	private BufferedImage image;
 	
 	
-	public BigSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
+	public RoundSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
 		super(pX, pY, sight, pSpeed);
 
 		String url = null;
 		
 		switch(sight) {
 		case EAST:
-			url = "/robotwar/images/hadesS.png";
+			url = "/robotwar/images/punchSD.png";
 			break;
 		case WEST:
-			url ="/robotwar/images/hadesSI.png";
+			url ="/robotwar/images/punchSD.png";
 			break;
 		case SOUTH:
-			url = "/robotwar/images/hadesSD.png";
+			url = "/robotwar/images/punchSD.png";
 			break;
 		case NORTH:
-			url = "/robotwar/images/hadesSU.png";
+			url = "/robotwar/images/punchSD.png";
 			break;
 		}
 		try {	

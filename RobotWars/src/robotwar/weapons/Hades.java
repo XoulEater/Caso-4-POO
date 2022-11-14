@@ -34,7 +34,7 @@ public class Hades extends Weapon{
 			lastDir = ORIENTATION.WEST;
 			break;
 		}
-		
+		cooldown = 20;
 	}
 
 	@Override

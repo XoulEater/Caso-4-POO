@@ -8,11 +8,11 @@ import javax.imageio.ImageIO;
 
 import robotwar.common.robotbase.ORIENTATION;
 
-public class BigSlam extends Proyectile{
+public class SplitSlam extends Proyectile{
 	private BufferedImage image;
 	
 	
-	public BigSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
+	public SplitSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
 		super(pX, pY, sight, pSpeed);
 
 		String url = null;
