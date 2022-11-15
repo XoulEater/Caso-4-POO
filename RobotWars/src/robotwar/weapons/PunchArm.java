@@ -21,7 +21,6 @@ public class PunchArm extends Weapon {
 
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
-
 		IVariables varS = IVariables.getInstance();
 		if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
 			pDirection = lastDir;
@@ -30,12 +29,12 @@ public class PunchArm extends Weapon {
 			switch (pDirection) {
 			case EAST:
 				varS.addProyectile(
-						new RoundSlam(pPosX + 80, pPosY + 37, pDirection, this.speed, this.robot, this.level));
+						new RoundSlam(pPosX + 80, pPosY + 30, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
 				varS.addProyectile(
-						new RoundSlam(pPosX + 10, pPosY + 37, pDirection, this.speed, this.robot, this.level));
+						new RoundSlam(pPosX + 10, pPosY + 30, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}
@@ -43,12 +42,12 @@ public class PunchArm extends Weapon {
 			switch (pDirection) {
 			case EAST:
 				varS.addProyectile(
-						new RoundSlam(pPosX + 40, pPosY + 37, pDirection, this.speed, this.robot, this.level));
+						new RoundSlam(pPosX + 40, pPosY + 30, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
 				varS.addProyectile(
-						new RoundSlam(pPosX - 20, pPosY + 37, pDirection, this.speed, this.robot, this.level));
+						new RoundSlam(pPosX - 20, pPosY + 30, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}

@@ -43,7 +43,9 @@ public class Reaper extends Weapon{
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
+
 				varS.addProyectile(new SplitSlam(pPosX - 40, pPosY + 37, pDirection, this.speed, this.robot, this.level));
+
 				lastDir = ORIENTATION.WEST;
 				break;
 			}

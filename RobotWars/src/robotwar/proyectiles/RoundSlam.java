@@ -12,9 +12,9 @@ import robotwar.common.robotbase.Weapon;
 
 public class RoundSlam extends Proyectile{
 
-    private BufferedImage image;
-    private int counter = 10; 
-
+	private BufferedImage image;
+	private int counter = 10; 
+	
 
     public RoundSlam (int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
 		super(pX, pY, sight, pSpeed, pRobot, pLevel);
@@ -44,5 +44,6 @@ public class RoundSlam extends Proyectile{
             outOfRange = true;
         }
     }
+
 }
 

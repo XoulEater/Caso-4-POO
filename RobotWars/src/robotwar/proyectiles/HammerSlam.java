@@ -14,10 +14,16 @@ public class HammerSlam extends Proyectile{
 	private BufferedImage image;
 	private int counter = 10; 
 	
-	
-	public HammerSlam (int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
-		super(pX, pY, sight, pSpeed, pRobot, pLevel);
-		String url = "/robotwar/images/megaSU.png";
+
+	public HammerSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
+		super(pX, pY, sight, pSpeed);
+		String url = "/robotwar/images/hadesSU.png";
+		try {	
+			this.image = ImageIO.read(getClass().getResource(url));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override
