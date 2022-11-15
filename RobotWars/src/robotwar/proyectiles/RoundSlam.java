@@ -36,7 +36,7 @@ public class RoundSlam extends Proyectile{
 	@Override
 	public void setDraw(Graphics2D pGp) {
 		if (counter != 0) {
-			pGp.drawImage(image, PosX, PosY, 70, 70, null);
+			pGp.drawImage(image, PosX, PosY, 50, 50, null);
 			--counter; 
 		} else {
 			outOfRange = true;

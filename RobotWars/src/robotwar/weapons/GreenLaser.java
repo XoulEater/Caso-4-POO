@@ -13,7 +13,7 @@ import robotwar.proyectiles.*;
 public class GreenLaser extends Weapon{
 	
 	public GreenLaser() {
-		super(15, 1, 200);
+		super(30, 1, 200);
 		image = "/robotwar/images/ran_g2.png";
 	}
 	
@@ -33,6 +33,7 @@ public class GreenLaser extends Weapon{
 			lastDir = ORIENTATION.WEST;
 			break;
 		}
+		cooldown = 5;
 	}
 
 	@Override

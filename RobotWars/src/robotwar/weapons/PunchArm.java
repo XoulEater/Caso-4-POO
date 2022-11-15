@@ -27,22 +27,22 @@ public class PunchArm extends Weapon{
         if (slot == 1) {
             switch (pDirection) {
             case EAST:
-                varS.addProyectile(new RoundSlam(pPosX + 80, pPosY + 37, pDirection, this.speed));
+                varS.addProyectile(new RoundSlam(pPosX + 80, pPosY + 30, pDirection, this.speed));
                 lastDir = ORIENTATION.EAST;
                 break;
             case WEST:
-                varS.addProyectile(new RoundSlam(pPosX + 10, pPosY + 37, pDirection, this.speed));
+                varS.addProyectile(new RoundSlam(pPosX + 10, pPosY + 30, pDirection, this.speed));
                 lastDir = ORIENTATION.WEST;
                 break;
             }
         } else {
             switch (pDirection) {
             case EAST:
-                varS.addProyectile(new RoundSlam(pPosX + 40, pPosY + 37, pDirection, this.speed));
+                varS.addProyectile(new RoundSlam(pPosX + 40, pPosY + 30, pDirection, this.speed));
                 lastDir = ORIENTATION.EAST;
                 break;
             case WEST:
-                varS.addProyectile(new RoundSlam(pPosX - 20, pPosY + 37, pDirection, this.speed));
+                varS.addProyectile(new RoundSlam(pPosX - 20, pPosY + 30, pDirection, this.speed));
                 lastDir = ORIENTATION.WEST;
                 break;
             }

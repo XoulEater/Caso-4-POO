@@ -13,7 +13,7 @@ import robotwar.proyectiles.BulletFire;
 public class GreenScope extends Weapon{
 	
 	public GreenScope() {
-		super(15, 5, 300);
+		super(15, 1, 300);
 		image = "/robotwar/images/ran_g1.png";
 	}
 	
@@ -21,6 +21,7 @@ public class GreenScope extends Weapon{
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
 		IVariables varS = IVariables.getInstance();
 		varS.addProyectile(new BulletFire(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+		cooldown = 10;
 	}
 
 	@Override

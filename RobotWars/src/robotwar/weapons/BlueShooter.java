@@ -14,7 +14,7 @@ import robotwar.proyectiles.SolarLaser;
 public class BlueShooter extends Weapon{
 	
 	public BlueShooter() {
-		super(15, 7, 100);
+		super(25, 7, 100);
 		image = "/robotwar/images/ran_b2.png";
 	}
 	
@@ -22,6 +22,7 @@ public class BlueShooter extends Weapon{
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
 		IVariables varS = IVariables.getInstance();
 		varS.addProyectile(new SolarLaser(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
+		cooldown = 20;
 	}
 
 	@Override

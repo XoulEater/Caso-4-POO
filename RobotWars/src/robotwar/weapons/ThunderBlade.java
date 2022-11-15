@@ -31,7 +31,7 @@ public class ThunderBlade extends Weapon{
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
-				varS.addProyectile(new BladeSlam(pPosX - 60, pPosY + 53, pDirection, this.speed));
+				varS.addProyectile(new BladeSlam(pPosX - 20, pPosY + 53, pDirection, this.speed));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}
@@ -42,7 +42,7 @@ public class ThunderBlade extends Weapon{
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
-				varS.addProyectile(new BladeSlam(pPosX -20, pPosY + 53, pDirection, this.speed));
+				varS.addProyectile(new BladeSlam(pPosX - 60, pPosY + 53, pDirection, this.speed));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}

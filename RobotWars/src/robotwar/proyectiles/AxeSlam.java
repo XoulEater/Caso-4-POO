@@ -20,10 +20,10 @@ public class AxeSlam extends Proyectile{
 		
 		switch(sight) {
 		case EAST:
-			url = "/robotwar/images/megaSI.png";
+			url = "/robotwar/images/megaS.png";
 			break;
 		case WEST:
-			url ="/robotwar/images/megaS.png";
+			url ="/robotwar/images/megaSI.png";
 			break;
 		}
 		try {	
@@ -36,7 +36,7 @@ public class AxeSlam extends Proyectile{
 	@Override
 	public void setDraw(Graphics2D pGp) {
 		if (counter != 0) {
-			pGp.drawImage(image, PosX, PosY, 70, 70, null);
+			pGp.drawImage(image, PosX, PosY, 50, 70, null);
 			--counter; 
 		} else {
 			outOfRange = true;
