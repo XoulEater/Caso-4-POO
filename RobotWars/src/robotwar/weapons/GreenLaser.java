@@ -6,14 +6,15 @@ import java.util.Collections;
 import java.util.List;
 
 import robotwar.common.IVariables;
+import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
 import robotwar.proyectiles.*;
 
 public class GreenLaser extends Weapon{
 	
-	public GreenLaser() {
-		super(15, 1, 200);
+	public GreenLaser(IRobotito pRobot) {
+		super(15, 1, 200, pRobot);
 		image = "/robotwar/images/ran_g2.png";
 	}
 	
@@ -25,11 +26,11 @@ public class GreenLaser extends Weapon{
 		}
 		switch (lastDir) {
 		case EAST:
-			varS.addProyectile(new BulletLaser(pPosX + 30, pPosY + 28, pDirection, this.speed));
+			varS.addProyectile(new BulletLaser(pPosX + 30, pPosY + 28, pDirection, this.speed, this.robot, this.level));
 			lastDir = ORIENTATION.EAST;
 			break;
 		case WEST:
-			varS.addProyectile(new BulletLaser(pPosX + 45, pPosY + 28, pDirection, this.speed));
+			varS.addProyectile(new BulletLaser(pPosX + 45, pPosY + 28, pDirection, this.speed, this.robot, this.level));
 			lastDir = ORIENTATION.WEST;
 			break;
 		}

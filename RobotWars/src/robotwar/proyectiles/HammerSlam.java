@@ -6,15 +6,17 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
+import robotwar.common.robotbase.Weapon;
 
 public class HammerSlam extends Proyectile{
 	private BufferedImage image;
 	private int counter = 10; 
 	
 	
-	public HammerSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
-		super(pX, pY, sight, pSpeed);
+	public HammerSlam (int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
+		super(pX, pY, sight, pSpeed, pRobot, pLevel);
 		String url = "/robotwar/images/megaSU.png";
 	}
 

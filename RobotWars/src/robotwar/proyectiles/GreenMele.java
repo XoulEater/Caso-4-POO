@@ -7,13 +7,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
+import robotwar.common.robotbase.Weapon;
 
 public class GreenMele extends Proyectile{
 	private BufferedImage image;
-	public GreenMele(int pX, int pY, ORIENTATION sight, int pSpeed) {
-		
-		super(pX, pY, sight, pSpeed);
+	public GreenMele(int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
+		super(pX, pY, sight, pSpeed, pRobot, pLevel);
 		try {	
 			image = ImageIO.read(getClass().getResource("/robotwar/images/BulletSun.png"));
 		} catch (IOException e) {

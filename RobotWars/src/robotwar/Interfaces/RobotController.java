@@ -1,7 +1,10 @@
 package robotwar.Interfaces;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 import robotwar.common.IVariables;
 import robotwar.common.robotbase.Arena;
@@ -9,6 +12,7 @@ import robotwar.common.robotbase.BlueRobot;
 import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.MOVEMENT;
 import robotwar.common.robotbase.Trap;
+import robotwar.proyectiles.Proyectile;
 import robotwar.weapons.BlueShooter;
 import robotwar.weapons.PunchArm;
 import robotwar.weapons.Reaper;
@@ -27,16 +31,15 @@ public class RobotController implements Runnable {
 	public RobotController(IRobotito robot) {
 		robot1 = robot;
 		robot2 = new BlueRobot();
-		robot2.addStrike(new BlueShooter());
-		robot2.addWeapon(new Reaper());
-		robot2.addWeapon(new PunchArm());
+		robot2.addStrike(new BlueShooter(robot2));
+		robot2.addWeapon(new Reaper(robot2));
+		robot2.addWeapon(new PunchArm(robot2));
 		robot2.getPlayerImage();
 	}
 
 	public void setControl(Key pControl) {
 		this.control = pControl;
 	}
-
 
 	public void setWindow(GameInterface pRobotmainFrame) { // Para interfaz
 		contolledFrame = pRobotmainFrame;
@@ -64,10 +67,57 @@ public class RobotController implements Runnable {
 		control2.mele1 = false;
 		control2.mele2 = false;
 	}
+
 	private void validateColitions() {
 		IVariables varS = IVariables.getInstance();
 		List<Trap> arrayTraps = varS.getArrayTraps();
-		
+		List<IRobotito> arrayRobots = new ArrayList<>();
+		List<Proyectile> arrayProy = varS.getArrayProyectiles();
+		Collections.addAll(arrayRobots, robot1, robot2);
+
+		int robX1, robY1, robX2, robY2;
+
+		for (IRobotito robot : arrayRobots) {
+			robX1 = robot.getPosX();
+			robX2 = robX1 + 100;
+			robY1 = robot.getPosY();
+			robY2 = robY1 + 100;
+			Stream<Proyectile> validProys = arrayProy.stream().filter(x -> !x.isOutOfRange())
+					.filter(k -> (k.getPosX() < robot.getPosX() + 100) && (k.getPosX() > robot.getPosX())
+							&& (k.getPosY() < robot.getPosY() + 100) && (k.getPosY() > robot.getPosY()))
+					.filter(k -> k.getRobot() != robot);
+			
+			validProys.forEach(k -> robot.damage(k.getLevel()));
+			
+			validProys = arrayProy.stream().filter(x -> !x.isOutOfRange())
+					.filter(k -> (k.getPosX() < robot.getPosX() + 100) && (k.getPosX() > robot.getPosX())
+							&& (k.getPosY() < robot.getPosY() + 100) && (k.getPosY() > robot.getPosY()))
+					.filter(k -> k.getRobot() != robot);
+			validProys.forEach(k -> k.setInvalid());
+			
+
+			// System.out.println();
+			// System.out.println("Robot1 " + robX2 + " " + robY1);
+			for (Trap trampa : arrayTraps) {
+				int trampX1 = trampa.getPosX();
+				int trampY1 = trampa.getPosY();
+				int trampX2 = trampX1 + trampa.getWidht();
+				int trampY2 = trampY1 + trampa.getLenght();
+
+				// System.out.println("T" + " " + trampX1 + " " + trampX2 + " " + trampY1 + " "
+				// +trampY2 );
+				if ((robX1 < trampX2) && (robX1 > trampX1) && (robY1 < trampY2) && (robY1 > trampY1)) {
+					robot.intDamage(5);
+				} else if ((robX2 < trampX2) && (robX2 > trampX1) && (robY1 < trampY2) && (robY1 > trampY1)) {
+					robot.intDamage(5);
+				} else if ((robX1 < trampX2) && (robX1 > trampX1) && (robY2 < trampY2) && (robY2 > trampY1)) {
+					robot.intDamage(5);
+				} else if ((robX2 < trampX2) && (robX2 > trampX1) && (robY2 < trampY2) && (robY2 > trampY1)) {
+					robot.intDamage(5);
+				}
+			}
+		}
+	
 	}
 
 	@Override
@@ -79,7 +129,7 @@ public class RobotController implements Runnable {
 
 			updateRobots();
 			validateColitions();
-			
+
 			time = control.pulsation;
 			contolledFrame.repaint();
 			try {
