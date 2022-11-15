@@ -7,17 +7,20 @@ import java.util.List;
 import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+
 import robotwar.proyectiles.RoundSlam;
 
 public class PunchArm extends Weapon{
 	
 	public PunchArm() {
 		super(1, 8, 35);
+
 		image = "/robotwar/images/mel_b3.png";
 	}
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
+
 		IVariables varS = IVariables.getInstance();
 		if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
 			pDirection = lastDir;
@@ -47,6 +50,7 @@ public class PunchArm extends Weapon{
 		}
 		cooldown = 20;
 	}
+
 
 	@Override
 	public String getImage() {

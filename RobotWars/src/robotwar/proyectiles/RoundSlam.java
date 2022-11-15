@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import robotwar.common.robotbase.ORIENTATION;
 
 public class RoundSlam extends Proyectile{
+
     private BufferedImage image;
     private int counter = 10; 
 
@@ -43,3 +44,4 @@ public class RoundSlam extends Proyectile{
         }
     }
 }
+

@@ -19,7 +19,7 @@ public class BigSlam extends Proyectile {
 			url = "/robotwar/images/hadesS.png";
 			break;
 		case WEST:
-			url = "/robotwar/images/hadesSI.png";
+			url ="/robotwar/images/hadesSI.png";
 			break;
 		}
 		try {
@@ -32,11 +32,13 @@ public class BigSlam extends Proyectile {
 	@Override
 	public void setDraw(Graphics2D pGp) {
 		if (counter != 0) {
-			pGp.drawImage(image, PosX, PosY, 70, 70, null);
-			--counter;
+			pGp.drawImage(image, PosX, PosY, 30, 30, null);
+			--counter; 
+
 		} else {
 			outOfRange = true;
 		}
 	}
 
 }
+

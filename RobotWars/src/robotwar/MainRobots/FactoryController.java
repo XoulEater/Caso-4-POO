@@ -129,8 +129,6 @@ public class FactoryController {
 				GameInterface interfaz2 = new GameInterface(MainGame);
 				interfaz2.robot1 = nRobot;
 				
-
-				
 				window2.add(interfaz2);
 				window2.pack();
 				
