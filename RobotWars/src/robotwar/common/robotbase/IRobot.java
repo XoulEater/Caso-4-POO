@@ -36,7 +36,7 @@ public abstract class IRobot implements IConstants {
 		directionsdamage[1] = new DamageLevel();
 		directionsdamage[2] = new DamageLevel();
 		directionsdamage[3] = new DamageLevel();
-		
+
 		weapons = new Weapon[WEAPONS_PER_ROBOT];
 		strikes = new Weapon[STRIKES_PER_ROBOT];
 
@@ -97,7 +97,6 @@ public abstract class IRobot implements IConstants {
 			displacement %= 1000;
 		}
 
-
 		BufferedImage newimage = setImage();
 		g.drawImage(newimage, posX, posY, 100, 100, null);
 	}
@@ -120,7 +119,9 @@ public abstract class IRobot implements IConstants {
 	public void damage(int pLevel) {
 		Random rand = new Random();
 		List<DamageLevel> damageableList = Stream.concat(Stream.concat(Arrays.stream(strikes), Arrays.stream(weapons)), Arrays.stream(directionsdamage)).toList();
-		damageableList.get(rand.nextInt(STRIKES_PER_ROBOT + WEAPONS_PER_ROBOT + 4)).hitDamage(pLevel);
+		DamageLevel toDamage = damageableList.get(rand.nextInt(STRIKES_PER_ROBOT + WEAPONS_PER_ROBOT + 4));
+		System.out.println(toDamage.getDamageLevel());
+		toDamage.hitDamage(pLevel);
 	}
 
 	public void addStrike(Weapon pStrike) {

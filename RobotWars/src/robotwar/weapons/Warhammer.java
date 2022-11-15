@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
 
 public class Warhammer extends Weapon{
 	
-	public Warhammer() {
-		super(25, 6, 15);
+	public Warhammer(IRobotito pRobot) {
+		super(25, 6, 15, pRobot);
 		image = "/robotwar/images/mel_g1.png";
 	}
 	

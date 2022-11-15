@@ -9,12 +9,14 @@ import java.util.Collections;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
+import robotwar.common.robotbase.Weapon;
 
 public class BulletRocket extends Proyectile {
 	ImageIcon imageGif; 
-	public BulletRocket(int pX, int pY, ORIENTATION sight, int pSpeed) {
-		super(pX, pY, sight, pSpeed);
+	public BulletRocket(int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
+		super(pX, pY, sight, pSpeed, pRobot, pLevel);
 		String url = null;
 		
 		switch(sight) {

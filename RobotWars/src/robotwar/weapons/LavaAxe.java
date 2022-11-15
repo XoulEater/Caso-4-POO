@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
 
 public class LavaAxe extends Weapon{
 	
-	public LavaAxe() {
-		super(25, 6, 15);
+	public LavaAxe(IRobotito pRobot) {
+		super(25, 6, 15, pRobot);
 		image = "/robotwar/images/mel_b1.png";
 	}
 

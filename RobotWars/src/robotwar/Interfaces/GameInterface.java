@@ -18,7 +18,7 @@ public class GameInterface extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private static final int originalSize = 25; // Defalt size of each panel 25x25
-	private static final int scale = 4;
+	private static final int scale = 1;
 	public static final int tileSize = originalSize * scale; // Decides all ths screen sizes. 100x100
 	private BackGround fondo = new BackGround("/robotwar/images/floor1.jpg");
 	
@@ -65,8 +65,8 @@ public class GameInterface extends JPanel {
 		arrayProy.stream().filter(k -> !k.isOutOfRange()).forEach(k -> k.draw(g2));
 
 		
-		System.out.print("Robot 1 " + robot1.energy);
-		System.out.println(" Robot 2 " + robot2.energy);
+//		System.out.print("Robot 1 " + robot1.energy);
+//		System.out.println(" Robot 2 " + robot2.energy);
 
 
 		g2.dispose();

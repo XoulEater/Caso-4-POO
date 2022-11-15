@@ -3,14 +3,17 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
+import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
+import robotwar.common.robotbase.Weapon;
 
 public class BigSlam extends Proyectile {
 	private BufferedImage image;
 	private int counter = 10;
 
-	public BigSlam(int pX, int pY, ORIENTATION sight, int pSpeed) {
-		super(pX, pY, sight, pSpeed);
+	public BigSlam(int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
+		super(pX, pY, sight, pSpeed, pRobot, pLevel);
 
 		String url = null;
 

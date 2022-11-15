@@ -29,6 +29,7 @@ public abstract class IRobotito extends IRobot {
 	protected String name;
 	public BufferedImage leftL, upL, downL, upR, downR, rightR;
 	protected boolean shot, melee1, melee2;
+	protected int damageCap; 
 
 	public IRobotito(ORIENTATION pOrientation) {
 		super(pOrientation);
@@ -182,6 +183,7 @@ public abstract class IRobotito extends IRobot {
 	public void draw(MOVEMENT pMove, LocalTime pActionTime, Graphics g) {
 		 Stream<Weapon> streamW = Stream.concat(Arrays.stream(weapons), Arrays.stream(strikes));
 		 streamW.forEach(k -> k.decCooldown());
+		 --damageCap; 
 		
 		this.move(pMove, pActionTime,  g);
 		if (shot && strikes[0].cooldown < 0) {
@@ -198,5 +200,22 @@ public abstract class IRobotito extends IRobot {
 		}
 	}
 
+	public List<Integer> getBound() {
+		return panelBounds;
+	}
+	public int getPosX() {
+		return posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+	
+	public void intDamage(int pDamage) {
+		if (damageCap < 0) {
+			this.energy -= pDamage;
+			damageCap = 9;
+		}
+	}
 }
 

@@ -5,19 +5,19 @@ import java.util.Collections;
 import java.util.List;
 
 import robotwar.common.IVariables;
+import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
 import robotwar.proyectiles.BladeSlam;
 import robotwar.proyectiles.SplitSlam;
 
-
-public class ThunderBlade extends Weapon{
-	public ThunderBlade() {
-		super(1, 10, 13);
+public class ThunderBlade extends Weapon {
+	public ThunderBlade(IRobotito pRobot) {
+		super(1, 10, 13, pRobot);
 		image = "/robotwar/images/mel_g3.png";
-		
+
 	}
-	
+
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
 		IVariables varS = IVariables.getInstance();
@@ -27,22 +27,26 @@ public class ThunderBlade extends Weapon{
 		if (slot == 1) {
 			switch (pDirection) {
 			case EAST:
-				varS.addProyectile(new BladeSlam(pPosX + 90, pPosY + 53, pDirection, this.speed));
+				varS.addProyectile(
+						new BladeSlam(pPosX + 90, pPosY + 53, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
-				varS.addProyectile(new BladeSlam(pPosX - 60, pPosY + 53, pDirection, this.speed));
+				varS.addProyectile(
+						new BladeSlam(pPosX - 60, pPosY + 53, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}
 		} else {
 			switch (pDirection) {
 			case EAST:
-				varS.addProyectile(new BladeSlam(pPosX + 60, pPosY + 53, pDirection, this.speed));
+				varS.addProyectile(
+						new BladeSlam(pPosX + 60, pPosY + 53, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
-				varS.addProyectile(new BladeSlam(pPosX -20, pPosY + 53, pDirection, this.speed));
+				varS.addProyectile(
+						new BladeSlam(pPosX - 20, pPosY + 53, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}
@@ -62,11 +66,11 @@ public class ThunderBlade extends Weapon{
 
 	@Override
 	public void UpdateImage(ORIENTATION pDirection) {
-		switch(pDirection) {
+		switch (pDirection) {
 		case EAST:
 			image = "/robotwar/images/mel_g3.png";
 			weaponBound = new ArrayList<>();
-			Collections.addAll(weaponBound, 90, 75, 100,30);
+			Collections.addAll(weaponBound, 90, 75, 100, 30);
 			if (slot == 0) {
 				weaponBound.set(0, weaponBound.get(0) - 70);
 			}
@@ -74,7 +78,7 @@ public class ThunderBlade extends Weapon{
 		case WEST:
 			image = "/robotwar/images/mel_g3I.png";
 			weaponBound = new ArrayList<>();
-			Collections.addAll(weaponBound, 70, 75, 100,30);
+			Collections.addAll(weaponBound, 70, 75, 100, 30);
 			if (slot == 0) {
 				weaponBound.set(0, weaponBound.get(0) - 70);
 			}
@@ -84,7 +88,7 @@ public class ThunderBlade extends Weapon{
 		case NORTH:
 			break;
 		}
-		
+
 	}
-	
+
 }
