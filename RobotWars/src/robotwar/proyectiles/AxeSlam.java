@@ -8,22 +8,22 @@ import javax.imageio.ImageIO;
 
 import robotwar.common.robotbase.ORIENTATION;
 
-public class BigSlam extends Proyectile{
+public class AxeSlam extends Proyectile{
 	private BufferedImage image;
 	private int counter = 10; 
 	
 	
-	public BigSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
+	public AxeSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
 		super(pX, pY, sight, pSpeed);
 
 		String url = null;
 		
 		switch(sight) {
 		case EAST:
-			url = "/robotwar/images/hadesS.png";
+			url = "/robotwar/images/megaSI.png";
 			break;
 		case WEST:
-			url ="/robotwar/images/hadesSI.png";
+			url ="/robotwar/images/megaS.png";
 			break;
 		}
 		try {	
@@ -36,11 +36,10 @@ public class BigSlam extends Proyectile{
 	@Override
 	public void setDraw(Graphics2D pGp) {
 		if (counter != 0) {
-			pGp.drawImage(image, PosX, PosY, 30, 30, null);
+			pGp.drawImage(image, PosX, PosY, 70, 70, null);
 			--counter; 
 		} else {
 			outOfRange = true;
 		}
 	}
 }
-

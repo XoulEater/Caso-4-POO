@@ -13,29 +13,42 @@ import robotwar.proyectiles.RoundSlam;
 public class PunchArm extends Weapon{
 	
 	public PunchArm() {
-		super(25, 8, 35);
+		super(1, 8, 35);
+		
 		image = "/robotwar/images/mel_b3.png";
 	}
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
-		UpdateImage(pDirection);
-		cooldown = 40;
-		IVariables varS = IVariables.getInstance();
-		if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
-			pDirection = lastDir;
-		}
-		switch (pDirection) {
-		case EAST:
-			varS.addProyectile(new RoundSlam(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
-			lastDir = ORIENTATION.EAST;
-			break;
-		case WEST:
-			varS.addProyectile(new RoundSlam(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed));
-			lastDir = ORIENTATION.WEST;
-			break;
-		}
-	}
+        IVariables varS = IVariables.getInstance();
+        if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
+            pDirection = lastDir;
+        }
+        if (slot == 1) {
+            switch (pDirection) {
+            case EAST:
+                varS.addProyectile(new RoundSlam(pPosX + 80, pPosY + 37, pDirection, this.speed));
+                lastDir = ORIENTATION.EAST;
+                break;
+            case WEST:
+                varS.addProyectile(new RoundSlam(pPosX + 10, pPosY + 37, pDirection, this.speed));
+                lastDir = ORIENTATION.WEST;
+                break;
+            }
+        } else {
+            switch (pDirection) {
+            case EAST:
+                varS.addProyectile(new RoundSlam(pPosX + 40, pPosY + 37, pDirection, this.speed));
+                lastDir = ORIENTATION.EAST;
+                break;
+            case WEST:
+                varS.addProyectile(new RoundSlam(pPosX - 20, pPosY + 37, pDirection, this.speed));
+                lastDir = ORIENTATION.WEST;
+                break;
+            }
+        }
+        cooldown = 20;
+    }
 
 	@Override
 	public String getImage() {

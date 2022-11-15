@@ -8,30 +8,15 @@ import javax.imageio.ImageIO;
 
 import robotwar.common.robotbase.ORIENTATION;
 
-public class SplitSlam extends Proyectile{
+public class HammerSlam extends Proyectile{
 	private BufferedImage image;
 	private int counter = 10; 
 	
 	
-	public SplitSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
+	public HammerSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
 		super(pX, pY, sight, pSpeed);
-
-		String url = null;
-		
-		switch(sight) {
-		case EAST:
-			url = "/robotwar/images/reaperS.png";
-			break;
-		case WEST:
-			url ="/robotwar/images/reaperSI.png";
-			break;
-		}
-		try {	
-			this.image = ImageIO.read(getClass().getResource(url));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}	
+		String url = "/robotwar/images/megaSU.png";
+	}
 
 	@Override
 	public void setDraw(Graphics2D pGp) {

@@ -9,43 +9,44 @@ import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
 import robotwar.proyectiles.BigSlam;
 import robotwar.proyectiles.BulletRocket;
+import robotwar.proyectiles.ReaperSlam;
 
 public class Hades extends Weapon{
 	
 	public Hades() {
-		super(0, 8, 20);
+		super(1, 8, 20);
 		image = "/robotwar/images/mel_g2.png";
 	}
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
 		IVariables varS = IVariables.getInstance();
-		if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
-			pDirection = lastDir;
-		}
-		if (slot == 1) {
-			switch (pDirection) {
-			case EAST:
-				varS.addProyectile(new BigSlam(pPosX + 90, pPosY + 37, pDirection, this.speed));
-				lastDir = ORIENTATION.EAST;
-				break;
-			case WEST:
-				varS.addProyectile(new BigSlam(pPosX - 20, pPosY + 37, pDirection, this.speed));
-				lastDir = ORIENTATION.WEST;
-				break;
-			}
-		} else {
-			switch (pDirection) {
-			case EAST:
-				varS.addProyectile(new BigSlam(pPosX + 50, pPosY + 37, pDirection, this.speed));
-				lastDir = ORIENTATION.EAST;
-				break;
-			case WEST:
-				varS.addProyectile(new BigSlam(pPosX - 60, pPosY + 37, pDirection, this.speed));
-				lastDir = ORIENTATION.WEST;
-				break;
-			}
-		}
+        if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
+            pDirection = lastDir;
+        }
+        if (slot == 1) {
+            switch (pDirection) {
+            case EAST:
+                varS.addProyectile(new ReaperSlam(pPosX + 90, pPosY + 37, pDirection, this.speed));
+                lastDir = ORIENTATION.EAST;
+                break;
+            case WEST:
+                varS.addProyectile(new ReaperSlam(pPosX + 0, pPosY + 37, pDirection, this.speed));
+                lastDir = ORIENTATION.WEST;
+                break;
+            }
+        } else {
+            switch (pDirection) {
+            case EAST:
+                varS.addProyectile(new ReaperSlam(pPosX + 50, pPosY + 37, pDirection, this.speed));
+                lastDir = ORIENTATION.EAST;
+                break;
+            case WEST:
+                varS.addProyectile(new ReaperSlam(pPosX - 40, pPosY + 37, pDirection, this.speed));
+                lastDir = ORIENTATION.WEST;
+                break;
+            }
+        }
 		cooldown = 20;
 	}
 

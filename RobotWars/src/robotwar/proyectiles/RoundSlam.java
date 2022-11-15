@@ -10,6 +10,7 @@ import robotwar.common.robotbase.ORIENTATION;
 
 public class RoundSlam extends Proyectile{
 	private BufferedImage image;
+	private int counter = 10; 
 	
 	
 	public RoundSlam (int pX, int pY, ORIENTATION sight, int pSpeed) {
@@ -19,16 +20,10 @@ public class RoundSlam extends Proyectile{
 		
 		switch(sight) {
 		case EAST:
-			url = "/robotwar/images/punchSD.png";
+			url = "/robotwar/images/punchSI.png";
 			break;
 		case WEST:
-			url ="/robotwar/images/punchSD.png";
-			break;
-		case SOUTH:
-			url = "/robotwar/images/punchSD.png";
-			break;
-		case NORTH:
-			url = "/robotwar/images/punchSD.png";
+			url ="/robotwar/images/punchS.png";
 			break;
 		}
 		try {	
@@ -40,7 +35,11 @@ public class RoundSlam extends Proyectile{
 
 	@Override
 	public void setDraw(Graphics2D pGp) {
-		pGp.drawImage(image, PosX, PosY, 60, 60, null);
+		if (counter != 0) {
+			pGp.drawImage(image, PosX, PosY, 70, 70, null);
+			--counter; 
+		} else {
+			outOfRange = true;
+		}
 	}
-	
 }
