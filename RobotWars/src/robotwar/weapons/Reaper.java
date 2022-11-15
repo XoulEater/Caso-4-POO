@@ -4,19 +4,49 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.proyectiles.BigSlam;
+import robotwar.proyectiles.SplitSlam;
 
 public class Reaper extends Weapon{
 	
 	public Reaper() {
-		super(25, 5, 20);
+		super(1, 5, 20);
 		image = "/robotwar/images/mel_b2.png";
 	}
 	
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
-		
+		IVariables varS = IVariables.getInstance();
+		if (pDirection == ORIENTATION.SOUTH || pDirection == ORIENTATION.NORTH) {
+			pDirection = lastDir;
+		}
+		if (slot == 1) {
+			switch (pDirection) {
+			case EAST:
+				varS.addProyectile(new SplitSlam(pPosX + 90, pPosY + 37, pDirection, this.speed));
+				lastDir = ORIENTATION.EAST;
+				break;
+			case WEST:
+				varS.addProyectile(new SplitSlam(pPosX, pPosY + 37, pDirection, this.speed));
+				lastDir = ORIENTATION.WEST;
+				break;
+			}
+		} else {
+			switch (pDirection) {
+			case EAST:
+				varS.addProyectile(new SplitSlam(pPosX + 50, pPosY + 37, pDirection, this.speed));
+				lastDir = ORIENTATION.EAST;
+				break;
+			case WEST:
+				varS.addProyectile(new SplitSlam(pPosX - 40, pPosY + 37, pDirection, this.speed));
+				lastDir = ORIENTATION.WEST;
+				break;
+			}
+		}
+		cooldown = 20;
 	}
 
 	@Override

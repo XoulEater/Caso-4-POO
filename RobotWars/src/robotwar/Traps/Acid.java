@@ -18,6 +18,8 @@ public class Acid extends Trap {
 
 	public Acid(int pX, int pY) {
 		super(pX, pY);
+		this.widht = 100;
+		this.lenght = 100;
 	}
 	@Override
 	public void draw(Graphics2D pGp) { // "/robotwar/images/sierra.gif"

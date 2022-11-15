@@ -18,6 +18,8 @@ public class Fire  extends Trap {
 
 	public Fire(int pX, int pY) {
 		super(pX, pY);
+		this.widht = 200;
+		this.lenght = 200;
 	}
 	@Override
 	public void draw(Graphics2D pGp) { // "/robotwar/images/sierra.gif"

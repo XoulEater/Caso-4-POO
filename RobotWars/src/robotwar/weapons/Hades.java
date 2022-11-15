@@ -13,7 +13,7 @@ import robotwar.proyectiles.BulletRocket;
 public class Hades extends Weapon{
 	
 	public Hades() {
-		super(0, 8, 20);
+		super(1, 8, 20);
 		image = "/robotwar/images/mel_g2.png";
 	}
 	
@@ -47,7 +47,6 @@ public class Hades extends Weapon{
 			}
 		}
 		cooldown = 20;
-		
 	}
 
 	@Override

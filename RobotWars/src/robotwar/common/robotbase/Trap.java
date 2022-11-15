@@ -17,6 +17,7 @@ public abstract class Trap {
 	protected String imageLink;
 	protected Graphics2D pgp3;
 	protected int level;
+	protected int widht, lenght; 
 	
 	public Trap (int pX, int pY)
 	{
@@ -25,4 +26,13 @@ public abstract class Trap {
 	}
 
 	public abstract void draw (Graphics2D pgp3) ;
+
+	public int getWidht() {
+		return widht;
+	}
+
+	public int getLenght() {
+		return lenght;
+	}
+	
 }
