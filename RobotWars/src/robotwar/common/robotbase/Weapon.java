@@ -13,11 +13,13 @@ public abstract class Weapon extends DamageLevel {
 	protected int slot;
 	protected int cooldown;
 	protected ORIENTATION lastDir = ORIENTATION.WEST;
+	protected IRobotito robot;
 
-	public Weapon(int pSpeed, int pLevel, int pAttackDistance) {
+	public Weapon(int pSpeed, int pLevel, int pAttackDistance, IRobotito pRobot) {
 		this.speed = pSpeed;
 		this.level = pLevel;
 		this.attackDistance = pAttackDistance;
+		this.robot = pRobot;
 	}
 
 	public void fire(int pPosX, int pPosY, ORIENTATION pDirection) {
@@ -73,5 +75,6 @@ public abstract class Weapon extends DamageLevel {
 	public void decCooldown() {
 		this.cooldown -= 1;
 	}
+
 }
 

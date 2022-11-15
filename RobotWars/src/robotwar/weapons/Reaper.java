@@ -6,14 +6,16 @@ import java.util.Collections;
 import java.util.List;
 
 import robotwar.common.IVariables;
+import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+
 import robotwar.proyectiles.SplitSlam;
 
 public class Reaper extends Weapon{
 	
-	public Reaper() {
-		super(1, 5, 20);
+	public Reaper(IRobotito pRobot) {
+		super(1, 5, 20, pRobot);
 		image = "/robotwar/images/mel_b2.png";
 	}
 	
@@ -26,22 +28,24 @@ public class Reaper extends Weapon{
 		if (slot == 1) {
 			switch (pDirection) {
 			case EAST:
-				varS.addProyectile(new SplitSlam(pPosX + 90, pPosY + 37, pDirection, this.speed));
+				varS.addProyectile(new SplitSlam(pPosX + 90, pPosY + 37, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
-				varS.addProyectile(new SplitSlam(pPosX + 15, pPosY + 37, pDirection, this.speed));
+				varS.addProyectile(new SplitSlam(pPosX, pPosY + 37, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}
 		} else {
 			switch (pDirection) {
 			case EAST:
-				varS.addProyectile(new SplitSlam(pPosX + 50, pPosY + 37, pDirection, this.speed));
+				varS.addProyectile(new SplitSlam(pPosX + 50, pPosY + 37, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
-				varS.addProyectile(new SplitSlam(pPosX - 40, pPosY + 37, pDirection, this.speed));
+
+				varS.addProyectile(new SplitSlam(pPosX - 40, pPosY + 37, pDirection, this.speed, this.robot, this.level));
+
 				lastDir = ORIENTATION.WEST;
 				break;
 			}

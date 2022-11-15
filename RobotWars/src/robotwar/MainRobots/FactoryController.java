@@ -53,22 +53,22 @@ public class FactoryController {
 		if ("Green".equals(type) && "Green".equals(nRobot.getType())) {
 			switch (id) {
 			case 1:
-				nRobot.addStrike(new GreenScope());
+				nRobot.addStrike(new GreenScope(nRobot));
 				updateData();
 				break;
 			case 2:
-				nRobot.addStrike(new GreenLaser());
+				nRobot.addStrike(new GreenLaser(nRobot));
 				updateData();
 				break;
 			}
 		} else if ("Blue".equals(type) && "Blue".equals(nRobot.getType())) {
 			switch (id) {
 			case 1:
-				nRobot.addStrike(new BlueShooter());
+				nRobot.addStrike(new BlueShooter(nRobot));
 				updateData();
 				break;
 			case 2:
-				nRobot.addStrike(new BlueRocket());
+				nRobot.addStrike(new BlueRocket(nRobot));
 				updateData();
 				break;
 			}
@@ -80,30 +80,30 @@ public class FactoryController {
 		if ("Green".equals(type) && "Green".equals(nRobot.getType())) {
 			switch (id) {
 			case 1:
-				nRobot.addWeapon(new Warhammer());
+				nRobot.addWeapon(new Warhammer(nRobot));
 				updateData();
 				break;
 			case 2:
-				nRobot.addWeapon(new ThunderBlade());
+				nRobot.addWeapon(new ThunderBlade(nRobot));
 				updateData();
 				break;
 			case 3:
-				nRobot.addWeapon(new Hades());
+				nRobot.addWeapon(new Hades(nRobot));
 				updateData();
 				break;
 			}
 		} else if ("Blue".equals(type) && "Blue".equals(nRobot.getType())) {
 			switch (id) {
 			case 1:
-				nRobot.addWeapon(new LavaAxe());
+				nRobot.addWeapon(new LavaAxe(nRobot));
 				updateData();
 				break;
 			case 2:
-				nRobot.addWeapon(new Reaper());
+				nRobot.addWeapon(new Reaper(nRobot));
 				updateData();
 				break;
 			case 3:
-				nRobot.addWeapon(new PunchArm());
+				nRobot.addWeapon(new PunchArm(nRobot));
 				updateData();
 				break;
 			}

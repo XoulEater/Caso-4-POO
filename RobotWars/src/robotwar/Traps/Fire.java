@@ -18,11 +18,13 @@ public class Fire  extends Trap {
 
 	public Fire(int pX, int pY) {
 		super(pX, pY);
+		this.widht = 100;
+		this.lenght = 100;
 	}
 	@Override
 	public void draw(Graphics2D pGp) { // "/robotwar/images/sierra.gif"
 		ImageIcon imageGif = new ImageIcon(getClass().getResource("/robotwar/images/campfire.gif"));
-		pGp.drawImage(imageGif.getImage(), posX, posY, 200, 200, null);
+		pGp.drawImage(imageGif.getImage(), posX, posY, 100, 100, null);
 	}
 
 }
