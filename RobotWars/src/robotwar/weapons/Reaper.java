@@ -8,6 +8,7 @@ import java.util.List;
 import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+
 import robotwar.proyectiles.SplitSlam;
 
 public class Reaper extends Weapon{
@@ -30,7 +31,7 @@ public class Reaper extends Weapon{
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
-				varS.addProyectile(new SplitSlam(pPosX - 40, pPosY + 37, pDirection, this.speed));
+				varS.addProyectile(new SplitSlam(pPosX, pPosY + 37, pDirection, this.speed));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}
@@ -41,7 +42,7 @@ public class Reaper extends Weapon{
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
-				varS.addProyectile(new SplitSlam(pPosX + 15, pPosY + 37, pDirection, this.speed));
+				varS.addProyectile(new SplitSlam(pPosX - 40, pPosY + 37, pDirection, this.speed));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}

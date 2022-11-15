@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import robotwar.common.robotbase.ORIENTATION;
 
 public class SplitSlam extends Proyectile{
+
 	private BufferedImage image;
 	private int counter = 10; 
 	

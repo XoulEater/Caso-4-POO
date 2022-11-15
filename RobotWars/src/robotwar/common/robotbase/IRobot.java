@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import robotwar.common.IConstants;
 
 public abstract class IRobot implements IConstants {
-	protected int energy = 100;
+	public int energy = 100;
 	protected int posX;
 	protected int posY;
 	protected int strikeIndex;
@@ -21,7 +21,7 @@ public abstract class IRobot implements IConstants {
 	protected Weapon strikes[];
 	protected DamageLevel directionsdamage[];
 	protected ORIENTATION currentOrientation;
-	protected MOVEMENT currentMovement;
+	protected MOVEMENT currentMovement = MOVEMENT.NONE;
 
 	protected int displacement = 0;
 	protected int speed = 16;
