@@ -24,7 +24,7 @@ public class GameInterface extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private BackGround fondo = new BackGround("/robotwar/images/testground.png", "/robotwar/images/floor3.jpg");
+	private BackGround fondo = new BackGround("/robotwar/images/floor1.jpg", "/robotwar/images/floor3.jpg");
 	public IRobotito robot1;
 	public IRobotito robot2;
 
@@ -84,8 +84,7 @@ public class GameInterface extends JPanel {
 		arrayTraps.stream().forEach(k -> k.draw(g2));
 		arrayProy.stream().filter(k -> !k.isOutOfRange()).forEach(k -> k.draw(g2));
 		EnBarProy.stream().forEach(k -> k.draw(g2));
-		System.out.print("Robot 1 " + robot1.energy);
-		System.out.println(" Robot 2 " + robot2.energy);
+
 
 		g2.dispose();
 	}

@@ -32,6 +32,7 @@ public class RobotController implements Runnable {
 		robot2.addStrike(new BlueShooter(robot2));
 		robot2.addWeapon(new Reaper(robot2));
 		robot2.addWeapon(new PunchArm(robot2));
+		robot2.setName("Player 2");
 		robot2.getPlayerImage();
 		EnergyBar enbar = new EnergyBar(robot2, 1200 - 280, 0);
 	}
@@ -58,7 +59,7 @@ public class RobotController implements Runnable {
 		control.mele1 = false;
 		control.mele2 = false;
 
-		if (robot2.getPosX() >= 1200) {
+		if (robot1.getPosX() >= 1200) {
 			this.contolledFrame.rightSide();
 		} else {
 			this.contolledFrame.leftSide();
