@@ -15,6 +15,7 @@ import robotwar.gamebasics.IRobotito;
 
 public class BulletLaser extends Proyectile {
 	private BufferedImage image;
+	private int counter = 13; 
 	public BulletLaser(int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
 		super(pX, pY, sight, pSpeed, pRobot, pLevel);
 		String url = null;
@@ -42,7 +43,12 @@ public class BulletLaser extends Proyectile {
 
 	@Override
 	public void setDraw(Graphics2D pGp) {
-		pGp.drawImage(image, PosX, PosY, 20, 20, null);
+		if (counter != 0) {
+			pGp.drawImage(image, PosX, PosY, 20, 20, null);
+			--counter; 
+		} else {
+			outOfRange = true;
+		}
 		
 	}
 }

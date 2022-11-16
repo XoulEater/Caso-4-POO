@@ -23,6 +23,9 @@ public class BlueRocket extends Weapon{
 		IVariables varS = IVariables.getInstance();
 		varS.addProyectile(new BulletRocket(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed, this.robot, this.level));
 		cooldown = 40;
+		double consumo = 0.2 * this.level;
+		consumo += consumo * 0.15 * 600 / 100;
+		this.robot.energy -= consumo;
 	}
 
 	@Override

@@ -27,7 +27,6 @@ public abstract class Weapon extends DamageLevel {
 	public void fire(int pPosX, int pPosY, ORIENTATION pDirection) {
 		if (this.isEnabled()) {
 			this.triggerWeapon(pPosX, pPosY, pDirection);
-			this.robot.energy -= 0.2 * level;
 		}
 	}
 

@@ -15,6 +15,8 @@ import robotwar.gamebasics.IRobotito;
 
 public class BulletRocket extends Proyectile {
 	ImageIcon imageGif; 
+	int counter = 40;
+	
 	public BulletRocket(int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
 		super(pX, pY, sight, pSpeed, pRobot, pLevel);
 		String url = null;
@@ -37,7 +39,12 @@ public class BulletRocket extends Proyectile {
 	}
 	@Override
 	public void setDraw(Graphics2D pGp) {
-		pGp.drawImage(imageGif.getImage(), PosX, PosY - 10, 30, 20, null);
+		if (counter != 0) {
+			pGp.drawImage(imageGif.getImage(), PosX, PosY - 10, 30, 20, null);
+			--counter; 
+		} else {
+			outOfRange = true;
+		}
 		
 	}
 }

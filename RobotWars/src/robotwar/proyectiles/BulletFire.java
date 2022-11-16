@@ -13,6 +13,8 @@ import robotwar.gamebasics.IRobotito;
 
 public class BulletFire extends Proyectile{
 	private BufferedImage image;
+	private int counter = 40;
+	
 	public BulletFire(int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
 		super(pX, pY, sight, pSpeed, pRobot, pLevel);
 	try {
@@ -23,8 +25,11 @@ public class BulletFire extends Proyectile{
 	}
 	@Override
 	public void setDraw(Graphics2D pGp) {
-		
-		pGp.drawImage(image, PosX-15, PosY-5, 20, 20, null);
-		
+		if (counter != 0) {
+			pGp.drawImage(image, PosX-15, PosY-5, 20, 20, null);
+			--counter; 
+		} else {
+			outOfRange = true;
+		}
 	}
 }

@@ -54,6 +54,9 @@ public class Warhammer extends Weapon {
 				break;
 			}
 		}
+		double consumo = 0.3 * this.level;
+		consumo += consumo * 0.10 * 20 / 20;
+		this.robot.energy -= consumo;
 		cooldown = 20;
 
 	}
