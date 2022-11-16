@@ -13,7 +13,7 @@ import robotwar.gamebasics.IRobotito;
 
 public class SolarLaser extends Proyectile{
 	private BufferedImage image;
-	
+	private int counter = 45; 
 	public SolarLaser(int pX, int pY, ORIENTATION sight, int pSpeed, IRobotito pRobot, int pLevel) {
 		super(pX, pY, sight, pSpeed, pRobot, pLevel);
 		try {	
@@ -26,7 +26,13 @@ public class SolarLaser extends Proyectile{
 
 	@Override
 	public void setDraw(Graphics2D pGp) {
-		pGp.drawImage(image, PosX-10, PosY-10, 20, 20, null);
+		if (counter != 0) {
+			pGp.drawImage(image, PosX-10, PosY-10, 20, 20, null);
+			--counter; 
+		} else {
+			outOfRange = true;
+		}
+		
 		
 	}
 }

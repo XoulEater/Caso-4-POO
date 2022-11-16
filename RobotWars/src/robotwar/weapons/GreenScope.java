@@ -22,6 +22,9 @@ public class GreenScope extends Weapon{
 		cooldown = 10;
 		varS.addProyectile(new BulletFire(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection,
 				this.speed, this.robot, this.level));
+		double consumo = 0.2 * this.level;
+		consumo += consumo * 0.15 * 600 / 100;
+		this.robot.energy -= consumo;
 
 	}
 

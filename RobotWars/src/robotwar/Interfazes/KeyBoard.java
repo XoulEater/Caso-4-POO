@@ -35,20 +35,20 @@ public class KeyBoard extends Key{
 			this.currentMovement = MOVEMENT.LEFT;
 			this.pulsation = LocalTime.now();
 		}
-		if (code == KeyEvent.VK_UP)
+		if (code == KeyEvent.VK_F)
 		{
 			this.currentOrientation= ORIENTATION.NORTH;
 		}
-		else if (code == KeyEvent.VK_DOWN)
+		else if (code == KeyEvent.VK_V)
 		{
 			this.currentOrientation= ORIENTATION.SOUTH;
 		}
-		else if (code == KeyEvent.VK_RIGHT)
+		else if (code == KeyEvent.VK_B)
 		{
 			this.currentOrientation= ORIENTATION.EAST;
 			this.side = ORIENTATION.EAST;
 		}
-		else if (code == KeyEvent.VK_LEFT)
+		else if (code == KeyEvent.VK_C)
 		{
 			this.currentOrientation= ORIENTATION.WEST;
 			this.side = ORIENTATION.WEST;

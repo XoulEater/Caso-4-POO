@@ -3,6 +3,7 @@ package robotwar.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import robotwar.Interfazes.EnergyBar;
 import robotwar.common.robotbase.Trap;
 import robotwar.proyectiles.Proyectile;
 
@@ -13,6 +14,7 @@ public class IVariables {
 	// Aca podemos definir datos globales
 	private List<Trap> arrayTraps;
 	private List<Proyectile> arrayProyectiles;
+	private List<EnergyBar> arrayEnergyBar;
 
 	private List<Integer> posPlayer1;
 	private List<Integer> posPlayer2;
@@ -20,8 +22,9 @@ public class IVariables {
 
 	// Contructor privado, asi no se podra llamar desde fuera
 	private IVariables() {
-		this.setArrayTraps(new ArrayList<>());
+		this.arrayTraps = new ArrayList<>();
 		this.arrayProyectiles = new ArrayList<>();
+		this.arrayEnergyBar = new ArrayList<>();
 
 		this.index = 0;
 		this.index2 = 0;
@@ -59,8 +62,13 @@ public class IVariables {
 		return arrayTraps;
 	}
 
-	public void setArrayTraps(List<Trap> arrayTraps) {
-		this.arrayTraps = arrayTraps;
+
+	public List<EnergyBar> getArrayEnergyBar() {
+		return arrayEnergyBar;
+	}
+
+	public void addEnergyBar(EnergyBar pEnergyBar) {
+		this.arrayEnergyBar.add(pEnergyBar);
 	}
 
 	// Igualmente se pueden añadir mas metodos y variables

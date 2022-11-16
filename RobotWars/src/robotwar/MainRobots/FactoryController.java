@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
+import robotwar.Interfazes.EnergyBar;
 import robotwar.Interfazes.GameInterface;
 import robotwar.Interfazes.RobotController;
 import robotwar.Traps.Acid;
@@ -129,7 +130,7 @@ public class FactoryController {
 				window2.setResizable(false);
 				window2.setTitle("RobotWars");
 				window2.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH, IConstants.ARENA_HEIGTH + 40));
-
+				EnergyBar enbar = new EnergyBar(nRobot, 0, 0);
 				RobotController MainGame = new RobotController(nRobot);
 				nRobot.getPlayerImage();
 				GameInterface interfaz2 = new GameInterface(MainGame);

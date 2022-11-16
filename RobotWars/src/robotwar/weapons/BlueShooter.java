@@ -24,6 +24,9 @@ public class BlueShooter extends Weapon{
 		IVariables varS = IVariables.getInstance();
 		cooldown = 20;
 		varS.addProyectile(new SolarLaser(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed, this.robot, this.level));
+		double consumo = 0.2 * this.level;
+		consumo += consumo * 0.15 * 700 / 100;
+		this.robot.energy -= consumo;
 	}
 
 	@Override

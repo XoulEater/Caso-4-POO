@@ -32,6 +32,7 @@ public class RobotController implements Runnable {
 		robot2.addWeapon(new Reaper(robot2));
 		robot2.addWeapon(new PunchArm(robot2));
 		robot2.getPlayerImage();
+		EnergyBar enbar = new EnergyBar(robot2, 1200 - 280, 0);
 	}
 
 	public void setControl(Key pControl) {

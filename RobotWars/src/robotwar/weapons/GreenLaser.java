@@ -36,6 +36,9 @@ public class GreenLaser extends Weapon{
 			break;
 		}
 		cooldown = 5;
+		double consumo = 0.2 * this.level;
+		consumo += consumo * 0.15 * 200 / 100;
+		this.robot.energy -= consumo;
 	}
 
 	@Override
