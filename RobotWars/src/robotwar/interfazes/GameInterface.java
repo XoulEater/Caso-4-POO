@@ -1,4 +1,4 @@
-package robotwar.Interfazes;
+package robotwar.interfazes;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,16 +7,17 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.List;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
 import robotwar.common.IConstants;
 import robotwar.common.IVariables;
-import robotwar.common.robotbase.Trap;
+import robotwar.gamebasics.EnergyBar;
 import robotwar.gamebasics.IRobotito;
+import robotwar.gamebasics.Key;
+import robotwar.gamebasics.KeyBoard;
+import robotwar.gamebasics.KeyBoard2;
+import robotwar.gamebasics.Trap;
 import robotwar.proyectiles.Proyectile;
 
 public class GameInterface extends JPanel {
@@ -30,15 +31,13 @@ public class GameInterface extends JPanel {
 	private RobotController controller;
 	private JViewport viewP;
 
-	
-	
 	public void setViewP(JViewport viewP) {
 		this.viewP = viewP;
 	}
 
 	public GameInterface(RobotController controller) {
 		this.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH * 2, IConstants.ARENA_HEIGTH));
-		
+
 		this.setBackground(Color.white);
 		this.setDoubleBuffered(true);
 		this.setFocusable(true);
@@ -54,8 +53,6 @@ public class GameInterface extends JPanel {
 		robot2 = controller.robot2;
 	}
 
-	
-	
 	public void rightSide() {
 		Point viewOrigin = viewP.getViewPosition();
 		if (viewOrigin.x == 0) {
@@ -63,7 +60,7 @@ public class GameInterface extends JPanel {
 			viewP.setViewPosition(viewOrigin);
 		}
 	}
-	
+
 	public void leftSide() {
 		Point viewOrigin = viewP.getViewPosition();
 		if (viewOrigin.x == 1200) {

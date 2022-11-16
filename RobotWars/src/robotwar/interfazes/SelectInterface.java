@@ -1,4 +1,4 @@
-package robotwar.MainRobots;
+package robotwar.interfazes;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import robotwar.Interfazes.BackGround;
 import robotwar.common.IConstants;
 import robotwar.gamebasics.IRobotito;
 
@@ -25,12 +24,12 @@ public class SelectInterface extends JPanel {
 	private FactoryController controller;
 	public IRobotito robot1;
 	private static final long serialVersionUID = 1L;
-	
+
 	public JLabel robot;
 	public JLabel arma1;
 	public JLabel arma2;
 	public JLabel head;
-	
+
 	private JButton confirmButton;
 
 	public SelectInterface(FactoryController mainFactory) {
@@ -42,7 +41,7 @@ public class SelectInterface extends JPanel {
 		this.setBackground(Color.white);
 		this.initComponents();
 		this.setVisible(true);
-		
+
 	}
 
 	private void initComponents() {
@@ -189,25 +188,23 @@ public class SelectInterface extends JPanel {
 		bWeapon3.setContentAreaFilled(false);
 		bWeapon3.setBorderPainted(false);
 		this.add(bWeapon3);
-		
+
 		JLabel insertName = new JLabel("Insertar Nombre");
-		insertName.setFont(insertName.getFont().deriveFont(Font.BOLD,30F));
+		insertName.setFont(insertName.getFont().deriveFont(Font.BOLD, 30F));
 		insertName.setBounds(195, 35, 286, 53);
 		insertName.setForeground(Color.WHITE);
 		this.add(insertName);
-		
+
 		JTextField playerName = new JTextField();
 		playerName.setBounds(172, 88, 286, 53);
-		playerName.setFont(playerName.getFont().deriveFont(Font.BOLD,30F));
+		playerName.setFont(playerName.getFont().deriveFont(Font.BOLD, 30F));
 		playerName.setBackground(Color.DARK_GRAY);
 		playerName.setForeground(Color.WHITE);
 		this.add(playerName);
-		
-		
 
 		confirmButton = new JButton("Confirmar");
 		confirmButton.setBounds(800, 560, 235, 110);
-		confirmButton.setFont(playerName.getFont().deriveFont(Font.BOLD,30F));
+		confirmButton.setFont(playerName.getFont().deriveFont(Font.BOLD, 30F));
 		confirmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String name = playerName.getText();
@@ -215,29 +212,29 @@ public class SelectInterface extends JPanel {
 			}
 		});
 		this.add(confirmButton);
-		
+
 		robot = new JLabel();
 		robot.setBounds(730, 120, 147, 138);
 		robot.setBackground(Color.red);
-		//robot.setOpaque(false);
+		// robot.setOpaque(false);
 		this.add(robot);
-		
+
 		head = new JLabel();
 		head.setBounds(986, 165, 143, 78);
 		head.setBackground(Color.red);
-		//arma1.setOpaque(false);
+		// arma1.setOpaque(false);
 		this.add(head);
-		
+
 		arma1 = new JLabel();
 		arma1.setBounds(802, 353, 120, 120);
 		robot.setBackground(Color.red);
-		//arma2.setOpaque(false);
+		// arma2.setOpaque(false);
 		this.add(arma1);
-		
+
 		arma2 = new JLabel();
 		arma2.setBounds(947, 353, 120, 120);
 		arma2.setBackground(Color.red);
-		//head.setOpaque(false);
+		// head.setOpaque(false);
 		this.add(arma2);
 
 	}
@@ -248,12 +245,11 @@ public class SelectInterface extends JPanel {
 		super.paintComponent(g);
 
 		Graphics2D g2 = (Graphics2D) g;
-		
+
 		fondo.draw(g2);
 		confirmButton.repaint();
-		//arma1.repaint();
+		// arma1.repaint();
 
-
-		//g2.dispose();
+		// g2.dispose();
 	}
 }

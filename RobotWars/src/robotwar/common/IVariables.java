@@ -3,8 +3,8 @@ package robotwar.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import robotwar.Interfazes.EnergyBar;
-import robotwar.common.robotbase.Trap;
+import robotwar.gamebasics.EnergyBar;
+import robotwar.gamebasics.Trap;
 import robotwar.proyectiles.Proyectile;
 
 public class IVariables {

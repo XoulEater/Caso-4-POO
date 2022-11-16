@@ -1,4 +1,4 @@
-package robotwar.common.robotbase;
+package robotwar.gamebasics;
 
 import java.awt.Graphics2D;
 

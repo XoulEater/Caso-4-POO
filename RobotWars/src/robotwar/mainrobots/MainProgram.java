@@ -1,15 +1,17 @@
-package robotwar.MainRobots;
+package robotwar.mainrobots;
 
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import robotwar.Traps.Acid;
-import robotwar.Traps.Fire;
-import robotwar.Traps.Saw;
-import robotwar.Traps.Spike;
 import robotwar.common.IConstants;
 import robotwar.common.IVariables;
+import robotwar.interfazes.FactoryController;
+import robotwar.interfazes.SelectInterface;
+import robotwar.traps.Acid;
+import robotwar.traps.Fire;
+import robotwar.traps.Saw;
+import robotwar.traps.Spike;
 
 public class MainProgram {
 
@@ -31,8 +33,8 @@ public class MainProgram {
 		varS.addTrap(new Saw(800, 100));
 		varS.addTrap(new Saw(800, 600));
 
-		FactoryController MainFactory = new FactoryController(window);
-		SelectInterface interfaz = new SelectInterface(MainFactory);
+		FactoryController mainFactory = new FactoryController(window);
+		SelectInterface interfaz = new SelectInterface(mainFactory);
 
 		window.add(interfaz);
 		window.pack();

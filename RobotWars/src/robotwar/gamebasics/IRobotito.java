@@ -3,11 +3,9 @@ package robotwar.gamebasics;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -206,7 +204,7 @@ public abstract class IRobotito extends IRobot {
 				this.fire(1, pActionTime, g);
 			}
 		} else {
-			
+
 			try {
 				BufferedImage deadimage = ImageIO.read(getClass().getResource("/robotwar/images/dead.png"));
 				g.drawImage(deadimage, posX, posY, 70, 70, null);

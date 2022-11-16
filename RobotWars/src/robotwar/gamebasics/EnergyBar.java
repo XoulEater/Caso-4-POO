@@ -1,4 +1,4 @@
-package robotwar.Interfazes;
+package robotwar.gamebasics;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -8,10 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 import robotwar.common.IVariables;
-import robotwar.gamebasics.IRobotito;
 
 public class EnergyBar {
 	private List<String> images;
@@ -30,6 +28,7 @@ public class EnergyBar {
 		IVariables varS = IVariables.getInstance();
 		varS.addEnergyBar(this);
 	}
+
 	public void draw(Graphics2D pGp) { // "/robotwar/images/sierra.gif"
 		BufferedImage image;
 		try {
@@ -39,7 +38,7 @@ public class EnergyBar {
 				image = ImageIO.read(getClass().getResource(images.get(robot.energy / 10)));
 			}
 			pGp.drawImage(image, posX, posY, 280, 70, null);
-			pGp.drawImage(image, posX+1200, posY, 280, 70, null);
+			pGp.drawImage(image, posX + 1200, posY, 280, 70, null);
 		} catch (IOException e) {
 
 		}

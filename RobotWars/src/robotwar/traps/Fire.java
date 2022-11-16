@@ -1,4 +1,4 @@
-package robotwar.Traps;
+package robotwar.traps;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -11,8 +11,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import robotwar.Interfazes.GameInterface;
 import robotwar.common.robotbase.*;
+import robotwar.gamebasics.Trap;
+import robotwar.interfazes.GameInterface;
 
 public class Fire  extends Trap {
 
