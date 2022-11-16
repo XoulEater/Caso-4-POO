@@ -24,8 +24,12 @@ public class MainProgram {
 
 		IVariables varS = IVariables.getInstance();
 
-		varS.addTrap(new Spike(1500, 0));
-		varS.addTrap(new Fire(1200, 0));
+		varS.addTrap(new Spike(1900, 0));
+		varS.addTrap(new Fire(1500, 0));
+
+		varS.addTrap(new Spike(1900, 700));
+		varS.addTrap(new Fire(1500, 700));
+		
 		varS.addTrap(new Acid(300, 300));
 		varS.addTrap(new Acid(700, 300));
 		varS.addTrap(new Saw(700, 0));
