@@ -13,9 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import robotwar.Interfaces.BackGround;
+import robotwar.Interfazes.BackGround;
 import robotwar.common.IConstants;
-import robotwar.common.robotbase.IRobotito;
+import robotwar.gamebasics.IRobotito;
 
 public class SelectInterface extends JPanel {
 	private static final int originalSize = 25; // Defalt size of each panel 25x25

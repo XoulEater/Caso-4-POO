@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 import robotwar.common.IVariables;
-import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.gamebasics.IRobotito;
 import robotwar.proyectiles.*;
 
 public class GreenLaser extends Weapon{

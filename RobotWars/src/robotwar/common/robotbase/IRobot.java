@@ -77,7 +77,7 @@ public abstract class IRobot implements IConstants {
 			}
 			break;
 		case RIGHT:
-			if (posX < 1100 && directionsdamage[2].getDamageLevel() != 0)
+			if (posX < 2200 && directionsdamage[2].getDamageLevel() != 0)
 				movX = movement;
 			break;
 		case UP:
@@ -120,8 +120,8 @@ public abstract class IRobot implements IConstants {
 		Random rand = new Random();
 		List<DamageLevel> damageableList = Stream.concat(Stream.concat(Arrays.stream(strikes), Arrays.stream(weapons)), Arrays.stream(directionsdamage)).toList();
 		DamageLevel toDamage = damageableList.get(rand.nextInt(STRIKES_PER_ROBOT + WEAPONS_PER_ROBOT + 4));
-		System.out.println(toDamage.getDamageLevel());
 		toDamage.hitDamage(pLevel);
+		System.out.println(toDamage.getDamageLevel());
 	}
 
 	public void addStrike(Weapon pStrike) {

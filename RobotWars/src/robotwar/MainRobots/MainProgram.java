@@ -17,16 +17,19 @@ public class MainProgram {
 
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setResizable(false);
+		window.setResizable(true);
 		window.setTitle("RobotWars");
 		window.setPreferredSize(new Dimension(IConstants.ARENA_WIDTH, IConstants.ARENA_HEIGTH));
 		
 		IVariables varS = IVariables.getInstance();
 
-		varS.addTrap(new Spike(500, 0));
-		varS.addTrap(new Fire(200, 0));
+		varS.addTrap(new Spike(1500, 0));
+		varS.addTrap(new Fire(1200, 0));
 		varS.addTrap(new Acid(300, 300));
 		varS.addTrap(new Saw(700, 0));
+		varS.addTrap(new Saw(700, 700));
+		varS.addTrap(new Saw(800, 100));
+		varS.addTrap(new Saw(800, 600));
 
 		FactoryController MainFactory = new FactoryController(window);
 		SelectInterface interfaz = new SelectInterface(MainFactory);

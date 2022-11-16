@@ -1,17 +1,15 @@
-package robotwar.Interfaces;
+package robotwar.Interfazes;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
-
 import robotwar.common.IVariables;
-import robotwar.common.robotbase.Arena;
-import robotwar.common.robotbase.BlueRobot;
-import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.MOVEMENT;
 import robotwar.common.robotbase.Trap;
+import robotwar.gamebasics.BlueRobot;
+import robotwar.gamebasics.IRobotito;
 import robotwar.proyectiles.Proyectile;
 import robotwar.weapons.BlueShooter;
 import robotwar.weapons.PunchArm;
@@ -19,7 +17,6 @@ import robotwar.weapons.Reaper;
 
 public class RobotController implements Runnable {
 	private GameInterface contolledFrame;
-	private Arena currentArena;
 	private IRobotito robot1;
 	public IRobotito robot2;
 	public Key control;
@@ -58,6 +55,12 @@ public class RobotController implements Runnable {
 		control.shot = false;
 		control.mele1 = false;
 		control.mele2 = false;
+		
+		if (robot2.getPosX() >= 1200) {
+			this.contolledFrame.rightSide();
+		} else {
+			this.contolledFrame.leftSide();
+		}
 
 		robot2.setCurrentOrientation(control2.currentOrientation);
 		robot2.setCurrentMovement(control2.currentMovement);
@@ -129,6 +132,8 @@ public class RobotController implements Runnable {
 
 			updateRobots();
 			validateColitions();
+			
+			
 
 			time = control.pulsation;
 			contolledFrame.repaint();

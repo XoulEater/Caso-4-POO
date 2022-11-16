@@ -2,6 +2,8 @@ package robotwar.common.robotbase;
 
 import java.util.List;
 
+import robotwar.gamebasics.IRobotito;
+
 public abstract class Weapon extends DamageLevel {
 	protected int posX;
 	protected int posY;
@@ -25,6 +27,7 @@ public abstract class Weapon extends DamageLevel {
 	public void fire(int pPosX, int pPosY, ORIENTATION pDirection) {
 		if (this.isEnabled()) {
 			this.triggerWeapon(pPosX, pPosY, pDirection);
+			this.robot.energy -= 0.2 * level;
 		}
 	}
 
@@ -74,6 +77,10 @@ public abstract class Weapon extends DamageLevel {
 
 	public void decCooldown() {
 		this.cooldown -= 1;
+	}
+
+	public int getCooldown() {
+		return cooldown;
 	}
 
 }
