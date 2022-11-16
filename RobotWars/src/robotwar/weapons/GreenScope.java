@@ -10,7 +10,7 @@ import robotwar.common.robotbase.Weapon;
 import robotwar.gamebasics.IRobotito;
 import robotwar.proyectiles.BulletFire;
 
-public class GreenScope extends Weapon{
+public class GreenScope extends Weapon {
 	public GreenScope(IRobotito pRobot) {
 		super(15, 5, 300, pRobot);
 		image = "/robotwar/images/ran_g1.png";

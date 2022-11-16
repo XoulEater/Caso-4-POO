@@ -83,4 +83,3 @@ public abstract class Weapon extends DamageLevel {
 	}
 
 }
-

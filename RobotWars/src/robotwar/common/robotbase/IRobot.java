@@ -121,10 +121,13 @@ public abstract class IRobot implements IConstants {
 			this.energy -= pLevel;
 		} else {
 			Random rand = new Random();
-			List<DamageLevel> damageableList = Stream.concat(Stream.concat(Arrays.stream(strikes), Arrays.stream(weapons)), Arrays.stream(directionsdamage)).toList();
+			List<DamageLevel> damageableList = Stream
+					.concat(Stream.concat(Arrays.stream(strikes), Arrays.stream(weapons)),
+							Arrays.stream(directionsdamage))
+					.toList();
 			DamageLevel toDamage = damageableList.get(rand.nextInt(STRIKES_PER_ROBOT + WEAPONS_PER_ROBOT + 4));
 			toDamage.hitDamage(pLevel);
-			System.out.println(toDamage.getDamageLevel());	
+			System.out.println(toDamage.getDamageLevel());
 		}
 	}
 

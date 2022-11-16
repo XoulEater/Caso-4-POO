@@ -1,7 +1,6 @@
 package robotwar.weapons;
 
 import java.util.ArrayList;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -9,21 +8,20 @@ import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
 import robotwar.gamebasics.IRobotito;
-import robotwar.proyectiles.BulletFire;
 import robotwar.proyectiles.SolarLaser;
 
-public class BlueShooter extends Weapon{
+public class BlueShooter extends Weapon {
 
 	public BlueShooter(IRobotito pRobot) {
 		super(15, 7, 100, pRobot);
 		image = "/robotwar/images/ran_b2.png";
 	}
-	
 
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
 		IVariables varS = IVariables.getInstance();
 		cooldown = 20;
-		varS.addProyectile(new SolarLaser(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection, this.speed, this.robot, this.level));
+		varS.addProyectile(new SolarLaser(pPosX + weaponBound.get(0), pPosY + weaponBound.get(1), pDirection,
+				this.speed, this.robot, this.level));
 		double consumo = 0.2 * this.level;
 		consumo += consumo * 0.15 * 700 / 100;
 		this.robot.energy -= consumo;
@@ -41,16 +39,16 @@ public class BlueShooter extends Weapon{
 
 	@Override
 	public void UpdateImage(ORIENTATION pDirection) {
-		switch(pDirection) {
+		switch (pDirection) {
 		case EAST:
 			image = "/robotwar/images/ran_b2.png";
 			weaponBound = new ArrayList<>();
-			Collections.addAll(weaponBound, 45,40, 50,35);
+			Collections.addAll(weaponBound, 45, 40, 50, 35);
 			break;
 		case WEST:
 			image = "/robotwar/images/ran_b2I.png";
 			weaponBound = new ArrayList<>();
-			Collections.addAll(weaponBound, 95,40, 50,35);
+			Collections.addAll(weaponBound, 95, 40, 50, 35);
 			break;
 		case SOUTH:
 			image = "/robotwar/images/ran_b2D.png";
@@ -59,7 +57,7 @@ public class BlueShooter extends Weapon{
 			image = "/robotwar/images/ran_b2U.png";
 			break;
 		}
-		
+
 	}
-	
+
 }

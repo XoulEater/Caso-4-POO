@@ -1,7 +1,6 @@
-package robotwar.Interfazes;
+package robotwar.interfazes;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -19,7 +18,7 @@ public class BackGround {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public BackGround(String ruta1) {
 		try {
 			image1 = ImageIO.read(getClass().getResource(ruta1));

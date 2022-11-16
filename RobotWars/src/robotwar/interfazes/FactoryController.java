@@ -1,4 +1,4 @@
-package robotwar.MainRobots;
+package robotwar.interfazes;
 
 import java.awt.Dimension;
 import java.awt.Image;
@@ -12,20 +12,22 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
-import robotwar.Interfazes.EnergyBar;
-import robotwar.Interfazes.GameInterface;
-import robotwar.Interfazes.RobotController;
-import robotwar.Traps.Acid;
-import robotwar.Traps.Fire;
-import robotwar.Traps.Saw;
-import robotwar.Traps.Spike;
 import robotwar.common.IConstants;
-import robotwar.common.IVariables;
-import robotwar.common.robotbase.*;
+import robotwar.common.robotbase.Weapon;
 import robotwar.gamebasics.BlueRobot;
+import robotwar.gamebasics.EnergyBar;
 import robotwar.gamebasics.GreenRobot;
 import robotwar.gamebasics.IRobotito;
-import robotwar.weapons.*;
+import robotwar.weapons.BlueRocket;
+import robotwar.weapons.BlueShooter;
+import robotwar.weapons.GreenLaser;
+import robotwar.weapons.GreenScope;
+import robotwar.weapons.Hades;
+import robotwar.weapons.LavaAxe;
+import robotwar.weapons.PunchArm;
+import robotwar.weapons.Reaper;
+import robotwar.weapons.ThunderBlade;
+import robotwar.weapons.Warhammer;
 
 public class FactoryController {
 	SelectInterface window;
@@ -33,7 +35,7 @@ public class FactoryController {
 	IRobotito nRobot = new GreenRobot();
 	String playerName;
 
-	FactoryController(JFrame pmain) {
+	public FactoryController(JFrame pmain) {
 		this.mainWindow = pmain;
 	}
 
@@ -135,21 +137,19 @@ public class FactoryController {
 				nRobot.getPlayerImage();
 				GameInterface interfaz2 = new GameInterface(MainGame);
 				interfaz2.robot1 = nRobot;
-				
+
 				JScrollPane scroll = new JScrollPane(interfaz2);
 				scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 				scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 
-				
 				window2.add(scroll);
 				window2.pack();
 				window2.setLocationRelativeTo(null);
 				window2.setVisible(true);
-				
+
 				JViewport viewP = scroll.getViewport();
 				interfaz2.setViewP(viewP);
-				
-				
+
 				MainGame.startGameThread();
 
 			}

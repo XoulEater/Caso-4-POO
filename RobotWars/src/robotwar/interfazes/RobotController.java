@@ -1,15 +1,17 @@
-package robotwar.Interfazes;
+package robotwar.interfazes;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
+
 import robotwar.common.IVariables;
-import robotwar.common.robotbase.MOVEMENT;
-import robotwar.common.robotbase.Trap;
 import robotwar.gamebasics.BlueRobot;
+import robotwar.gamebasics.EnergyBar;
 import robotwar.gamebasics.IRobotito;
+import robotwar.gamebasics.Key;
+import robotwar.gamebasics.Trap;
 import robotwar.proyectiles.Proyectile;
 import robotwar.weapons.BlueShooter;
 import robotwar.weapons.PunchArm;
@@ -22,7 +24,6 @@ public class RobotController implements Runnable {
 	public Key control;
 	public Key control2;
 	public LocalTime time;
-	private MOVEMENT mov;
 	private Thread gameThread;
 
 	public RobotController(IRobotito robot) {
@@ -56,7 +57,7 @@ public class RobotController implements Runnable {
 		control.shot = false;
 		control.mele1 = false;
 		control.mele2 = false;
-		
+
 		if (robot2.getPosX() >= 1200) {
 			this.contolledFrame.rightSide();
 		} else {
@@ -90,15 +91,14 @@ public class RobotController implements Runnable {
 					.filter(k -> (k.getPosX() < robot.getPosX() + 100) && (k.getPosX() > robot.getPosX())
 							&& (k.getPosY() < robot.getPosY() + 100) && (k.getPosY() > robot.getPosY()))
 					.filter(k -> k.getRobot() != robot);
-			
+
 			validProys.forEach(k -> robot.damage(k.getLevel()));
-			
+
 			validProys = arrayProy.stream().filter(x -> !x.isOutOfRange())
 					.filter(k -> (k.getPosX() < robot.getPosX() + 100) && (k.getPosX() > robot.getPosX())
 							&& (k.getPosY() < robot.getPosY() + 100) && (k.getPosY() > robot.getPosY()))
 					.filter(k -> k.getRobot() != robot);
 			validProys.forEach(k -> k.setInvalid());
-			
 
 			// System.out.println();
 			// System.out.println("Robot1 " + robX2 + " " + robY1);
@@ -121,7 +121,7 @@ public class RobotController implements Runnable {
 				}
 			}
 		}
-	
+
 	}
 
 	@Override
@@ -133,8 +133,6 @@ public class RobotController implements Runnable {
 
 			updateRobots();
 			validateColitions();
-			
-			
 
 			time = control.pulsation;
 			contolledFrame.repaint();

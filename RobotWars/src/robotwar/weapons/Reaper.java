@@ -1,23 +1,21 @@
 package robotwar.weapons;
 
 import java.util.ArrayList;
-
 import java.util.Collections;
 import java.util.List;
-
 import robotwar.common.IVariables;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
 import robotwar.gamebasics.IRobotito;
 import robotwar.proyectiles.SplitSlam;
 
-public class Reaper extends Weapon{
-	
+public class Reaper extends Weapon {
+
 	public Reaper(IRobotito pRobot) {
 		super(1, 5, 20, pRobot);
 		image = "/robotwar/images/mel_b2.png";
 	}
-	
+
 	@Override
 	public void triggerWeapon(int pPosX, int pPosY, ORIENTATION pDirection) {
 		IVariables varS = IVariables.getInstance();
@@ -27,7 +25,8 @@ public class Reaper extends Weapon{
 		if (slot == 1) {
 			switch (pDirection) {
 			case EAST:
-				varS.addProyectile(new SplitSlam(pPosX + 90, pPosY + 37, pDirection, this.speed, this.robot, this.level));
+				varS.addProyectile(
+						new SplitSlam(pPosX + 90, pPosY + 37, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
@@ -38,12 +37,14 @@ public class Reaper extends Weapon{
 		} else {
 			switch (pDirection) {
 			case EAST:
-				varS.addProyectile(new SplitSlam(pPosX + 50, pPosY + 37, pDirection, this.speed, this.robot, this.level));
+				varS.addProyectile(
+						new SplitSlam(pPosX + 50, pPosY + 37, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.EAST;
 				break;
 			case WEST:
 
-				varS.addProyectile(new SplitSlam(pPosX - 40, pPosY + 37, pDirection, this.speed, this.robot, this.level));
+				varS.addProyectile(
+						new SplitSlam(pPosX - 40, pPosY + 37, pDirection, this.speed, this.robot, this.level));
 
 				lastDir = ORIENTATION.WEST;
 				break;
@@ -67,7 +68,7 @@ public class Reaper extends Weapon{
 
 	@Override
 	public void UpdateImage(ORIENTATION pDirection) {
-		switch(pDirection) {
+		switch (pDirection) {
 		case EAST:
 			image = "/robotwar/images/mel_b2.png";
 			weaponBound = new ArrayList<>();
@@ -89,7 +90,7 @@ public class Reaper extends Weapon{
 		case NORTH:
 			break;
 		}
-		
+
 	}
-	
+
 }
