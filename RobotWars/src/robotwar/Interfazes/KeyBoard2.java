@@ -1,4 +1,4 @@
-package robotwar.Interfaces;
+package robotwar.Interfazes;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

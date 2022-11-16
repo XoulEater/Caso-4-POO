@@ -11,7 +11,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import robotwar.Interfaces.GameInterface;
+import robotwar.Interfazes.GameInterface;
 import robotwar.common.robotbase.*;
 
 public class Saw extends Trap {

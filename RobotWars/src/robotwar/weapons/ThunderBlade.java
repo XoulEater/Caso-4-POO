@@ -3,13 +3,11 @@ package robotwar.weapons;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import robotwar.common.IVariables;
-import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.gamebasics.IRobotito;
 import robotwar.proyectiles.BladeSlam;
-import robotwar.proyectiles.SplitSlam;
 
 public class ThunderBlade extends Weapon {
 	public ThunderBlade(IRobotito pRobot) {
@@ -47,7 +45,7 @@ public class ThunderBlade extends Weapon {
 				break;
 			case WEST:
 				varS.addProyectile(
-						new BladeSlampPosX - 60, pPosY + 53, pDirection, this.speed, this.robot, this.level));
+						new BladeSlam(pPosX - 60, pPosY + 53, pDirection, this.speed, this.robot, this.level));
 				lastDir = ORIENTATION.WEST;
 				break;
 			}

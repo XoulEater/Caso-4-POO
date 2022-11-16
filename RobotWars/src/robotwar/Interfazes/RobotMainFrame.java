@@ -1,4 +1,4 @@
-package robotwar.Interfaces;
+package robotwar.Interfazes;
 
 import java.awt.Color;
 
@@ -15,9 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import robotwar.Interfazes.*;
 import robotwar.common.*;
-
-import robotwar.Interfaces.*;
 
 
 
@@ -31,7 +30,7 @@ public class RobotMainFrame extends JFrame implements KeyListener{
 	public RobotMainFrame (RobotController pController)
 	{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setBounds(0, 0, panel2xMax, panel2yMax);
 		this.setLocationRelativeTo(null);
 		this.setPreferredSize(new Dimension(panel2xMax*2, panel2yMax*2));

@@ -1,7 +1,9 @@
-package robotwar.common.robotbase;
+package robotwar.gamebasics;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import robotwar.common.robotbase.ORIENTATION;
 
 public class BlueRobot extends IRobotito{
 	

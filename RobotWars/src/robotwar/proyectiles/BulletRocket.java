@@ -9,9 +9,9 @@ import java.util.Collections;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.gamebasics.IRobotito;
 
 public class BulletRocket extends Proyectile {
 	ImageIcon imageGif; 

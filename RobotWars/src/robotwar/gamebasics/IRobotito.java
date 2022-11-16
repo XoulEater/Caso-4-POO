@@ -1,4 +1,4 @@
-package robotwar.common.robotbase;
+package robotwar.gamebasics;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -17,6 +17,11 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import robotwar.common.robotbase.IRobot;
+import robotwar.common.robotbase.MOVEMENT;
+import robotwar.common.robotbase.ORIENTATION;
+import robotwar.common.robotbase.Weapon;
 
 public abstract class IRobotito extends IRobot {
 	protected String type;
@@ -186,15 +191,15 @@ public abstract class IRobotito extends IRobot {
 		 --damageCap; 
 		
 		this.move(pMove, pActionTime,  g);
-		if (shot && strikes[0].cooldown < 0) {
+		if (shot && strikes[0].getCooldown() < 0) {
 			
 			this.hit(0, pActionTime, g);
 		}
-		if (melee1 && weapons[0].cooldown < 0) {
+		if (melee1 && weapons[0].getCooldown() < 0) {
 			
 			this.fire(0, pActionTime, g);
 		}
-		if (melee2 && weapons[1].cooldown < 0) {
+		if (melee2 && weapons[1].getCooldown() < 0) {
 			
 			this.fire(1, pActionTime, g);
 		}

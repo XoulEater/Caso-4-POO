@@ -4,9 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.gamebasics.IRobotito;
 
 public class BigSlam extends Proyectile {
 	private BufferedImage image;

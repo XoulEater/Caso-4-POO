@@ -4,9 +4,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import robotwar.common.IConstants;
-import robotwar.common.robotbase.IRobotito;
 import robotwar.common.robotbase.ORIENTATION;
 import robotwar.common.robotbase.Weapon;
+import robotwar.gamebasics.IRobotito;
 
 public abstract class Proyectile {
 	protected int PosX, PosY;

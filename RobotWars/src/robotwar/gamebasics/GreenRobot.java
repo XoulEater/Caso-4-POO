@@ -1,9 +1,11 @@
-package robotwar.common.robotbase;
+package robotwar.gamebasics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import robotwar.common.robotbase.ORIENTATION;
 
 public class GreenRobot extends IRobotito{
 	
